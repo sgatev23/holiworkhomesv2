@@ -369,6 +369,56 @@ export default {
     }
   },
   
+  listProperty: {
+    title: "Добавете вашия имот",
+    subtitle: "Партнирайте си с нас, за да отключите потенциала му",
+    whyTitle: "Защо да изберете Holiwork Homes?",
+    whyPhotoTitle: "Професионална фотография",
+    whyPhotoText: "Вашият имот ще изпъкне с красиви снимки, които привличат топ гости.",
+    whyManagementTitle: "Цялостно управление",
+    whyManagementText: "Ние се грижим за резервации, поддръжка, комуникация и цени.",
+    whyLocalTitle: "Локални експерти",
+    whyLocalText: "Ние живеем и управляваме имоти точно където се намира вашият.",
+    expectTitle: "Какво да очаквате",
+    steps: {
+      step1: "Изпратете данни за вашия имот",
+      step2: "Безплатна оценка",
+      step3: "Персонализиран план",
+      step4: "Започвате да печелите"
+    },
+    formTitle: "Разкажете ни за вашия имот",
+    name: "Име и фамилия",
+    email: "Имейл адрес",
+    phone: "Телефон",
+    propertyType: "Тип имот",
+    propertyTypeRequired: "Изберете тип имот",
+    location: "Локация",
+    locationRequired: "Въведете локация",
+    bedrooms: "Спални",
+    bedroomsRequired: "Изберете брой спални",
+    bathrooms: "Бани",
+    bathroomsRequired: "Изберете брой бани",
+    message: "Допълнителна информация",
+    submit: "Изпрати"
+  },
+  placeholder: {
+    name: "Вашето име",
+    email: "Вашият имейл",
+    phone: "Вашият телефон",
+    select: "Изберете",
+    selectType: "Изберете тип имот",
+    location: "напр. София, Пловдив",
+    message: "Допълнителна информация..."
+  },
+  propertyTypes: {
+    apartment: "Апартамент",
+    house: "Къща",
+    villa: "Вила",
+    studio: "Студио"
+  },
+  bedroomOptions: {
+    studio: "Студио"
+  },
 
   successStories: {
     pageTitle: 'Успешни Истории',

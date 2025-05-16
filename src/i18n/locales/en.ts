@@ -492,6 +492,56 @@ featuredTestimonials: {
       quote: "Extremely professional service. I love the monthly reports and guest screening!"
     }
   }
+},
+listProperty: {
+  title: "List Your Property",
+  subtitle: "Partner with us to maximize your property's potential",
+  whyTitle: "Why Partner With Holiwork Homes?",
+  whyPhotoTitle: "Professional Photography",
+  whyPhotoText: "We make your property stand out with high-quality visuals that attract top-tier guests and tenants.",
+  whyManagementTitle: "Comprehensive Management",
+  whyManagementText: "From A to Z — we handle bookings, communication, maintenance, and pricing so you don’t have to.",
+  whyLocalTitle: "Local Market Experts",
+  whyLocalText: "We live where you rent. Our team optimizes for local demand, seasons, and trends.",
+  expectTitle: "What to Expect",
+  steps: {
+    step1: "Submit your property details",
+    step2: "Free property assessment",
+    step3: "Custom setup & management plan",
+    step4: "Start earning effortlessly"
+  },
+  formTitle: "Tell Us About Your Property",
+  name: "Full Name",
+  email: "Email Address",
+  phone: "Phone Number",
+  propertyType: "Property Type",
+  propertyTypeRequired: "Property type is required",
+  location: "Location",
+  locationRequired: "Location is required",
+  bedrooms: "Bedrooms",
+  bedroomsRequired: "Number of bedrooms is required",
+  bathrooms: "Bathrooms",
+  bathroomsRequired: "Number of bathrooms is required",
+  message: "Additional Information",
+  submit: "Submit Property"
+},
+placeholder: {
+  name: "Your name",
+  email: "Your email",
+  phone: "Your phone number",
+  select: "Select",
+  selectType: "Select property type",
+  location: "e.g. Sofia, Plovdiv, Varna",
+  message: "Anything else you'd like to share..."
+},
+propertyTypes: {
+  apartment: "Apartment",
+  house: "House",
+  villa: "Villa",
+  studio: "Studio"
+},
+bedroomOptions: {
+  studio: "Studio"
 }
 };
 

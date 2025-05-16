@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import html2canvas from "html2canvas";
 import { useTranslation } from 'react-i18next';
+import supabase from "../../supabaseclient";
 
 import {
   BarChart,
@@ -173,22 +174,28 @@ const PropertyCalculator = () => {
     }
   };
 
-  const submitEmailAndGenerate = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  const submitEmailAndGenerate = async () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) {
-      alert("Please enter a valid email address.");
-      return;
+      alert("Please enter a valid email address.")
+      return
     }
-
-    // ✅ Simulate success without external call
-    setEmailSubmitted(true);
-    setHasUnlocked(true);
-    setShowModal(false);
-    setHasChanged(false);
-
-    console.log("✅ Email accepted, report unlocked");
-  };
+  
+    const { error } = await supabase
+      .from('emails')
+      .insert([{ email }])
+  
+    if (error) {
+      console.error('Error storing email:', error)
+      alert("Something went wrong.")
+      return
+    }
+  
+    setEmailSubmitted(true)
+    setHasUnlocked(true)
+    setShowModal(false)
+    setHasChanged(false)
+  }
 
   return (
     <section id="calculator" className="py-2 px-6" style={{ backgroundColor: '#f3f5f8' }}>
