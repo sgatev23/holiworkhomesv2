@@ -1,210 +1,322 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import html2canvas from "html2canvas";
+import { useTranslation } from 'react-i18next';
 
-type FormData = {
-  propertyType: string;
-  bedrooms: string;
-  location: string;
-  name: string;
-  email: string;
-  phone: string;
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+
+const cities = {
+  Plovdiv: ["City Centre", "Old Town", "Kapana", "Karshiyaka", "Marasha", "Mladezhki Halm", "Sadiyski", "Kamenitsa 1", "Kamenitsa 2", "Zaharna fabrika", "Gagarin", "Filipovo", "Zapaden", "Hristo Smirnenski", "Kyuchuk Parizh", "Trakiya", "Vastanicheski", "Komatevski vazel", "Yuzhen", "Ostromila", "Belomorski", "Proslav", "Peshtersko shose"],
+  Sofia: [
+    "Oborishte", "Sredets", "Triaditsa", "Vazrazhdane", "Lower Lozenets", "Zona B-5", "Yavorov", // City Centre
+    "Upper Lozenets", "Krasno Selo", "Slatina", "Poduyane", "Geo Milev", "Reduta", "Hladilnika", "Iztok", "Ivan Vazov", // Wider Centre
+    "Mladost", "Studentski Grad", "Dianabad", "Druzhba", "Ovcha Kupel", "Lyulin", "Nadezhda", "Boyana", "Dragalevtsi", "Simeonovo", "Gorni Lozen", "Bankya" // Suburbs
+  ],
+
+  Varna: ["Vladislavovo", "Trakata", "Vinitsa", "Briz", "Old Town"],
+  Burgas: ["Lazur", "Meden Rudnik", "Sarafovo", "Slaveykov", "Bratya Miladinovi"],
+  Gabrovo: ["Sirmani", "Bichkinya", "Centre", "Etar", "Vasil Levski"],
+  Ruse: ["Center", "Zdravets", "Charodeyka", "Druzhba", "Vuzrazhdane"],
+  Bansko: ["Ski Area", "Old Town", "Gramadeto", "Glazne", "Strazhite"],
+  Sozopol: ["Old Town", "New Town", "Budzhaka", "Chervenka", "Harmani"],
+  "St. Vlas": ["Dinevi Resort", "Marina Dinevi", "Rusalka", "Intsaraki", "Yurta"]
 };
 
-const PropertyCalculator: React.FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
-  const [estimatedIncome, setEstimatedIncome] = useState<number | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+const sofiaTranslations = {
+  "Oborishte": "Оборище", "Sredets": "Средец", "Triaditsa": "Триадица", "Vazrazhdane": "Възраждане",
+  "Lower Lozenets": "Долен Лозенец", "Zona B-5": "Зона Б-5", "Yavorov": "Яворов",
+  "Upper Lozenets": "Горен Лозенец", "Krasno Selo": "Красно село", "Slatina": "Слатина", "Poduyane": "Подуяне",
+  "Geo Milev": "Гео Милев", "Reduta": "Редута", "Hladilnika": "Хладилника", "Iztok": "Изток", "Ivan Vazov": "Иван Вазов",
+  "Mladost": "Младост", "Studentski Grad": "Студентски град", "Dianabad": "Дианабад", "Druzhba": "Дружба",
+  "Ovcha Kupel": "Овча купел", "Lyulin": "Люлин", "Nadezhda": "Надежда", "Boyana": "Бояна",
+  "Dragalevtsi": "Драгалевци", "Simeonovo": "Симеоново", "Gorni Lozen": "Горни Лозен", "Bankya": "Банкя"
+};
 
-  const onSubmit = (data: FormData) => {
-    setIsSubmitting(true);
-    
-    // Simulate API call with timeout
-    setTimeout(() => {
-      // Calculate estimated monthly income based on form data
-      // This is a simplified example - in a real app, this would come from an API
-      const baseIncome = data.propertyType === 'apartment' ? 1200 : 1800;
-      const bedroomMultiplier = parseInt(data.bedrooms) * 200;
-      const locationFactor = data.location === 'city-center' ? 1.2 : 1;
-      
-      const calculatedIncome = Math.round((baseIncome + bedroomMultiplier) * locationFactor);
-      setEstimatedIncome(calculatedIncome);
-      setIsSubmitting(false);
-    }, 1500);
+const plovdivZones = {
+  "City Centre": "center", "Old Town": "center", "Kapana": "center",
+  "Marasha": "wider", "Mladezhki Halm": "wider", "Sadiyski": "wider", "Karshiyaka": "wider",
+  "Kamenitsa 1": "wider", "Kamenitsa 2": "wider",
+  "Zapaden": "suburbs", "Zaharna fabrika": "suburbs", "Gagarin": "suburbs", "Filipovo": "suburbs",
+  "Hristo Smirnenski": "suburbs", "Kyuchuk Parizh": "suburbs", "Trakiya": "suburbs", "Vastanicheski": "suburbs",
+  "Komatevski vazel": "suburbs", "Yuzhen": "suburbs", "Ostromila": "suburbs", "Belomorski": "suburbs",
+  "Proslav": "suburbs", "Peshtersko shose": "suburbs"
+};
+
+const sofiaZones = {
+  "Oborishte": "center", "Sredets": "center", "Triaditsa": "center", "Vazrazhdane": "center",
+  "Lower Lozenets": "center", "Zona B-5": "center", "Yavorov": "center",
+  "Upper Lozenets": "wider", "Krasno Selo": "wider", "Slatina": "wider", "Poduyane": "wider",
+  "Geo Milev": "wider", "Reduta": "wider", "Hladilnika": "wider", "Iztok": "wider", "Ivan Vazov": "wider",
+  "Mladost": "suburbs", "Studentski Grad": "suburbs", "Dianabad": "suburbs", "Druzhba": "suburbs",
+  "Ovcha Kupel": "suburbs", "Lyulin": "suburbs", "Nadezhda": "suburbs", "Boyana": "suburbs",
+  "Dragalevtsi": "suburbs", "Simeonovo": "suburbs", "Gorni Lozen": "suburbs", "Bankya": "suburbs"
+};
+const citiesTranslations = {
+  "Sofia": "София", "Plovdiv": "Пловдив", "Varna": "Варна", "Burgas": "Бургас", "Gabrovo": "Габрово",
+  "Ruse": "Русе", "Bansko": "Банско", "Sozopol": "Созопол", "St. Vlas": "Св. Влас"
+};
+const plovdivTranslations = {
+  "City Centre": "Център", "Old Town": "Старият град", "Kapana": "Капана", "Karshiyaka": "Кършияка", "Marasha": "Мараша", "Mladezhki Halm": "Младежки хълм", "Sadiyski": "Съдийски", "Kamenitsa 1": "Каменица 1", "Kamenitsa 2": "Каменица 2", "Zaharna fabrika": "Захарна фабрика", "Gagarin": "Гагарин", "Filipovo": "Филипово", "Zapaden": "Западен", "Hristo Smirnenski": "Христо Смирненски", "Kyuchuk Parizh": "Кючук Париж", "Trakiya": "Тракия", "Vastanicheski": "Въстанически", "Komatevski vazel": "Коматевски възел", "Yuzhen": "Южен", "Ostromila": "Остромила", "Belomorski": "Беломорски", "Proslav": "Прослав", "Peshtersko shose": "Пещерско шосе"
+}
+
+const bedroomTranslations = {
+  "0": "Студио",
+  "1": "1 спалня",
+  "2": "2 спални"
+};
+const rentalTypeTranslations = {
+  "short-term": "Краткосрочен наем",
+  "long-term": "Дългосрочен наем"
+};
+
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const baseOccupancy = [0.45, 0.5, 0.5, 0.65, 0.65, 0.69, 0.69, 0.65, 0.65, 0.5, 0.45, 0.45];
+const PropertyCalculator = () => {
+  const { t } = useTranslation(); // ✅ Add this line to fix the hook error
+
+  const { register, handleSubmit, watch, setValue } = useForm({
+    defaultValues: {
+      city: "Sofia",
+      neighborhood: "Oborishte",
+      bedrooms: "2",
+      rentalType: "short-term"
+    }
+  });
+
+
+  const [data, setData] = useState([]);
+  const [netAvg, setNetAvg] = useState(null);
+  const [occAvg, setOccAvg] = useState(null);
+  const [minRate, setMinRate] = useState(null);
+  const [maxRate, setMaxRate] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [email, setEmail] = useState("");
+  const [hasUnlocked, setHasUnlocked] = useState(false);
+  const [hasPrompted, setHasPrompted] = useState(false);
+  const [hasChanged, setHasChanged] = useState(false);
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+
+  const city = watch("city");
+  const rentalType = watch("rentalType");
+  const neighborhood = watch("neighborhood");
+  const bedrooms = watch("bedrooms");
+  const neighborhoodOptions = city ? cities[city] || [] : [];
+
+  const seasides = ["Sozopol", "St. Vlas"];
+  const centerCities = ["Plovdiv", "Varna", "Burgas"];
+
+  const processData = ({ city, neighborhood, bedrooms, rentalType }) => {
+    const isSea = seasides.includes(city);
+    const isCenter = centerCities.includes(city) && neighborhood.includes("Old Town");
+    const isSofia = city === "Sofia";
+    const isLongTerm = rentalType === "long-term";
+    const zone = city === "Plovdiv" ? plovdivZones[neighborhood] : null;
+
+    const rate = ["Plovdiv", "Sofia"].includes(city) ? [45, 60, 75][bedrooms] : [36, 48, 60][bedrooms];
+
+    let grossYear = 0;
+    let profitYear = 0;
+    let totalOcc = 0;
+
+    const monthlyData = months.map((month, idx) => {
+      let occ = isLongTerm ? 1 : baseOccupancy[idx];
+      if (!isLongTerm) {
+        if (isSea) occ = idx >= 5 && idx <= 8 ? 0.9 : 0.3;
+        if (isCenter) occ = 0.8;
+        if (isSofia) occ = Math.min(occ + 0.2, 1);
+      }
+
+      let gross = 30 * occ * rate;
+      if (isLongTerm) gross *= 0.7;
+      const cost = gross * 0.35;
+      const profit = gross - cost;
+
+      grossYear += gross;
+      profitYear += profit;
+      totalOcc += occ;
+
+      return {
+        name: month,
+        Gross: Math.round(gross),
+        Expenses: Math.round(cost),
+        Profit: Math.round(profit)
+      };
+    });
+
+    setData(monthlyData);
+    setNetAvg(Math.round(profitYear / 12));
+    setOccAvg(Math.round((totalOcc / 12) * 100));
+    setMinRate(Math.round(rate * 1.8));
+    setMaxRate(Math.round(rate * 2.6));
+  };
+
+  useEffect(() => {
+    processData({ city, neighborhood, bedrooms, rentalType });
+  }, [city, neighborhood, bedrooms, rentalType, emailSubmitted]);
+
+  const onFieldChange = () => setHasChanged(true);
+
+  const handleGenerateClick = () => {
+    if (hasChanged && !hasPrompted && !hasUnlocked) {
+      setShowModal(true);
+      setHasPrompted(true);
+    } else {
+      processData({ city, neighborhood, bedrooms, rentalType });
+    }
+  };
+
+  const submitEmailAndGenerate = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    // ✅ Simulate success without external call
+    setEmailSubmitted(true);
+    setHasUnlocked(true);
+    setShowModal(false);
+    setHasChanged(false);
+
+    console.log("✅ Email accepted, report unlocked");
   };
 
   return (
-    <section id="calculator" className="section bg-white">
-      <div className="container">
-        <h2 className="section-title">Calculate Your Potential Income</h2>
-        <p className="section-subtitle">
-          Find out how much your property could earn with professional management
+    <section id="calculator" className="py-2 px-6" style={{ backgroundColor: '#f3f5f8' }}>
+      <div className="max-w-7xl mx-auto bg-[#fdf4e3] rounded-xl shadow-md p-8">
+        <h2 className="text-4xl font-bold text-center mb-10 text-[#815159]">
+          {t('calculator.title')}
+        </h2>
+        <p className="text-center text-sm text-[#815159] italic mb-6">
+          {t('calculator.betaNotice')}
         </p>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <form onSubmit={handleSubmit(onSubmit)} className="bg-background p-6 md:p-8 rounded-lg shadow-sm">
-              <div className="space-y-6">
-                <div className="form-group">
-                  <label htmlFor="propertyType" className="form-label">Property Type</label>
-                  <select 
-                    id="propertyType"
-                    className="form-input"
-                    {...register("propertyType", { required: "Property type is required" })}
-                  >
-                    <option value="">Select property type</option>
-                    <option value="apartment">Apartment</option>
-                    <option value="house">House</option>
-                    <option value="villa">Villa</option>
-                  </select>
-                  {errors.propertyType && <p className="text-error text-sm mt-1">{errors.propertyType.message}</p>}
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="bedrooms" className="form-label">Number of Bedrooms</label>
-                  <select 
-                    id="bedrooms"
-                    className="form-input"
-                    {...register("bedrooms", { required: "Number of bedrooms is required" })}
-                  >
-                    <option value="">Select bedrooms</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4+</option>
-                  </select>
-                  {errors.bedrooms && <p className="text-error text-sm mt-1">{errors.bedrooms.message}</p>}
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="location" className="form-label">Location</label>
-                  <select 
-                    id="location"
-                    className="form-input"
-                    {...register("location", { required: "Location is required" })}
-                  >
-                    <option value="">Select location</option>
-                    <option value="city-center">City Center</option>
-                    <option value="suburbs">Suburbs</option>
-                  </select>
-                  {errors.location && <p className="text-error text-sm mt-1">{errors.location.message}</p>}
-                </div>
-                
-                <div className="border-t border-gray-200 pt-6">
-                  <h3 className="text-lg font-medium mb-4">Contact Information</h3>
-                  
-                  <div className="form-group">
-                    <label htmlFor="name" className="form-label">Full Name</label>
-                    <input 
-                      type="text"
-                      id="name"
-                      className="form-input"
-                      placeholder="Your name"
-                      {...register("name", { required: "Name is required" })}
-                    />
-                    {errors.name && <p className="text-error text-sm mt-1">{errors.name.message}</p>}
-                  </div>
-                  
-                  <div className="form-group">
-                    <label htmlFor="email" className="form-label">Email Address</label>
-                    <input 
-                      type="email"
-                      id="email"
-                      className="form-input"
-                      placeholder="Your email"
-                      {...register("email", { 
-                        required: "Email is required",
-                        pattern: {
-                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                          message: "Invalid email address"
-                        }
-                      })}
-                    />
-                    {errors.email && <p className="text-error text-sm mt-1">{errors.email.message}</p>}
-                  </div>
-                  
-                  <div className="form-group">
-                    <label htmlFor="phone" className="form-label">Phone Number</label>
-                    <input 
-                      type="tel"
-                      id="phone"
-                      className="form-input"
-                      placeholder="Your phone number"
-                      {...register("phone", { required: "Phone number is required" })}
-                    />
-                    {errors.phone && <p className="text-error text-sm mt-1">{errors.phone.message}</p>}
-                  </div>
-                </div>
-                
-                <button 
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="btn btn-primary w-full py-3 text-lg"
-                >
-                  {isSubmitting ? 'Calculating...' : 'Calculate Earnings'}
-                </button>
-              </div>
-            </form>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col"
-          >
-            <div className="bg-primary text-white p-8 rounded-lg mb-8">
-              <h3 className="text-2xl font-bold mb-4">Why Choose Holiwork Homes?</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <span className="h-6 w-6 text-secondary bg-white rounded-full flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">✓</span>
-                  <span>Maximize your rental income with dynamic pricing</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="h-6 w-6 text-secondary bg-white rounded-full flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">✓</span>
-                  <span>24/7 guest communication and support</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="h-6 w-6 text-secondary bg-white rounded-full flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">✓</span>
-                  <span>Professional cleaning and maintenance</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="h-6 w-6 text-secondary bg-white rounded-full flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">✓</span>
-                  <span>Property protection and insurance</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="h-6 w-6 text-secondary bg-white rounded-full flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">✓</span>
-                  <span>Full transparency and regular reports</span>
-                </li>
-              </ul>
+
+
+        <div className="md:flex gap-10 items-start">
+          <form className="flex-1 space-y-6">
+            <div>
+              <label className="font-medium">{t('calculator.city')}</label>
+              <select {...register("city", { required: true, onChange: onFieldChange })} className="form-input w-full">
+                {Object.keys(cities).map((c) => (
+                  <option key={c} value={c}>
+                    {t(`calculator.cities.${c}`)}
+                  </option>
+                ))}
+              </select>
             </div>
-            
-            {estimatedIncome && (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-secondary p-8 rounded-lg text-center"
-              >
-                <h3 className="text-xl font-bold mb-2">Your Estimated Monthly Income</h3>
-                <p className="text-4xl font-bold mb-2">€{estimatedIncome}</p>
-                <p className="text-gray-700">This is an estimate based on similar properties in your area. Contact us for a detailed assessment.</p>
-                <Link to="/list-your-property" className="btn bg-primary text-white hover:bg-primary-dark mt-4 inline-block">
-                  Get Started Now
-                </Link>
-              </motion.div>
-            )}
-          </motion.div>
+
+            <div>
+              <label className="font-medium">{t('calculator.neighborhood')}</label>
+              <select {...register("neighborhood", { required: true, onChange: onFieldChange })} className="form-input w-full">
+                {neighborhoodOptions.map((n) => (
+                  <option key={n} value={n}>
+                    {t(`calculator.neighborhoods.${city}.${n}`)}
+                  </option>
+                ))}
+
+              </select>
+
+            </div>
+            <div>
+              <label className="font-medium">{t('calculator.bedrooms')}</label>
+              <select {...register("bedrooms", { required: true, onChange: onFieldChange })} className="form-input w-full">
+                {["0", "1", "2"].map((val) => (
+                  <option key={val} value={val}>
+                    {bedroomTranslations[val]}
+                  </option>
+                ))}
+              </select>
+
+            </div>
+            <div>
+              <label className="font-medium">{t('calculator.rentalType')}</label>
+              <select {...register("rentalType", { required: true, onChange: onFieldChange })} className="form-input w-full">
+                {["short-term", "long-term"].map((type) => (
+                  <option key={type} value={type}>
+                    {rentalTypeTranslations[type]}
+                  </option>
+                ))}
+              </select>
+
+
+            </div>
+            <div className="pt-2">
+              <button onClick={handleGenerateClick} type="button" className="btn bg-[#815159] text-white px-6 py-2 rounded hover:bg-[#6f464d] transition">
+                {t('calculator.generate')}
+              </button>
+
+            </div>
+          </form>
+
+          {data.length > 0 && (
+            <div id="report-section" className={`flex-1 mt-10 md:mt-0 bg-white rounded p-6 shadow transition ${!hasUnlocked ? 'blur-sm pointer-events-none' : ''}`}>
+              <h3 className="text-xl font-semibold text-center mb-4">Estimated Monthly Breakdown</h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip formatter={(value) => [`${value} лв.`, ""]} />
+                  <Legend />
+                  <Bar dataKey="Gross" stackId="a" fill="#d4af37" />
+                  <Bar dataKey="Expenses" stackId="a" fill="#815159" />
+                  <Bar dataKey="Profit" stackId="a" fill="#76b947" />
+                </BarChart>
+              </ResponsiveContainer>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center mt-6">
+                <div className="bg-[#f3f5f8] p-4 rounded shadow">
+                  <h4 className="font-semibold text-[#815159]">Avg. Occupancy / Profit (BGN)</h4>
+                  <div className="flex justify-center mt-2">
+                    <span className="bg-[#815159] text-white px-4 py-2 rounded-l">{occAvg}%</span>
+                    <span className="bg-[#76b947] text-white px-4 py-2 rounded-r">{netAvg} лв.</span>
+                  </div>
+                </div>
+                <div className="bg-[#f3f5f8] p-4 rounded shadow">
+                  <h4 className="font-semibold text-[#815159]">Avg. Daily Price Range (BGN)</h4>
+                  <div className="flex justify-center mt-2">
+                    <span className="bg-[#815159] text-white px-4 py-2 rounded-l">{minRate}</span>
+                    <span className="bg-[#76b947] text-white px-4 py-2 rounded-r">{maxRate}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
+
+        {showModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm z-50 flex justify-center items-center">
+            <div className="bg-white p-6 rounded shadow-lg w-full max-w-md">
+              <h3 className="text-xl font-semibold text-[#815159] mb-4">Before we show your report...</h3>
+              <p className="text-sm text-gray-600 mb-4">Enter your email to get a copy and unlock the insights.</p>
+              <input
+                type="email"
+                className="form-input w-full mb-4"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <button
+                onClick={submitEmailAndGenerate}
+                className="w-full py-2 bg-[#815159] text-white font-semibold rounded hover:bg-[#6f464d] transition"
+              >
+                View My Report
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
 export default PropertyCalculator;
+

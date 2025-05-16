@@ -1,85 +1,100 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ClipboardList, Home, Users, BarChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const steps = [
-  {
-    id: 1,
-    icon: <ClipboardList className="h-8 w-8 text-primary" />,
-    title: "List Your Property",
-    description: "Fill out our simple form with your property details and we'll get in touch for a custom assessment."
-  },
-  {
-    id: 2,
-    icon: <Home className="h-8 w-8 text-primary" />,
-    title: "Tailored Management Plan",
-    description: "We'll create a personalized management strategy based on your property's unique features and your goals."
-  },
-  {
-    id: 3,
-    icon: <Users className="h-8 w-8 text-primary" />,
-    title: "We Handle Everything",
-    description: "From listing optimization to guest communication, cleaning, and maintenance - we take care of it all."
-  },
-  {
-    id: 4,
-    icon: <BarChart className="h-8 w-8 text-primary" />,
-    title: "Grow Your Income",
-    description: "Enjoy higher occupancy rates, better reviews, and maximized income while we handle the day-to-day operations."
-  }
-];
+import { ClipboardList, Home, Users, BarChart } from 'lucide-react';
+import { GiNotebook } from 'react-icons/gi';
+import { useTranslation } from 'react-i18next';
 
 const HowItWorks: React.FC = () => {
+  const { t } = useTranslation();
+
+  const steps = [
+    { id: 1, icon: <ClipboardList className="h-8 w-8 text-[#815159]" /> },
+    { id: 2, icon: <GiNotebook className="h-8 w-8 text-[#815159]" /> },
+    { id: 3, icon: <Home className="h-8 w-8 text-[#815159]" /> },
+    { id: 4, icon: <Users className="h-8 w-8 text-[#815159]" /> },
+    { id: 5, icon: <BarChart className="h-8 w-8 text-[#815159]" /> },
+    { id: 6, icon: <Home className="h-8 w-8 text-[#815159]" /> }
+  ];
+
   return (
-    <section id="how-it-works" className="section bg-white">
-      <div className="container">
-        <h2 className="section-title">How It Works</h2>
-        <p className="section-subtitle">
-          Our streamlined process makes property management simple and hassle-free
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
+    <section
+      id="how-it-works"
+      className="py-24 relative overflow-hidden"
+      style={{ backgroundColor: '#f3f5f8' }}
+    >
+      <div className="container mx-auto px-4 max-w-7xl">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl font-bold text-center text-[#815159] mb-4"
+        >
+          {t('howItWorks.title')}
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center text-lg text-gray-700 max-w-2xl mx-auto mb-14 font-sans"
+        >
+          {t('howItWorks.subtitle')}
+        </motion.p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {steps.map((step, index) => (
             <motion.div
               key={step.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
+              className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col text-center items-center hover:shadow-md transition"
             >
-              <div className="bg-background p-6 rounded-lg h-full flex flex-col items-center text-center relative z-10">
-                <div className="w-16 h-16 flex items-center justify-center bg-secondary/20 rounded-full mb-4">
-                  {step.icon}
-                </div>
-                <span className="absolute top-4 right-4 text-3xl font-bold text-secondary/30">
-                  {step.id}
-                </span>
-                <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
-                
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-5 transform -translate-y-1/2 z-0">
-                    <svg className="w-10 h-10 text-secondary" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                )}
+              <div className="w-16 h-16 flex items-center justify-center bg-[#815159]/10 rounded-full mb-4">
+                {step.icon}
               </div>
+              <h3 className="text-lg font-semibold text-[#815159] mb-2">
+                {t(`howItWorks.steps.${step.id}.title`)}
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed font-sans">
+                {t(`howItWorks.steps.${step.id}.description`)}
+              </p>
+              <span className="mt-4 text-xs font-semibold text-[#815159]/30">
+                {t('howItWorks.step')} {step.id}
+              </span>
             </motion.div>
           ))}
         </div>
-        
-        <div className="mt-16 text-center">
+
+        <div className="mt-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <Link to="/list-your-property" className="btn btn-primary inline-block">
-              Get Started Today
+            <Link
+              to="/list-your-property"
+              className="inline-flex items-center px-6 py-3 bg-white text-[#815159] text-lg font-semibold rounded-md shadow hover:bg-gray-100 transition-colors duration-300"
+            >
+              {t('howItWorks.cta')}
+              <svg
+                className="ml-2 w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
             </Link>
           </motion.div>
         </div>

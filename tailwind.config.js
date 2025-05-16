@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      
       colors: {
         primary: {
           DEFAULT: '#895159',
@@ -23,7 +24,7 @@ export default {
         error: '#F44336',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
         heading: ['Montserrat', 'sans-serif'],
       },
       animation: {

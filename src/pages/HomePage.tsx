@@ -7,16 +7,19 @@ import HowItWorks from '../components/home/HowItWorks';
 import FeaturedTestimonials from '../components/home/FeaturedTestimonials';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const HomePage: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <Layout>
       <Hero />
-      <PropertyCalculator />
       <AboutUs />
+      <PropertyCalculator />
       <HowItWorks />
       <FeaturedTestimonials />
-      
+
       {/* CTA Section */}
       <section className="section bg-primary text-white">
         <div className="container text-center">
@@ -26,21 +29,24 @@ const HomePage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Maximize Your Property's Potential?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              {t('homepage.cta.title')}
+            </h2>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
-              Join hundreds of satisfied property owners who trust Holiwork Homes to deliver exceptional results.
+              {t('homepage.cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link to="/list-your-property" className="btn bg-secondary text-gray-800 hover:bg-secondary-dark">
-                List Your Property
+                {t('homepage.cta.primary')}
               </Link>
               <Link to="/services" className="btn bg-transparent border-2 border-white text-white hover:bg-white/10">
-                Learn More About Our Services
+                {t('homepage.cta.secondary')}
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
+
     </Layout>
   );
 };

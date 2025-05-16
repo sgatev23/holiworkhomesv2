@@ -1,69 +1,84 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import PageHeader from '../components/layout/PageHeader';
-import { Shield, CheckCircle, Clock } from 'lucide-react';
+import { ShieldCheck, SmilePlus, Coins, Home, ShieldAlert } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const GuaranteesPage = () => {
+  const { t } = useTranslation();
+
   const guarantees = [
     {
-      icon: <Shield className="w-12 h-12 text-blue-600" />,
-      title: "Property Protection Guarantee",
-      description: "We treat your property as if it were our own. Our comprehensive property management includes regular inspections and preventive maintenance to protect your investment."
+      icon: <ShieldCheck className="w-12 h-12 text-primary" />,
+      title: t('guarantees.damage.title'),
+      description: t('guarantees.damage.description'),
     },
     {
-      icon: <CheckCircle className="w-12 h-12 text-green-600" />,
-      title: "Tenant Satisfaction Guarantee",
-      description: "We carefully screen all tenants and provide 24/7 support to ensure high-quality, long-term tenants who will care for your property."
+      icon: <SmilePlus className="w-12 h-12 text-primary" />,
+      title: t('guarantees.happiness.title'),
+      description: t('guarantees.happiness.description'),
     },
     {
-      icon: <Clock className="w-12 h-12 text-purple-600" />,
-      title: "Timely Payment Guarantee",
-      description: "Receive your rental income on time, every time. If we don't process your payment within the agreed timeframe, that month's management fee is free."
-    }
+      icon: <Coins className="w-12 h-12 text-primary" />,
+      title: t('guarantees.income.title'),
+      description: t('guarantees.income.description'),
+    },
+    {
+      icon: <Home className="w-12 h-12 text-primary" />,
+      title: t('guarantees.guest.title'),
+      description: t('guarantees.guest.description'),
+    },
+    {
+      icon: <ShieldAlert className="w-12 h-12 text-primary" />,
+      title: t('guarantees.fees.title'),
+      description: t('guarantees.fees.description'),
+    },
   ];
 
   return (
     <Layout>
-      <PageHeader 
-        title="Our Guarantees" 
-        description="We stand behind our service with industry-leading guarantees"
+      <PageHeader
+        title={t('guarantees.pageTitle')}
+        description={t('guarantees.pageSubtitle')}
+        bgImage="https://images.pexels.com/photos/1123995/pexels-photo-1123995.jpeg?auto=compress&cs=tinysrgb&w=1600"
       />
-      
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {guarantees.map((guarantee, index) => (
-            <div 
-              key={index}
-              className="bg-white rounded-lg shadow-lg p-8 transition-transform hover:scale-105"
-            >
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-4">
-                  {guarantee.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+
+      <section className="bg-[#f3f5f8] py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-[#815159] mb-12">
+            {t('guarantees.sectionTitle')}
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {guarantees.map((guarantee, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl shadow-md p-8 transition-transform hover:scale-[1.02] flex flex-col items-center text-center"
+              >
+                <div className="mb-4">{guarantee.icon}</div>
+                <h3 className="text-xl font-semibold text-[#815159] mb-3">
                   {guarantee.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-700 text-sm leading-relaxed">
                   {guarantee.description}
                 </p>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        <div className="mt-16 bg-blue-50 rounded-xl p-8">
-          <h2 className="text-2xl font-bold text-center text-blue-900 mb-6">
-            Our Commitment to Excellence
-          </h2>
-          <p className="text-blue-800 text-center max-w-3xl mx-auto">
-            These guarantees reflect our commitment to providing exceptional property management services. 
-            We believe in transparency, reliability, and putting our clients' interests first. 
-            If we ever fail to meet these guarantees, we'll make it right.
-          </p>
+          <div className="mt-20 bg-[#fff8e1] rounded-xl p-10 text-center shadow">
+            <h2 className="text-2xl font-bold text-[#815159] mb-4">
+              {t('guarantees.bottomTitle')}
+            </h2>
+            <p className="text-gray-700 max-w-3xl mx-auto">
+              {t('guarantees.bottomDescription')}
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
     </Layout>
   );
 };
+
 
 export default GuaranteesPage;

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Home, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import LanguageToggle from './LanguageToggle';
+import LogoWhite from '../../assets/Logo/nomadica_logo_white.svg';
+import LogoMaroon from '../../assets/Logo/nomadica_logo_maroon.svg';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +18,6 @@ const Header: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -28,18 +29,16 @@ const Header: React.FC = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-    isScrolled || isOpen ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
-  }`;
-
-  const logoTextColor = isScrolled || isOpen ? 'text-primary' : 'text-white';
+  const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isOpen ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`;
 
   const navLinks = [
-    { name: t('navigation.services'), path: '/services', hasDropdown: true },
-    { name: t('navigation.successStories'), path: '/success-stories' },
+    { name: t('navigation.home'), path: '/' },
+    // { name: t('navigation.about'), path: '/#about-us' }, // ❌ Hide this
+    { name: t('navigation.services'), path: '/services' },
     { name: t('navigation.guarantees'), path: '/guarantees' },
     { name: t('navigation.blog'), path: '/blog' },
   ];
+  
 
   const servicesDropdown = [
     { name: t('navigation.servicesDropdown.cohosting'), path: '/services#cohosting' },
@@ -51,12 +50,14 @@ const Header: React.FC = () => {
   return (
     <header className={headerClasses}>
       <div className="container flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <div className="w-10 h-10 flex items-center justify-center bg-primary rounded-md">
-            <Home className="w-5 h-5 text-secondary" />
-          </div>
-          <span className={`text-xl font-heading font-bold ${logoTextColor}`}>
-            Holiwork Homes
+        <Link to="/" className="flex items-center space-x-3">
+          <img
+            src={isScrolled || isOpen ? LogoMaroon : LogoWhite}
+            alt="Nomadica logo"
+            className="h-15 w-auto sm:h-15"
+          />
+          <span className={`text-xl sm:text-2xl font-bold font-[Montserrat] tracking-tight ${isScrolled || isOpen ? 'text-[#815159]' : 'text-white'}`}>
+            Nomadica
           </span>
         </Link>
 
@@ -71,9 +72,7 @@ const Header: React.FC = () => {
               >
                 <Link
                   to={link.path}
-                  className={`font-medium hover:text-primary transition-colors ${
-                    isScrolled ? 'text-gray-800' : 'text-white'
-                  } ${location.pathname === link.path ? 'text-primary' : ''}`}
+                  className={`font-medium hover:text-[#815159] transition-colors ${isScrolled ? 'text-gray-800' : 'text-white'} ${location.pathname === link.path ? 'text-[#815159]' : ''}`}
                 >
                   {link.name}
                 </Link>
@@ -103,21 +102,28 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-4">
             <Link
               to="/list-your-property"
-              className="btn btn-primary text-sm px-4 py-2"
+              className="bg-[#815159] text-white px-4 py-2 rounded-md text-sm hover:bg-[#6b4048] transition"
             >
               {t('navigation.listProperty')}
             </Link>
-            <Link
-              to="/owner-portal"
-              className="btn btn-outline text-sm px-4 py-2 border border-primary"
+            <a
+              href="https://app.hostify.com/user/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`px-4 py-2 rounded-md text-sm transition border ${isScrolled || isOpen
+                  ? 'text-[#815159] border-[#815159] hover:bg-[#815159]/10'
+                  : 'text-white border-white hover:bg-white/10'
+                }`}
             >
               {t('navigation.ownerPortal')}
-            </Link>
+            </a>
+
+
             <LanguageToggle />
           </div>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle */}
         <button
           onClick={toggleMenu}
           className="md:hidden text-2xl p-2 focus:outline-none"
@@ -144,9 +150,7 @@ const Header: React.FC = () => {
                 <div key={link.path}>
                   <Link
                     to={link.path}
-                    className={`font-medium p-2 hover:bg-gray-100 rounded-md block ${
-                      location.pathname === link.path ? 'text-primary' : 'text-gray-800'
-                    }`}
+                    className={`font-medium p-2 hover:bg-gray-100 rounded-md block ${location.pathname === link.path ? 'text-[#815159]' : 'text-gray-800'}`}
                   >
                     {link.name}
                   </Link>
@@ -168,13 +172,13 @@ const Header: React.FC = () => {
               <div className="pt-4 space-y-3">
                 <Link
                   to="/list-your-property"
-                  className="btn btn-primary w-full text-center"
+                  className="bg-[#815159] text-white px-4 py-2 rounded-md text-center"
                 >
                   {t('navigation.listProperty')}
                 </Link>
                 <Link
                   to="/owner-portal"
-                  className="btn btn-outline w-full text-center"
+                  className="border border-[#815159] text-[#815159] px-4 py-2 rounded-md text-center"
                 >
                   {t('navigation.ownerPortal')}
                 </Link>

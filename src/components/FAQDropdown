@@ -1,0 +1,62 @@
+// src/components/FAQDropdown.tsx
+import React, { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+
+const faqData = [
+  {
+    question: 'What areas do you service?',
+    answer: 'We offer co-hosting across Bulgaria and full management in Sofia, Plovdiv, and Varna.'
+  },
+  {
+    question: 'How much can I expect to earn?',
+    answer: 'Use our calculator or request a custom plan. Revenue depends on location, setup, and season.'
+  },
+  {
+    question: 'Do I need to furnish or prepare my property?',
+    answer: 'Yes, but we’ll help with furnishing, listing standards, and guest-readiness if needed.'
+  },
+  {
+    question: 'How are payments handled?',
+    answer: 'You’ll receive monthly reports and payouts, with complete transparency via your owner dashboard.'
+  },
+  {
+    question: 'Can I use my property sometimes?',
+    answer: 'Of course! You control availability—we’ll sync your calendar and block dates on your behalf.'
+  }
+];
+
+const FAQDropdown: React.FC = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <div className="bg-[#f3f5f8] p-6 rounded-lg shadow-md space-y-4">
+      {faqData.map((item, index) => (
+        <div
+          key={index}
+          className={`transition-all duration-300 bg-yellow-50 rounded-md border border-yellow-200 p-4`}
+        >
+          <button
+            onClick={() => toggle(index)}
+            className="w-full flex justify-between items-center text-left font-medium text-[#815159]"
+          >
+            {item.question}
+            <ChevronDown
+              className={`ml-2 h-5 w-5 transition-transform ${
+                openIndex === index ? 'rotate-180' : ''
+              }`}
+            />
+          </button>
+          {openIndex === index && (
+            <p className="mt-3 text-sm text-gray-700 transition-opacity">{item.answer}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default FAQDropdown;

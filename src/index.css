@@ -1,19 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    @apply bg-background font-sans text-gray-800;
+  html, {
+    font-family: 'Montserrat', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-semibold;
+  body {
+    @apply font-sans;
   }
+
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600; /* Or 700 depending on what you prefer */
+  }
+
 
   h1 {
     @apply text-4xl md:text-5xl leading-tight;
