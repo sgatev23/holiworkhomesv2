@@ -38,7 +38,7 @@ const Header: React.FC = () => {
     { name: t('navigation.guarantees'), path: '/guarantees' },
     { name: t('navigation.blog'), path: '/blog' },
   ];
-  
+
 
   const servicesDropdown = [
     { name: t('navigation.servicesDropdown.cohosting'), path: '/services#cohosting' },
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
 
   return (
     <header className={headerClasses}>
-      <div className="container flex items-center justify-between">
+      <div className="container flex flex-wrap items-center justify-between">
         <Link to="/" className="flex items-center space-x-3">
           <img
             src={isScrolled || isOpen ? LogoMaroon : LogoWhite}
@@ -111,8 +111,8 @@ const Header: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={`px-4 py-2 rounded-md text-sm transition border ${isScrolled || isOpen
-                  ? 'text-[#815159] border-[#815159] hover:bg-[#815159]/10'
-                  : 'text-white border-white hover:bg-white/10'
+                ? 'text-[#815159] border-[#815159] hover:bg-[#815159]/10'
+                : 'text-white border-white hover:bg-white/10'
                 }`}
             >
               {t('navigation.ownerPortal')}
@@ -144,7 +144,7 @@ const Header: React.FC = () => {
           exit={{ opacity: 0, height: 0 }}
           className="md:hidden bg-white"
         >
-          <div className="container py-4">
+          <div className="container py-4 space-y-6">
             <nav className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <div key={link.path}>
@@ -176,13 +176,16 @@ const Header: React.FC = () => {
                 >
                   {t('navigation.listProperty')}
                 </Link>
-                <Link
-                  to="/owner-portal"
-                  className="border border-[#815159] text-[#815159] px-4 py-2 rounded-md text-center"
+                <a
+                  href="https://app.hostify.com/user/login"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-[#815159] text-[#815159] px-4 py-2 rounded-md text-center block"
                 >
                   {t('navigation.ownerPortal')}
-                </Link>
-                <div className="flex justify-center pt-2">
+                </a>
+
+                <div className="flex justify-center pt-4">
                   <LanguageToggle />
                 </div>
               </div>

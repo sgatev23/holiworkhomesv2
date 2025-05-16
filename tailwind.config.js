@@ -2,8 +2,13 @@
 export default {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    screens: {
+      sm: '640px',
+      md: '1050px', // 👈 changed from 768px to 1050px
+      lg: '1280px',
+      xl: '1536px',
+    },
     extend: {
-      
       colors: {
         primary: {
           DEFAULT: '#895159',
