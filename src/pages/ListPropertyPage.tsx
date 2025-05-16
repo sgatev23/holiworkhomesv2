@@ -4,14 +4,39 @@ import PageHeader from '../components/layout/PageHeader';
 import { useForm } from 'react-hook-form';
 import { Camera, Home, MapPin, Mail, Phone, User } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import supabase from '../supabaseclient';
+
 
 const ListPropertyPage: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { t } = useTranslation();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = async (data: any) => {
+    const { name, email, phone, propertyType, location, bedrooms, bathrooms, message } = data;
+
+    const { error } = await supabase
+      .from('property_leads') // Make sure this table name matches Supabase
+      .insert([
+        {
+          name,
+          email,
+          phone,
+          property_type: propertyType,
+          location,
+          bedrooms,
+          bathrooms,
+          message,
+        },
+      ]);
+
+    if (error) {
+      console.error('❌ Error saving property lead:', error);
+      alert('Something went wrong. Please try again.');
+    } else {
+      alert('✅ Your property was submitted successfully!');
+    }
   };
+
 
   return (
     <Layout>
