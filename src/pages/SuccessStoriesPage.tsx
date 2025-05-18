@@ -4,61 +4,43 @@ import { Link } from 'react-router-dom';
 import { Star, ArrowRight, TrendingUp, Calendar, Users } from 'lucide-react';
 import Layout from '../components/layout/Layout';
 import PageHeader from '../components/layout/PageHeader';
+import veronikaImg from '../assets/testimonials/bizhubimg.jpg';
+import djemImg from '../assets/testimonials/karlovska_img_test.jpg';
+import georgiImg from '../assets/testimonials/pumpkinimg.jpg';
+import { useTranslation } from 'react-i18next';
 
 const SuccessStoriesPage: React.FC = () => {
-  const successStories = [
-    {
-      name: 'Studios in Sozopol',
-      location: 'Sozopol, Bulgaria',
-      strategy:
-        'After a full interior setup, we implemented dynamic pricing, professional photos, and calendar sync across Airbnb and Booking. Cleaning and guest management were automated.',
-      result:
-        'Revenue increased by 40% within the first 3 months. Occupancy rose from 50% to 87%. Guest satisfaction skyrocketed.',
-      quote:
-        "I didn’t know my property could perform this well. Nomadica turned it into a consistent income machine.",
-      metrics: {
-        revenue: '+40% Revenue',
-        occupancy: '87% Occupancy',
-        rating: '4.9 Star Avg.',
-      },
-    },
-    {
-      name: 'Knyaz Boris II 209 Apartments',
-      location: 'Sofia, Bulgaria',
-      strategy:
-        'We transitioned the owner from long-term rental to short-term model. Furnishing upgrades, professional listings, and 24/7 guest support helped reposition the property.',
-      result:
-        'Monthly income more than doubled. We maintained an 85% occupancy year-round even during low season.',
-      quote:
-        "They made the switch so easy—I earn more and do nothing!",
-      metrics: {
-        revenue: '2x Monthly Income',
-        occupancy: '85% Occupancy',
-        rating: '5.0 Star Avg.',
-      },
-    },
-    {
-      name: '1BR Apartment in Plovdiv',
-      location: 'Plovdiv, Bulgaria',
-      strategy:
-        'This was an inherited property. We handled furnishing, setup, licensing, listing, and full management. Owners live abroad.',
-      result:
-        'Net profit paid off setup costs within 4 months. It now delivers passive income without lifting a finger.',
-      quote:
-        "We live in the UK. Nomadica gave us a fully hands-off investment.",
-      metrics: {
-        revenue: 'Payback in 4 Months',
-        occupancy: '90% Occupancy',
-        rating: '4.8 Star Avg.',
-      },
-    },
+  const { t } = useTranslation();
+
+  const storyKeys = [
+    { key: '1', image: veronikaImg },
+    { key: '2', image: djemImg },
+    { key: '3', image: georgiImg }
   ];
+
+  const successStories = storyKeys.map(({ key, image }) => ({
+    name: t(`successStories.items.${key}.name`),
+    location: t(`successStories.items.${key}.location`),
+    strategy: t(`successStories.items.${key}.strategy`),
+    result: t(`successStories.items.${key}.result`),
+    quote: t(`successStories.items.${key}.quote`),
+    metrics: {
+      revenue: t(`successStories.items.${key}.metrics.revenue`),
+      occupancy: t(`successStories.items.${key}.metrics.occupancy`),
+      rating: t(`successStories.items.${key}.metrics.rating`)
+    },
+    links: {
+      airbnb: t(`successStories.items.${key}.links.airbnb`),
+      booking: t(`successStories.items.${key}.links.booking`)
+    },
+    image
+  }));
 
   return (
     <Layout>
       <PageHeader
-        title="Owner Success Stories"
-        subtitle="See how Nomaica helped property owners increase revenue, occupancy, and peace of mind."
+        title={t('successStories.title')}
+        subtitle={t('successStories.subtitle')}
         bgImage="https://images.pexels.com/photos/5825573/pexels-photo-5825573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
       />
 
@@ -106,33 +88,34 @@ const SuccessStoriesPage: React.FC = () => {
 
                     <div className="flex justify-center gap-4 mt-6">
                       <a
-                        href="#"
+                        href={story.links.airbnb}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm hover:shadow-md transition text-sm font-medium"
                       >
-                        View on Airbnb
+                        {t('successStories.viewAirbnb')}
                       </a>
                       <a
-                        href="#"
+                        href={story.links.booking}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm hover:shadow-md transition text-sm font-medium"
                       >
-                        View on Booking.com
+                        {t('successStories.viewBooking')}
                       </a>
+
                     </div>
                   </div>
                 </div>
 
                 <div className="h-full rounded-xl overflow-hidden shadow">
                   <img
-                    src={`https://images.pexels.com/photos/${7000000 + index}/pexels-photo-${7000000 + index}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`}
+                    src={story.image}
                     alt={story.name}
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+                      target.src = 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg';
                     }}
                   />
                 </div>
@@ -151,17 +134,16 @@ const SuccessStoriesPage: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to write your own story?
+              {t('successStories.ctaTitle')}
             </h2>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
-              Let Nomadica turn your property into a high-performing asset with no stress and full transparency.
+              {t('successStories.ctaSubtitle')}
             </p>
             <Link
               to="/list-your-property"
               className="btn bg-secondary text-gray-800 hover:bg-secondary-dark inline-flex items-center"
             >
-              List Your Property
-              <ArrowRight className="ml-2 h-5 w-5" />
+              {t('successStories.ctaButton')} <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </motion.div>
         </div>

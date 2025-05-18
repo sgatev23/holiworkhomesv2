@@ -460,39 +460,116 @@ moreQuestions: "Still have questions? Get in touch with us!"
     }
   },
   
-  
-featuredTestimonials: {
-  title: "Success Stories",
-  subtitle: "See how Bulgarian property owners are achieving exceptional results with Nomadica.",
-  cta: "View All Stories",
-  testimonials: {
-    1: {
-      name: "Djem Rahmi",
-      property: "Two 3-Bedroom Apartments in Plovdiv",
-      quote: "Since partnering with Nomadica, my rental income has increased by 40%. Their professional management and communication are impeccable."
-    },
-    2: {
-      name: "Stefan Petrov",
-      property: "Villa in Varna",
-      quote: "The team at Nomadica has transformed my property into a top-performing rental. I'm amazed at their attention to detail and guest satisfaction."
-    },
-    3: {
-      name: "Elena Dimitrova",
-      property: "Studio in Plovdiv",
-      quote: "As someone who lives abroad, I needed reliable property management. Nomadica delivers peace of mind and excellent returns."
-    },
-    4: {
-      name: "Mira Koleva",
-      property: "1-Bedroom in Bansko",
-      quote: "The income I now make during the ski season has completely paid off my mortgage. Thank you Nomadica!"
-    },
-    5: {
-      name: "Ivan Georgiev",
-      property: "2-Bedroom in Sofia",
-      quote: "Extremely professional service. I love the monthly reports and guest screening!"
+  successStories: {
+    title: "Owner Success Stories",
+    subtitle: "See how Nomadica helped property owners increase revenue, occupancy, and peace of mind.",
+    viewAirbnb: "View on Airbnb",
+    viewBooking: "View on Booking.com",
+    ctaTitle: "Ready to write your own story?",
+    ctaSubtitle: "Let Nomadica turn your property into a high-performing asset with no stress and full transparency.",
+    ctaButton: "List Your Property",
+    items: {
+      "1": {
+        name: "Veronika Ivanova – 1BR Setup",
+        location: "Plovdiv, Bulgaria",
+        strategy: "Nomadica transformed a vacant property into a cozy rental — managing furnishing, decor, licensing, and all guest operations from day one.",
+        result: "The initial setup paid off in 4 months. The property now brings steady passive income.",
+        quote: "They transformed my empty apartment into a beautiful rental. Nomadica handled the setup, decor, and now they manage everything. Highly recommend!",
+        metrics: {
+          revenue: "Payback in 4 Months",
+          occupancy: "92% Occupancy",
+          rating: "4.9 Star Avg."
+        },
+        links: {
+          airbnb: "https://www.airbnb.com/rooms/1040582691831136397?source_impression_id=p3_1747569020_P3-ZQ4nSWN92Dnw2",
+          booking: "https://www.booking.com/hotel/bg/the-bizhub-by-holiwork-stays.en-gb.html?label=gen173nr-1BCAsoF0IcdGhlLWJpemh1Yi1ieS1ob2xpd29yay1zdGF5c0gzWARoF4gBAZgBCbgBGMgBDNgBAegBAYgCAagCBLgCj5OnwQbAAgHSAiRmNWViYzVmMS04NzQzLTRkZmUtYmZjOC1jYzk3NjJjMzE5YzjYAgXgAgE&sid=3f83d731734e278f16c07a1224a65bc0&dist=0&group_adults=2&group_children=0&keep_landing=1&no_rooms=1&sb_price_type=total&type=total&"
+        }
+      },
+      "2": {
+        name: "Djem Rahmi",
+  location: "Plovdiv, Bulgaria",
+  strategy: "As a first-time owner, Djem relied on Nomadica to set up everything — from registration and listings to pricing, guest messaging, and monthly reports.",
+  result: "His income increased by 40% in just a few months, with strong occupancy and no day-to-day involvement.",
+  quote: "Nomadica helped me set up everything: listings, accounting, registration, all that. Thank you so much! I fully recommend them to new owners.",
+  links: {
+    airbnb: "https://www.airbnb.com/rooms/1351407204979788070?source_impression_id=p3_1747568705_P39hs0Nn7qcom0hs",
+    booking: "https://www.booking.com/hotel/bg/two-bedroom-luxurious-apartments-with-free-parking-and-5min-to-center.en-gb.html?label=gen173nr-1BCAsoF0JFdHdvLWJlZHJvb20tbHV4dXJpb3VzLWFwYXJ0bWVudHMtd2l0aC1mcmVlLXBhcmtpbmctYW5kLTVtaW4tdG8tY2VudGVySDNYBGgXiAEBmAEJuAEYyAEM2AEB6AEBiAIBqAIEuALdkafBBsACAdICJGFiZWJkMTAxLTkyNDQtNDAzNC05NmU3LWRjZGU2MjcwYjEyOdgCBeACAQ&sid=3f83d731734e278f16c07a1224a65bc0&dist=0&keep_landing=1&sb_price_type=total&type=total&"
+  },
+  metrics: {
+    revenue: "+40% Revenue",
+    occupancy: "89% Occupancy",
+    rating: "4.9 Star Avg."
+        }
+      },
+      "3": {
+          name: "Georgi Denev – 3 Apartments",
+        location: "Sofia, Bulgaria",
+        strategy: "We onboarded all three listings with Nomadica's digital platform, set up multi-channel calendars, optimized pricing, and consulted on occupancy improvements.",
+        result: "Multi-property occupancy rose by 30% and revenue became stable across seasons.",
+        quote: "Nomadica helped me increase occupancy across all three apartments. Their digital management and advice are spot on.",
+        metrics: {
+          revenue: "+30% Revenue",
+          occupancy: "85% Occupancy",
+          rating: "4.8 Star Avg."
+        },
+        links: {
+          airbnb: "https://www.airbnb.com/rooms/1236861676656839376?source_impression_id=p3_1747568935_P3hDmZaXJ_FxTg8q",
+          booking: "https://www.booking.com/hotel/bg/pumpkin-spiced-one-bedroom-loft.en-gb.html?aid=356980&label=gog235jc-1FCAsoF0IfcHVtcGtpbi1zcGljZWQtb25lLWJlZHJvb20tbG9mdEgzWANoF4gBAZgBCbgBGMgBDNgBAegBAfgBDIgCAagCBLgCrpKnwQbAAgHSAiRmZGU4Nzg1Ni04MTMzLTRjNTYtODQ0NC00NjYzZDgzMGQwNWTYAgbgAgE&sid=3f83d731734e278f16c07a1224a65bc0&dest_id=-838489&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1747568988&srpvid=a87e5317438d062f&type=total&ucfs=1&"
+        }
+      },
+      "4": {
+        name: "Veronika Ivanova – 1BR Setup",
+        location: "Plovdiv, Bulgaria",
+        strategy: "Nomadica transformed a vacant property into a cozy rental — managing furnishing, decor, licensing, and all guest operations from day one.",
+        result: "The initial setup paid off in 4 months. The property now brings steady passive income.",
+        quote: "They transformed my empty apartment into a beautiful rental. Nomadica handled the setup, decor, and now they manage everything. Highly recommend!",
+        metrics: {
+          revenue: "Payback in 4 Months",
+          occupancy: "92% Occupancy",
+          rating: "4.9 Star Avg."
+        },
+        links: {
+          airbnb: "https://www.airbnb.com/rooms/1040582691831136397?source_impression_id=p3_1747569020_P3-ZQ4nSWN92Dnw2",
+          booking: "https://www.booking.com/hotel/bg/the-bizhub-by-holiwork-stays.en-gb.html?label=gen173nr-1BCAsoF0IcdGhlLWJpemh1Yi1ieS1ob2xpd29yay1zdGF5c0gzWARoF4gBAZgBCbgBGMgBDNgBAegBAYgCAagCBLgCj5OnwQbAAgHSAiRmNWViYzVmMS04NzQzLTRkZmUtYmZjOC1jYzk3NjJjMzE5YzjYAgXgAgE&sid=3f83d731734e278f16c07a1224a65bc0&dist=0&group_adults=2&group_children=0&keep_landing=1&no_rooms=1&sb_price_type=total&type=total&"
+        }
+      }
     }
-  }
-},
+  },
+  
+ 
+  featuredTestimonials: {
+    title: "Success Stories",
+    subtitle: "See how Bulgarian property owners are achieving exceptional results with Nomadica.",
+    cta: "View All Stories",
+    testimonials: {
+      1: {
+        name: "Djem Rahmi",
+        property: "Two 3-Bedroom Apartments in Plovdiv",
+        quote: "Since partnering with Nomadica, my rental income has increased by 40%. Their professional management and communication are impeccable."
+      },
+      2: {
+        name: " Nikolai Karagiozov",
+        property: "Apartment in Plovdiv",
+        quote: "I live in the UK, so I needed hands-off management. Nomadica handles it all — guests, reporting, mid-term stays — and I always know what’s going on."
+      },
+      3: {
+        name: "Georgi Denev",
+        property: "Three 1BR apartments in Sofia",
+        quote: "Nomadica helped me increase occupancy across all three apartments. Their digital management and multi-channel setup brought in more guests, and their advice has been spot on."
+      },
+      4: {
+        name: "Eleonora Dacheva",
+        property: "Studios in Sozopol",
+        quote: "I rely on Nomadica for everything — cleanings, listings on Airbnb and Booking, even handling tough guests. It’s a full-service team I trust completely."
+      },
+      5: {
+        name: "Veronika Ivanova",
+        property: "1-Bedroom in Plovdiv",
+        quote: "They transformed my empty apartment into a beautiful rental. Nomadica handled the setup, decor, and now they manage everything. Highly recommend!"
+      }
+    }
+  },
+
 listProperty: {
   title: "List Your Property",
   subtitle: "Partner with us to maximize your property's potential",

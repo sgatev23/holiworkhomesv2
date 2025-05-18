@@ -1,66 +1,65 @@
-import React from 'react';
-import Layout from '../components/layout/Layout';
-import PageHeader from '../components/layout/PageHeader';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, User, ArrowRight } from 'lucide-react';
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "Maximizing Your Property's Rental Income in 2025",
-    excerpt: "Learn the latest strategies and market trends to optimize your property's earning potential in the current market.",
-    image: "https://images.pexels.com/photos/7031406/pexels-photo-7031406.jpeg",
-    author: "Maria Petrova",
-    date: "March 15, 2025",
-    category: "Property Management"
-  },
-  {
-    id: 2,
-    title: "Essential Amenities That Attract Premium Guests",
-    excerpt: "Discover which amenities and features can help your property stand out and command higher rates in today's competitive market.",
-    image: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg",
-    author: "Stefan Ivanov",
-    date: "March 10, 2025",
-    category: "Interior Design"
-  },
-  {
-    id: 3,
-    title: "The Impact of Smart Home Technology on Rental Properties",
-    excerpt: "Explore how smart home features can enhance guest experience and streamline property management operations.",
-    image: "https://images.pexels.com/photos/3183132/pexels-photo-3183132.jpeg",
-    author: "Elena Dimitrova",
-    date: "March 5, 2025",
-    category: "Technology"
-  }
-];
+import { useTranslation } from 'react-i18next';
+import supabase from '../supabaseclient';
+import Layout from '../components/layout/Layout';
+import PageHeader from '../components/layout/PageHeader';
 
 const BlogPage: React.FC = () => {
+  const { i18n, t } = useTranslation();
+  const [posts, setPosts] = useState<any[]>([]);
+  const lang = i18n.language;
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('status', 'published')
+        .order('date', { ascending: false });
+
+      if (!error) setPosts(data);
+      else console.error(error);
+    };
+
+    fetchPosts();
+  }, []);
+
   return (
     <Layout>
       <PageHeader
-        title="Property Management Insights"
-        subtitle="Expert advice and industry updates to help you succeed in property management"
+        title={
+          lang === 'bg'
+            ? 'Блог за управление на имоти'
+            : 'Property Management Insights'
+        }
+        subtitle={
+          lang === 'bg'
+            ? 'Съвети и новини от индустрията, които ви помагат в управлението на Вашия имот.'
+            : 'Expert advice and industry updates to help you succeed in property management'
+        }
         bgImage="https://images.pexels.com/photos/5816297/pexels-photo-5816297.jpeg"
       />
 
       <section className="py-12 md:py-20 bg-background">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
+            {posts.map((post) => (
               <article
                 key={post.id}
                 className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
               >
                 <img
-                  src={post.image}
-                  alt={post.title}
+                  src={post.cover_image}
+                  alt={lang === 'bg' ? post.title_bg : post.title}
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
-                      {post.date}
+                      {new Date(post.date).toLocaleDateString()}
                     </span>
                     <span className="flex items-center gap-1">
                       <User className="w-4 h-4" />
@@ -68,18 +67,23 @@ const BlogPage: React.FC = () => {
                     </span>
                   </div>
                   <h3 className="text-xl font-bold mb-2 hover:text-primary transition-colors">
-                    <Link to="#">{post.title}</Link>
+                    <Link to={`/blog/${post.slug}`}>
+                      {lang === 'bg' ? post.title_bg : post.title}
+                    </Link>
                   </h3>
-                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                  <p className="text-gray-600 mb-4">
+                    {lang === 'bg' ? post.excerpt_bg : post.excerpt}
+                  </p>
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-primary-dark px-3 py-1 bg-primary-light/10 rounded-full">
                       {post.category}
                     </span>
                     <Link
-                      to="#"
+                      to={`/blog/${post.slug}`}
                       className="text-primary font-medium flex items-center gap-1 hover:text-primary-dark transition-colors"
                     >
-                      Read More <ArrowRight className="w-4 h-4" />
+                      {lang === 'bg' ? 'Прочети още' : 'Read More'}{' '}
+                      <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </div>
@@ -89,7 +93,7 @@ const BlogPage: React.FC = () => {
 
           <div className="mt-12 text-center">
             <button className="btn btn-primary">
-              Load More Articles
+              {lang === 'bg' ? 'Зареди още статии' : 'Load More Articles'}
             </button>
           </div>
         </div>
