@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import html2canvas from "html2canvas";
 import { useTranslation } from 'react-i18next';
 import supabase from "../../supabaseclient";
+import { plovdivZones, getPlovdivRate } from '../../zones';
 
 import {
   BarChart,
@@ -31,43 +32,6 @@ const cities = {
   "St. Vlas": ["Dinevi Resort", "Marina Dinevi", "Rusalka", "Intsaraki", "Yurta"]
 };
 
-const sofiaTranslations = {
-  "Oborishte": "Оборище", "Sredets": "Средец", "Triaditsa": "Триадица", "Vazrazhdane": "Възраждане",
-  "Lower Lozenets": "Долен Лозенец", "Zona B-5": "Зона Б-5", "Yavorov": "Яворов",
-  "Upper Lozenets": "Горен Лозенец", "Krasno Selo": "Красно село", "Slatina": "Слатина", "Poduyane": "Подуяне",
-  "Geo Milev": "Гео Милев", "Reduta": "Редута", "Hladilnika": "Хладилника", "Iztok": "Изток", "Ivan Vazov": "Иван Вазов",
-  "Mladost": "Младост", "Studentski Grad": "Студентски град", "Dianabad": "Дианабад", "Druzhba": "Дружба",
-  "Ovcha Kupel": "Овча купел", "Lyulin": "Люлин", "Nadezhda": "Надежда", "Boyana": "Бояна",
-  "Dragalevtsi": "Драгалевци", "Simeonovo": "Симеоново", "Gorni Lozen": "Горни Лозен", "Bankya": "Банкя"
-};
-
-const plovdivZones = {
-  "City Centre": "center", "Old Town": "center", "Kapana": "center",
-  "Marasha": "wider", "Mladezhki Halm": "wider", "Sadiyski": "wider", "Karshiyaka": "wider",
-  "Kamenitsa 1": "wider", "Kamenitsa 2": "wider",
-  "Zapaden": "suburbs", "Zaharna fabrika": "suburbs", "Gagarin": "suburbs", "Filipovo": "suburbs",
-  "Hristo Smirnenski": "suburbs", "Kyuchuk Parizh": "suburbs", "Trakiya": "suburbs", "Vastanicheski": "suburbs",
-  "Komatevski vazel": "suburbs", "Yuzhen": "suburbs", "Ostromila": "suburbs", "Belomorski": "suburbs",
-  "Proslav": "suburbs", "Peshtersko shose": "suburbs"
-};
-
-const sofiaZones = {
-  "Oborishte": "center", "Sredets": "center", "Triaditsa": "center", "Vazrazhdane": "center",
-  "Lower Lozenets": "center", "Zona B-5": "center", "Yavorov": "center",
-  "Upper Lozenets": "wider", "Krasno Selo": "wider", "Slatina": "wider", "Poduyane": "wider",
-  "Geo Milev": "wider", "Reduta": "wider", "Hladilnika": "wider", "Iztok": "wider", "Ivan Vazov": "wider",
-  "Mladost": "suburbs", "Studentski Grad": "suburbs", "Dianabad": "suburbs", "Druzhba": "suburbs",
-  "Ovcha Kupel": "suburbs", "Lyulin": "suburbs", "Nadezhda": "suburbs", "Boyana": "suburbs",
-  "Dragalevtsi": "suburbs", "Simeonovo": "suburbs", "Gorni Lozen": "suburbs", "Bankya": "suburbs"
-};
-const citiesTranslations = {
-  "Sofia": "София", "Plovdiv": "Пловдив", "Varna": "Варна", "Burgas": "Бургас", "Gabrovo": "Габрово",
-  "Ruse": "Русе", "Bansko": "Банско", "Sozopol": "Созопол", "St. Vlas": "Св. Влас"
-};
-const plovdivTranslations = {
-  "City Centre": "Център", "Old Town": "Старият град", "Kapana": "Капана", "Karshiyaka": "Кършияка", "Marasha": "Мараша", "Mladezhki Halm": "Младежки хълм", "Sadiyski": "Съдийски", "Kamenitsa 1": "Каменица 1", "Kamenitsa 2": "Каменица 2", "Zaharna fabrika": "Захарна фабрика", "Gagarin": "Гагарин", "Filipovo": "Филипово", "Zapaden": "Западен", "Hristo Smirnenski": "Христо Смирненски", "Kyuchuk Parizh": "Кючук Париж", "Trakiya": "Тракия", "Vastanicheski": "Въстанически", "Komatevski vazel": "Коматевски възел", "Yuzhen": "Южен", "Ostromila": "Остромила", "Belomorski": "Беломорски", "Proslav": "Прослав", "Peshtersko shose": "Пещерско шосе"
-}
-
 const bedroomTranslations = {
   "0": "Студио",
   "1": "1 спалня",
@@ -80,6 +44,49 @@ const rentalTypeTranslations = {
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const baseOccupancy = [0.45, 0.5, 0.5, 0.65, 0.65, 0.69, 0.69, 0.65, 0.65, 0.5, 0.45, 0.45];
+const seasonMap = {
+  low: ["Jan", "Feb", "Dec"],
+  medium: ["Mar", "Apr", "Sep", "Oct", "Nov"],
+  high: ["May", "Jun", "Jul", "Aug"]
+};
+
+const occupancyByZone = {
+  center: 0.85,
+  wider: 0.75,
+  suburbs: 0.5
+};
+
+const seasonMultiplier = {
+  low: 0.6,
+  medium: 0.85,
+  high: 1.1
+};
+
+const plovdivLongTermBase = [800, 1050, 1500]; // Studio, 1BR, 2BR
+const plovdivLongTermZoneMultiplier = {
+  center: 1,
+  wider: 0.8,
+  suburbs: 0.65
+};
+
+const CustomTooltip = ({ active, payload, label }) => {
+  if (!active || !payload || payload.length === 0) return null;
+
+  const gross = payload[0].payload.Gross;
+  const expenses = payload.find(p => p.name === "Expenses")?.value || 0;
+  const profit = payload.find(p => p.name === "Profit")?.value || 0;
+
+  return (
+    <div className="bg-white p-3 rounded shadow border border-gray-300 text-sm">
+      <p className="font-semibold mb-1">Месец: {label}</p>
+      <p><strong>Общо:</strong> {gross} лв.</p>
+      <p style={{ color: "#815159" }}>Разходи: {expenses} лв.</p>
+      <p style={{ color: "#76b947" }}>Печалба: {profit} лв.</p>
+    </div>
+  );
+};
+
+
 const PropertyCalculator = () => {
   const { t } = useTranslation(); // ✅ Add this line to fix the hook error
 
@@ -92,7 +99,7 @@ const PropertyCalculator = () => {
     }
   });
 
-
+  const [isMobile, setIsMobile] = useState(false);
   const [data, setData] = useState([]);
   const [netAvg, setNetAvg] = useState(null);
   const [occAvg, setOccAvg] = useState(null);
@@ -121,23 +128,52 @@ const PropertyCalculator = () => {
     const isLongTerm = rentalType === "long-term";
     const zone = city === "Plovdiv" ? plovdivZones[neighborhood] : null;
 
-    const rate = ["Plovdiv", "Sofia"].includes(city) ? [45, 60, 75][bedrooms] : [36, 48, 60][bedrooms];
+    const rateShortTerm = city === "Plovdiv"
+      ? getPlovdivRate(neighborhood, bedrooms) * 0.75
+      : city === "Sofia"
+        ? [45, 60, 75][parseInt(bedrooms)] * 0.75
+        : [36, 48, 60][parseInt(bedrooms)] * 0.75;
+
 
     let grossYear = 0;
     let profitYear = 0;
     let totalOcc = 0;
 
     const monthlyData = months.map((month, idx) => {
-      let occ = isLongTerm ? 1 : baseOccupancy[idx];
-      if (!isLongTerm) {
-        if (isSea) occ = idx >= 5 && idx <= 8 ? 0.9 : 0.3;
-        if (isCenter) occ = 0.8;
-        if (isSofia) occ = Math.min(occ + 0.2, 1);
+      let occ;
+
+      if (city === "Plovdiv" && !isLongTerm) {
+        const baseOcc = occupancyByZone[zone] ?? 0.5;
+        const season = seasonMap.high.includes(month)
+          ? "high"
+          : seasonMap.low.includes(month)
+            ? "low"
+            : "medium";
+        occ = Math.min(baseOcc * seasonMultiplier[season], 1);
+      } else {
+        occ = isLongTerm ? 1 : baseOccupancy[idx];
+        if (!isLongTerm) {
+          if (isSea) occ = idx >= 5 && idx <= 8 ? 0.9 : 0.3;
+          if (isCenter) occ = 0.8;
+          if (isSofia) occ = Math.min(occ + 0.2, 1);
+        }
       }
 
-      let gross = 30 * occ * rate;
-      if (isLongTerm) gross *= 0.7;
-      const cost = gross * 0.35;
+      let gross;
+
+      if (city === "Plovdiv" && isLongTerm) {
+        const zone = plovdivZones[neighborhood];
+        const base = plovdivLongTermBase[parseInt(bedrooms)];
+        const multiplier = plovdivLongTermZoneMultiplier[zone] || 1;
+        gross = base * multiplier;
+        occ = 1; // full month assumed
+      } else {
+        const shortTermGross = 30 * occ * rateShortTerm;
+        gross = isLongTerm ? shortTermGross * 0.7 : shortTermGross;
+      }
+
+
+      const cost = isLongTerm ? gross * 0.2 : gross * 0.35;
       const profit = gross - cost;
 
       grossYear += gross;
@@ -152,16 +188,26 @@ const PropertyCalculator = () => {
       };
     });
 
+    const avgDailyPrice = Math.round((grossYear / 12) / 30);
     setData(monthlyData);
     setNetAvg(Math.round(profitYear / 12));
     setOccAvg(Math.round((totalOcc / 12) * 100));
-    setMinRate(Math.round(rate * 1.8));
-    setMaxRate(Math.round(rate * 2.6));
+    setMinRate(Math.round(avgDailyPrice * 0.85)); // -15%
+    setMaxRate(Math.round(avgDailyPrice * 1.25)); // +25%
   };
+
 
   useEffect(() => {
     processData({ city, neighborhood, bedrooms, rentalType });
   }, [city, neighborhood, bedrooms, rentalType, emailSubmitted]);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
 
   const onFieldChange = () => setHasChanged(true);
 
@@ -180,17 +226,17 @@ const PropertyCalculator = () => {
       alert("Please enter a valid email address.")
       return
     }
-  
+
     const { error } = await supabase
       .from('emails')
       .insert([{ email }])
-  
+
     if (error) {
       console.error('Error storing email:', error)
       alert("Something went wrong.")
       return
     }
-  
+
     setEmailSubmitted(true)
     setHasUnlocked(true)
     setShowModal(false)
@@ -223,7 +269,11 @@ const PropertyCalculator = () => {
 
             <div>
               <label className="font-medium">{t('calculator.neighborhood')}</label>
-              <select {...register("neighborhood", { required: true, onChange: onFieldChange })} className="form-input w-full">
+              <select
+                {...register("neighborhood", { required: true, onChange: onFieldChange })}
+                className="form-input w-full max-h-52 overflow-y-auto"
+              >
+
                 {neighborhoodOptions.map((n) => (
                   <option key={n} value={n}>
                     {t(`calculator.neighborhoods.${city}.${n}`)}
@@ -267,17 +317,21 @@ const PropertyCalculator = () => {
           {data.length > 0 && (
             <div id="report-section" className={`flex-1 mt-10 md:mt-0 bg-white rounded p-6 shadow transition ${!hasUnlocked ? 'blur-sm pointer-events-none' : ''}`}>
               <h3 className="text-xl font-semibold text-center mb-4">Estimated Monthly Breakdown</h3>
-              <ResponsiveContainer width="100%" height={300}>
+              <ResponsiveContainer width="100%" height={isMobile ? 200 : 300}>
                 <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip formatter={(value) => [`${value} лв.`, ""]} />
+                  <XAxis dataKey="name" hide={isMobile} />
+                  <YAxis domain={[0, Math.ceil(Math.max(...data.map(d => d.Gross)) / 100) * 100]} />
+                  <Tooltip
+  content={<CustomTooltip />}
+  wrapperStyle={{ pointerEvents: "auto" }}
+/>
+
                   <Legend />
-                  <Bar dataKey="Gross" stackId="a" fill="#d4af37" />
                   <Bar dataKey="Expenses" stackId="a" fill="#815159" />
                   <Bar dataKey="Profit" stackId="a" fill="#76b947" />
                 </BarChart>
               </ResponsiveContainer>
+
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center mt-6">
                 <div className="bg-[#f3f5f8] p-4 rounded shadow">
