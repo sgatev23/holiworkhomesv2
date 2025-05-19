@@ -64,18 +64,27 @@ const BlogPostPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{lang === 'bg' ? post.title_bg : post.title} | Nomadica Blog</title>
-        <meta name="description" content={lang === 'bg' ? post.excerpt_bg : post.excerpt} />
-        <meta property="og:title" content={lang === 'bg' ? post.title_bg : post.title} />
-        <meta property="og:description" content={lang === 'bg' ? post.excerpt_bg : post.excerpt} />
-        <meta property="og:image" content={post.cover_image} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={shareUrl} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={lang === 'bg' ? post.title_bg : post.title} />
-        <meta name="twitter:description" content={lang === 'bg' ? post.excerpt_bg : post.excerpt} />
-        <meta name="twitter:image" content={post.cover_image} />
-      </Helmet>
+  <title>{lang === 'bg' ? post.title_bg : post.title} | Nomadica Blog</title>
+  <meta name="description" content={lang === 'bg' ? post.excerpt_bg : post.excerpt} />
+  <link rel="canonical" href={shareUrl} />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content={lang === 'bg' ? post.title_bg : post.title} />
+  <meta property="og:description" content={lang === 'bg' ? post.excerpt_bg : post.excerpt} />
+  <meta property="og:image" content={post.cover_image} />
+  <meta property="og:url" content={shareUrl} />
+  <meta property="og:site_name" content="Nomadica" />
+  <meta property="og:locale" content={lang === 'bg' ? 'bg_BG' : 'en_US'} />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={lang === 'bg' ? post.title_bg : post.title} />
+  <meta name="twitter:description" content={lang === 'bg' ? post.excerpt_bg : post.excerpt} />
+  <meta name="twitter:image" content={post.cover_image} />
+  <meta name="twitter:site" content="@NomadicaHomes" />
+</Helmet>
+
 
       <Layout>
         {/* Header */}
