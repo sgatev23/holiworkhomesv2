@@ -319,14 +319,38 @@ const PropertyCalculator = () => {
               <h3 className="text-xl font-semibold text-center mb-4">Estimated Monthly Breakdown</h3>
               <ResponsiveContainer width="100%" height={isMobile ? 200 : 300}>
                 <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-                  <XAxis dataKey="name" hide={isMobile} />
-                  <YAxis domain={[0, Math.ceil(Math.max(...data.map(d => d.Gross)) / 100) * 100]} />
+                <XAxis
+  dataKey="name"
+  hide={isMobile}
+  tick={{ fontSize: 10, fill: "#555", fontWeight: 500 }}
+/>
+
+                  <YAxis
+  tickFormatter={(value) => `${value} лв.`}
+  tick={{ fontSize: isMobile ? 9 : 11, fill: "#555", fontWeight: 500 }}
+  width={isMobile ? 24 : 38}
+/>
+
+
                   <Tooltip
   content={<CustomTooltip />}
   wrapperStyle={{ pointerEvents: "auto" }}
 />
 
-                  <Legend />
+<Legend
+  iconType="square"
+  iconSize={10}
+  layout="horizontal"
+  align="center"
+  wrapperStyle={{
+    fontSize: isMobile ? 10 : 12,
+    fontWeight: 600,
+    marginTop: 12,
+    color: "#444"
+  }}
+/>
+
+                  
                   <Bar dataKey="Expenses" stackId="a" fill="#815159" />
                   <Bar dataKey="Profit" stackId="a" fill="#76b947" />
                 </BarChart>
