@@ -53,7 +53,7 @@ const seasonMap = {
 const occupancyByZone = {
   center: 0.85,
   wider: 0.75,
-  suburbs: 0.5
+  suburbs: 0.65
 };
 
 const seasonMultiplier = {
