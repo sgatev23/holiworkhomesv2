@@ -62,11 +62,11 @@ const seasonMultiplier = {
   high: 1.1
 };
 
-const plovdivLongTermBase = [800, 1050, 1500]; // Studio, 1BR, 2BR
+const plovdivLongTermBase = [900, 1150, 1600]; // Studio, 1BR, 2BR
 const plovdivLongTermZoneMultiplier = {
   center: 1,
-  wider: 0.8,
-  suburbs: 0.65
+  wider: 0.90,
+  suburbs: 0.83
 };
 
 const CustomTooltip = ({ active, payload, label }) => {
