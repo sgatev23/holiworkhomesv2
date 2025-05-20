@@ -26,6 +26,66 @@ export const plovdivZones = {
     "Peshtersko shose": "suburbs"
   };
   
+export const sofiaZones = {
+    // Center
+    "Oborishte": "center",
+    "Sredets": "center",
+    "Triaditsa": "center",
+    "Vazrazhdane": "center",
+    "Lower Lozenets": "center",
+    "Zona B-5": "center",
+    "Yavorov": "center",
+
+    // Wider Center
+    "Upper Lozenets": "wider",
+    "Krasno Selo": "wider",
+    "Slatina": "wider",
+    "Poduyane": "wider",
+    "Geo Milev": "wider",
+    "Reduta": "wider",
+    "Hladilnika": "wider",
+    "Iztok": "wider",
+    "Ivan Vazov": "wider",
+
+    // Suburbs
+    "Mladost": "suburbs",
+    "Studentski Grad": "suburbs",
+    "Dianabad": "suburbs",
+    "Druzhba": "suburbs",
+    "Ovcha Kupel": "suburbs",
+    "Lyulin": "suburbs",
+    "Nadezhda": "suburbs",
+    "Boyana": "suburbs",
+    "Dragalevtsi": "suburbs",
+    "Simeonovo": "suburbs",
+    "Gorni Lozen": "suburbs",
+    "Bankya": "suburbs"
+};
+
+export const varnaZones = {
+    // Center
+    "Greek Quarter": "center",
+    "Sea Garden": "center",
+    "City Center": "center",
+    "Chataldzha": "center",
+
+    // Wider Center
+    "Levski": "wider",
+    "Briz": "wider",
+    "Mladost": "wider",
+    "Tsveten Kvartal": "wider",
+    "Pobeda": "wider",
+
+    // Suburbs
+    "Asparuhovo": "suburbs",
+    "Vladislavovo": "suburbs",
+    "Vinitsa": "suburbs",
+    "Galata": "suburbs",
+    "Trakata": "suburbs",
+    "Kamenar": "suburbs",
+    "Zvezditsa": "suburbs"
+};
+  
   const baseRates = [100, 125, 150]; // Studio, 1BR, 2BR
   
   export const getPlovdivRate = (neighborhood: string, bedrooms: string | number) => {

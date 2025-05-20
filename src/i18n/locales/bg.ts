@@ -143,7 +143,28 @@ export default {
   "Belomorski": "Беломорски",
   "Proslav": "Прослав",
   "Peshtersko shose": "Пещерско шосе"
+},
+Varna: {
+  "Odessos": "Одесос",
+  "Chataldzha": "Чаталджа",
+  "Red Square": "Червения площад",
+  "Levski": "Левски",
+  "Briz": "Бриз",
+  "Chaika": "Чайка",
+  "Trakata": "Траката",
+  "Vinitsa": "Виница",
+  "St. Nikola": "Св. Никола",
+  "Galata": "Галата",
+  "Asparuhovo": "Аспарухово",
+  "Mladost": "Младост",
+  "Troshevo": "Трошево",
+  "Vladislavovo": "Владиславово",
+  "Pobeda": "Победа",
+  "Vazrazhdane": "Възраждане",
+  "Golden Sands": "Златни пясъци",
+  "Saints Constantine and Helena": "Св. Св. Константин и Елена"
 }
+
 },
   },
   

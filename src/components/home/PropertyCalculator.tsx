@@ -3,7 +3,17 @@ import { useForm } from "react-hook-form";
 import html2canvas from "html2canvas";
 import { useTranslation } from 'react-i18next';
 import supabase from "../../supabaseclient";
-import { plovdivZones, getPlovdivRate } from '../../zones';
+import { getPlovdivShortTermRate, getPlovdivLongTermRate } from '../../pricing/plovdiv';
+import {
+  getSofiaShortTermRate,
+  getSofiaLongTermRate
+} from '../../pricing/sofia';
+import {
+  getVarnaShortTermRate,
+  getVarnaLongTermRate
+} from '../../pricing/varna';
+
+
 
 import {
   BarChart,
@@ -22,8 +32,10 @@ const cities = {
     "Upper Lozenets", "Krasno Selo", "Slatina", "Poduyane", "Geo Milev", "Reduta", "Hladilnika", "Iztok", "Ivan Vazov", // Wider Centre
     "Mladost", "Studentski Grad", "Dianabad", "Druzhba", "Ovcha Kupel", "Lyulin", "Nadezhda", "Boyana", "Dragalevtsi", "Simeonovo", "Gorni Lozen", "Bankya" // Suburbs
   ],
-
-  Varna: ["Vladislavovo", "Trakata", "Vinitsa", "Briz", "Old Town"],
+  Varna: ["Odessos", "Chataldzha", "Red Square", "Levski", // City Centre
+    "Briz", "Chaika", "Trakata", "Vinitsa", "St. Nikola", "Galata", // Wider Centre
+    "Asparuhovo", "Mladost", "Troshevo", "Vladislavovo", "Pobeda", "Vazrazhdane", "Golden Sands", "Saints Constantine and Helena" // Suburbs
+  ],  
   Burgas: ["Lazur", "Meden Rudnik", "Sarafovo", "Slaveykov", "Bratya Miladinovi"],
   Gabrovo: ["Sirmani", "Bichkinya", "Centre", "Etar", "Vasil Levski"],
   Ruse: ["Center", "Zdravets", "Charodeyka", "Druzhba", "Vuzrazhdane"],
@@ -53,20 +65,13 @@ const seasonMap = {
 const occupancyByZone = {
   center: 0.85,
   wider: 0.75,
-  suburbs: 0.65
+  suburbs: 0.72
 };
 
 const seasonMultiplier = {
   low: 0.6,
   medium: 0.85,
   high: 1.1
-};
-
-const plovdivLongTermBase = [900, 1150, 1600]; // Studio, 1BR, 2BR
-const plovdivLongTermZoneMultiplier = {
-  center: 1,
-  wider: 0.90,
-  suburbs: 0.83
 };
 
 const CustomTooltip = ({ active, payload, label }) => {
@@ -117,7 +122,6 @@ const PropertyCalculator = () => {
   const neighborhood = watch("neighborhood");
   const bedrooms = watch("bedrooms");
   const neighborhoodOptions = city ? cities[city] || [] : [];
-
   const seasides = ["Sozopol", "St. Vlas"];
   const centerCities = ["Plovdiv", "Varna", "Burgas"];
 
@@ -126,13 +130,20 @@ const PropertyCalculator = () => {
     const isCenter = centerCities.includes(city) && neighborhood.includes("Old Town");
     const isSofia = city === "Sofia";
     const isLongTerm = rentalType === "long-term";
-    const zone = city === "Plovdiv" ? plovdivZones[neighborhood] : null;
+    const zone = city === "Plovdiv" ? neighborhood : null; // Adjusted to avoid dependency on plovdivZones
 
-    const rateShortTerm = city === "Plovdiv"
-      ? getPlovdivRate(neighborhood, bedrooms) * 0.75
-      : city === "Sofia"
-        ? [45, 60, 75][parseInt(bedrooms)] * 0.75
-        : [36, 48, 60][parseInt(bedrooms)] * 0.75;
+    let rateShortTerm;
+if (city === "Plovdiv") {
+  rateShortTerm = getPlovdivShortTermRate(neighborhood, bedrooms);
+} else if (city === "Sofia") {
+  rateShortTerm = getSofiaShortTermRate(neighborhood, bedrooms);
+} else if (city === "Varna") {
+  rateShortTerm = getVarnaShortTermRate(neighborhood, bedrooms);
+} else if (city === "Varna") {
+  rateShortTerm = getVarnaShortTermRate(neighborhood, bedrooms);
+} else {
+  rateShortTerm = [36, 48, 60][parseInt(bedrooms)] * 0.75;
+}
 
 
     let grossYear = 0;
@@ -162,16 +173,23 @@ const PropertyCalculator = () => {
       let gross;
 
       if (city === "Plovdiv" && isLongTerm) {
-        const zone = plovdivZones[neighborhood];
-        const base = plovdivLongTermBase[parseInt(bedrooms)];
-        const multiplier = plovdivLongTermZoneMultiplier[zone] || 1;
-        gross = base * multiplier;
-        occ = 1; // full month assumed
-      } else {
-        const shortTermGross = 30 * occ * rateShortTerm;
-        gross = isLongTerm ? shortTermGross * 0.7 : shortTermGross;
+        gross = getPlovdivLongTermRate(neighborhood, bedrooms);
+        occ = 1;
+      } else if (city === "Sofia" && isLongTerm) {
+        gross = getSofiaLongTermRate(neighborhood, bedrooms);
+        occ = 1;
+      } else if (city === "Varna" && isLongTerm) {
+        gross = getVarnaLongTermRate(neighborhood, bedrooms);
+        occ = 1;
+      } else if (city === "Plovdiv" && !isLongTerm) {
+        gross = 30 * occ * getPlovdivShortTermRate(neighborhood, bedrooms);
+      } else if (city === "Sofia" && !isLongTerm) {
+        gross = 30 * occ * getSofiaShortTermRate(neighborhood, bedrooms);
+      } else if (city === "Varna" && !isLongTerm) {
+        gross = 30 * occ * getVarnaShortTermRate(neighborhood, bedrooms);
       }
-
+      
+           
 
       const cost = isLongTerm ? gross * 0.2 : gross * 0.35;
       const profit = gross - cost;
@@ -366,7 +384,7 @@ const PropertyCalculator = () => {
                   </div>
                 </div>
                 <div className="bg-[#f3f5f8] p-4 rounded shadow">
-                  <h4 className="font-semibold text-[#815159]">Avg. Daily Price Range (BGN)</h4>
+                  <h4 className="font-semibold text-[#815159]"> Monthly ADR (BGN)</h4>
                   <div className="flex justify-center mt-2">
                     <span className="bg-[#815159] text-white px-4 py-2 rounded-l">{minRate}</span>
                     <span className="bg-[#76b947] text-white px-4 py-2 rounded-r">{maxRate}</span>

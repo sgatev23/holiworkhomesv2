@@ -174,7 +174,28 @@ calculator: {
   "Belomorski": "Belomorski",
   "Proslav": "Proslav",
   "Peshtersko shose": "Peshtersko shose"
+},
+Varna: {
+  "Odessos": "Odessos",
+  "Chataldzha": "Chataldzha",
+  "Red Square": "Red Square",
+  "Levski": "Levski",
+  "Briz": "Briz",
+  "Chaika": "Chaika",
+  "Trakata": "Trakata",
+  "Vinitsa": "Vinitsa",
+  "St. Nikola": "St. Nikola",
+  "Galata": "Galata",
+  "Asparuhovo": "Asparuhovo",
+  "Mladost": "Mladost",
+  "Troshevo": "Troshevo",
+  "Vladislavovo": "Vladislavovo",
+  "Pobeda": "Pobeda",
+  "Vazrazhdane": "Vazrazhdane",
+  "Golden Sands": "Golden Sands",
+  "Saints Constantine and Helena": "Saints Constantine and Helena"
 }
+
   },
   "emailPromptTitle": "Before we show your report...",
   "emailPromptDesc": "Enter your email to get a copy and unlock the insights.",
@@ -535,7 +556,6 @@ moreQuestions: "Still have questions? Get in touch with us!"
       }
     }
   },
-  
  
   featuredTestimonials: {
     title: "Success Stories",
