@@ -12,6 +12,17 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
+  const lightPages = [
+    '/nomadica-property-operators',
+    '/careers',
+    '/services',
+    '/guarantees',
+    '/blog',
+    '/success-stories'
+  ];
+  const isLightPage = lightPages.includes(location.pathname);
+  const forceSolid = isScrolled || location.pathname === '/nomadica-property-operators';
+
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -29,16 +40,15 @@ const Header: React.FC = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isOpen ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`;
+  const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${forceSolid ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`;
 
   const navLinks = [
     { name: t('navigation.home'), path: '/' },
-    // { name: t('navigation.about'), path: '/#about-us' }, // ❌ Hide this
     { name: t('navigation.services'), path: '/services' },
     { name: t('navigation.guarantees'), path: '/guarantees' },
     { name: t('navigation.blog'), path: '/blog' },
+    { name: t('navigation.careers'), path: '/careers' },
   ];
-
 
   const servicesDropdown = [
     { name: t('navigation.servicesDropdown.cohosting'), path: '/services#cohosting' },
@@ -52,11 +62,11 @@ const Header: React.FC = () => {
       <div className="container flex flex-wrap items-center justify-between">
         <Link to="/" className="flex items-center space-x-3">
           <img
-            src={isScrolled || isOpen ? LogoMaroon : LogoWhite}
+            src={forceSolid ? LogoMaroon : LogoWhite}
             alt="Nomadica logo"
             className="h-15 w-auto sm:h-15"
           />
-          <span className={`text-xl sm:text-2xl font-bold font-[Montserrat] tracking-tight ${isScrolled || isOpen ? 'text-[#815159]' : 'text-white'}`}>
+          <span className={`text-xl sm:text-2xl font-bold font-[Montserrat] tracking-tight ${forceSolid ? 'text-[#815159]' : 'text-white'}`}>
             Nomadica
           </span>
         </Link>
@@ -72,12 +82,12 @@ const Header: React.FC = () => {
               >
                 <Link
                   to={link.path}
-                  className={`font-medium hover:text-[#815159] transition-colors ${isScrolled ? 'text-gray-800' : 'text-white'} ${location.pathname === link.path ? 'text-[#815159]' : ''}`}
-                >
+                  className={`font-medium hover:text-[#815159] transition-colors ${forceSolid ? 'text-[#815159]' : 'text-white'} ${location.pathname === link.path ? 'text-[#815159]' : ''}`}
+                  >
                   {link.name}
                 </Link>
                 {link.hasDropdown && (
-                  <ChevronDown className={`w-4 h-4 ml-1 ${isScrolled ? 'text-gray-800' : 'text-white'}`} />
+                  <ChevronDown className={`w-4 h-4 ml-1 ${forceSolid ? 'text-[#815159]' : 'text-white'}`} />
                 )}
               </div>
               {link.hasDropdown && isServicesOpen && (
@@ -110,16 +120,14 @@ const Header: React.FC = () => {
               href="https://app.hostify.com/user/login"
               target="_blank"
               rel="noopener noreferrer"
-              className={`px-4 py-2 rounded-md text-sm transition border ${isScrolled || isOpen
+              className={`px-4 py-2 rounded-md text-sm font-medium transition border ${forceSolid
                 ? 'text-[#815159] border-[#815159] hover:bg-[#815159]/10'
                 : 'text-white border-white hover:bg-white/10'
                 }`}
             >
               {t('navigation.ownerPortal')}
             </a>
-
-
-            <LanguageToggle />
+            <LanguageToggle className="text-[#815159]" />
           </div>
         </nav>
 
@@ -129,9 +137,9 @@ const Header: React.FC = () => {
           className="md:hidden text-2xl p-2 focus:outline-none"
         >
           {isOpen ? (
-            <X className={isScrolled ? 'text-gray-800' : 'text-white'} />
+            <X className={forceSolid ? 'text-[#815159]' : 'text-white'} />
           ) : (
-            <Menu className={isScrolled ? 'text-gray-800' : 'text-white'} />
+            <Menu className={forceSolid ? 'text-[#815159]' : 'text-white'} />
           )}
         </button>
       </div>
@@ -184,9 +192,8 @@ const Header: React.FC = () => {
                 >
                   {t('navigation.ownerPortal')}
                 </a>
-
                 <div className="flex justify-center pt-4">
-                  <LanguageToggle />
+                  <LanguageToggle className="text-[#815159]" />
                 </div>
               </div>
             </nav>

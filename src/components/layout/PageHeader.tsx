@@ -10,22 +10,23 @@ interface PageHeaderProps {
 const PageHeader: React.FC<PageHeaderProps> = ({ title, subtitle, bgImage }) => {
   return (
     <div 
-      className="relative pt-24 pb-20 md:pt-32 md:pb-28 bg-cover bg-center"
-      style={{ 
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bgImage})` 
-      }}
-    >
+    className="relative pt-[90px] md:pt-[120px] pb-20 md:pb-28 bg-cover bg-center"
+    style={{ 
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bgImage})` 
+  }}
+>
       <div className="container relative z-10 text-center">
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-white mb-4"
+          className="text-white mb-4 text-3xl md:text-5xl font-bold"
         >
           {title}
         </motion.h1>
+
         {subtitle && (
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}

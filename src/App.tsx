@@ -9,6 +9,10 @@ import BlogPostPage from './pages/BlogPostPage.tsx';
 import ListPropertyPage from './pages/ListPropertyPage';
 import OwnerPortalPage from './pages/OwnerPortalPage';
 import NotFoundPage from './pages/NotFoundPage';
+import NomadicaOperators from './pages/NomadicaOperators';
+import CareersPage from './pages/CareersPage';
+import JobDetailPage from './pages/JobDetailPage';
+
 
 function App() {
   return (
@@ -22,7 +26,10 @@ function App() {
       <Route path="/list-your-property" element={<ListPropertyPage />} />
       <Route path="/owner-portal" element={<OwnerPortalPage />} />
       <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+      <Route path="/nomadica-property-operators" element={<NomadicaOperators />} />
+      <Route path="/careers" element={<CareersPage />} />
+      <Route path="/careers/:slug" element={<JobDetailPage />} />
+      </Routes>
   );
 }
 

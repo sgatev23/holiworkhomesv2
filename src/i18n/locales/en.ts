@@ -8,6 +8,7 @@ export default {
     blog: 'Blog',
     listProperty: 'List Property',
     ownerPortal: 'Owner Portal',
+    careers: 'Careers',
     servicesDropdown: {
       cohosting: 'Co-hosting',
       shortTerm: 'Short-term Rental Management',
@@ -245,7 +246,7 @@ servicesPage: {
       cohosting: {
         title: "Co-hosting",
         subtitle: "A digital solution for owners who want control and real results.",
-        price: "10%",
+        price: "12%",
         note: "of net income",
         features: {
           0: "Access to Nomadica's network with 10+ platforms and strategic partners",
@@ -260,7 +261,7 @@ servicesPage: {
       shortTerm: {
         title: "Short-Term Management",
         subtitle: "Full-service support for short-term rental success",
-        price: "15–20%",
+        price: "18%",
         note: "of net income",
         features: {
           0: "All services included in the Co-hosting plan",
@@ -276,7 +277,7 @@ servicesPage: {
       longTerm: {
         title: "Long-Term Management",
         subtitle: "Ideal for consistent monthly income with minimal involvement",
-        price: "10%",
+        price: "8%",
         note: "of monthly rent",
         features: {
           0: "Tenant acquisition and screening",
@@ -292,7 +293,7 @@ servicesPage: {
         title: "Property Setup",
         subtitle: "Interior design, furnishing, and renovation to launch your rental",
         price: "Custom",
-        note: "one-time fee based on scope",
+        note: "",
         features: {
           0: "Tailored interior design recommendations",
           1: "Furniture sourcing and setup support",
@@ -312,7 +313,7 @@ faqTitle: "Frequently Asked Questions",
 faq: {
   areas: {
     q: "What areas do you service?",
-    a: "We offer co-hosting services across Bulgaria and full management in Sofia, Plovdiv, and Varna."
+    a: "We offer co-hosting services across Bulgaria and full management in Sofia, Gabrovo, Plovdiv, and Bourgas."
   },
   earnings: {
     q: "How much can I earn?",
@@ -358,23 +359,90 @@ moreQuestions: "Still have questions? Get in touch with us!"
     }
   },
 
+  careers: {
+    header: "Join Nomadica",
+    subtitle: "We're redefining property management, design, and hospitality — and we need the bold, the driven, the truly good.",
+    why: "Why Work With Us",
+    whyText: "We’re a fast-growing team building Nomadica to reshape how properties are managed and lived in. No corporate fluff, just real ownership and mission.",
+    values: {
+      impact: {
+        title: "Small Team, Big Impact",
+        desc: "You’ll work side-by-side with founders, shape processes, and see your work go live in days, not months.",
+      },
+      ownership: {
+        title: "No Permission Needed",
+        desc: "Ideas are currency here. If it improves outcomes, you’re empowered to launch it.",
+      },
+      remote: {
+        title: "Work from Anywhere",
+        desc: "Remote-first, async-friendly. We care about your output, not your chair or hours.",
+      },
+    },
+    openRoles: "Open Roles",
+    learnMore: "Learn More",
+    noPerfectFit: "Don’t see the perfect fit?",
+    reachOut: "Reach out anyway — we create roles for great people.",
+  },
+  
+  
+  careersDetail: {
+    notFound: {
+      title: 'Role Not Found',
+      description: 'This job doesn’t exist — or we’ve already filled it.',
+      back: 'Back to Careers',
+    },
+    quick: {
+      type: 'Type',
+      location: 'Location',
+      open: 'Apply anytime',
+      salary: 'Salary',
+    },
+    sections: {
+      overview: 'Overview',
+      role: 'Your Role',
+      requirements: 'What You Bring',
+      perks: 'Why Join Nomadica',
+      cta: {
+        title: 'Ready to Apply?',
+        subtitle: "Send us your CV or LinkedIn profile and tell us why you're the one.",
+        button: 'Apply Now',
+      },
+    },
+  },
+  
+
   footer: {
     brand: {
       name: "Nomadica",
       description: "Bulgaria’s trusted partner for short- and mid-term rental management. We turn properties into high-performing, guest-ready homes with zero hassle for owners."
     },
+
+    newsletter: {
+      title: 'Join Our Newsletter',
+      placeholder: 'Your email address',
+      cta: 'Subscribe'
+    },
+    
     services: {
       title: "Our Services",
-      rental: "Rental Management",
+      rental: "Short- & Long-term Rental Management",
       cohosting: "Cohosting Support",
       setup: "Property Setup",
       list: "List Your Property"
     },
+    
+    locations: {
+      title: 'Locations',
+      list: ['Sofia', 'Plovdiv', 'Varna', 'Bourgas', 'Gabrovo', 'Sozopol']
+    },
+    
     explore: {
       title: "Explore",
       successStories: "Success Stories",
       blog: "Blog",
-      faqs: "FAQs"
+      faqs: "FAQs",
+      careers: "Careers",
+      operators: "Become a Nomadica Partner in Your Area"
     },
     contact: {
       title: "Contact Us",
