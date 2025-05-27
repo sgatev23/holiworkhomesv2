@@ -136,13 +136,13 @@ const JobDetailPage: React.FC = () => {
                         <h3 className="text-xl font-semibold mb-2">{t('careersDetail.sections.cta.title')}</h3>
                         <p className="text-sm mb-4">{t('careersDetail.sections.cta.subtitle')}</p>
                         <a
-                            href={`mailto:apply@nomadica.homes?subject=Apply: ${encodeURIComponent(getText('title'))}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-white text-[#815159] px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition"
-                        >
-                            {t('careersDetail.sections.cta.button')}
-                        </a>
+  href={`mailto:apply@nomadica.homes?subject=${encodeURIComponent(`Apply: ${getText('title')}`)}`}
+  className="bg-white text-[#815159] px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition"
+>
+  {t('careersDetail.sections.cta.button')}
+</a>
+
+
 
                     </div>
                 </div>

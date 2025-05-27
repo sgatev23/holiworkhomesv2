@@ -4,14 +4,8 @@ import html2canvas from "html2canvas";
 import { useTranslation } from 'react-i18next';
 import supabase from "../../supabaseclient";
 import { getPlovdivShortTermRate, getPlovdivLongTermRate } from '../../pricing/plovdiv';
-import {
-  getSofiaShortTermRate,
-  getSofiaLongTermRate
-} from '../../pricing/sofia';
-import {
-  getVarnaShortTermRate,
-  getVarnaLongTermRate
-} from '../../pricing/varna';
+import { getSofiaShortTermRate, getSofiaLongTermRate } from '../../pricing/sofia';
+import { getVarnaShortTermRate, getVarnaLongTermRate } from '../../pricing/varna';
 
 
 
