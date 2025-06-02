@@ -12,7 +12,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import NomadicaOperators from './pages/NomadicaOperators';
 import CareersPage from './pages/CareersPage';
 import JobDetailPage from './pages/JobDetailPage';
-
+import JobApplicationPage from './pages/JobApplicationPage';
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
       <Route path="/nomadica-property-operators" element={<NomadicaOperators />} />
       <Route path="/careers" element={<CareersPage />} />
       <Route path="/careers/:slug" element={<JobDetailPage />} />
+      <Route path="/careers/:slug/apply" element={<JobApplicationPage />} />
       </Routes>
   );
 }

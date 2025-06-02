@@ -51,8 +51,17 @@ const JobDetailPage: React.FC = () => {
     };
 
     const getList = (base: string): string[] => {
-        return (job?.[`${base}_${lang}`] as string[]) || [];
+        const raw = job?.[`${base}_${lang}`];
+        if (typeof raw === 'string') {
+            try {
+                return JSON.parse(raw);
+            } catch {
+                return [];
+            }
+        }
+        return raw || [];
     };
+
 
     if (!job) {
         return (
@@ -135,15 +144,12 @@ const JobDetailPage: React.FC = () => {
                     <div className="bg-[#815159] text-white text-center py-10 px-6 rounded-xl shadow-lg">
                         <h3 className="text-xl font-semibold mb-2">{t('careersDetail.sections.cta.title')}</h3>
                         <p className="text-sm mb-4">{t('careersDetail.sections.cta.subtitle')}</p>
-                        <a
-  href={`mailto:apply@nomadica.homes?subject=${encodeURIComponent(`Apply: ${getText('title')}`)}`}
-  className="bg-white text-[#815159] px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition"
->
-  {t('careersDetail.sections.cta.button')}
-</a>
-
-
-
+                        <Link
+                            to={`/careers/${slug}/apply`}
+                            className="bg-white text-[#815159] px-6 py-3 rounded-md font-medium hover:bg-gray-100 transition"
+                        >
+                            {t('careersDetail.sections.cta.button')}
+                        </Link>
                     </div>
                 </div>
             </section>

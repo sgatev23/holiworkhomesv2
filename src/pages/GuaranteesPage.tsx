@@ -40,7 +40,7 @@ const GuaranteesPage = () => {
       <PageHeader
         title={t('guarantees.pageTitle')}
         description={t('guarantees.pageSubtitle')}
-        bgImage="https://images.pexels.com/photos/1123995/pexels-photo-1123995.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        bgImage="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//3dc5e0f10680796810c68917f44c9c9a.jpg"
       />
 
       <section className="bg-[#f3f5f8] py-16">
