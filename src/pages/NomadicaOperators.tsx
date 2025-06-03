@@ -20,11 +20,13 @@ const NomadicaOperators: React.FC = () => {
               Станеш ли част от мрежата ни, ще получиш пълна подкрепа – без значение дали имаш опит в управлението на имоти или не. Работим с теб за да успееш.
             </p>
             <a
-              href="/contact"
+              href="/careers/operator/apply"
               className="inline-block bg-[#815159] text-white font-medium py-3 px-6 rounded-xl hover:bg-[#6e444b] transition"
             >
               Кандидатствай сега
             </a>
+
+
           </div>
           <div className="relative w-full h-full">
             <img
@@ -108,11 +110,12 @@ const NomadicaOperators: React.FC = () => {
             Работим с хора, които искат да изградят бизнес в техния град и да създават стойност за собствениците. Без нужда от офис, само от желание и дисциплина.
           </p>
           <a
-            href="/contact"
+            href="/careers/operator/apply"
             className="inline-block bg-[#815159] text-white font-medium py-3 px-6 rounded-xl hover:bg-[#6e444b] transition"
           >
             Кандидатствай сега
           </a>
+
         </div>
       </section>
 

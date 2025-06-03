@@ -536,6 +536,28 @@ moreQuestions: "Still have questions? Get in touch with us!"
     }
   },
  
+  //Application Form
+  form: {
+    applyFor: 'Apply for',
+    intro: 'Tell us about yourself and why you’re a great fit for this role.',
+    name: 'Full Name',
+    email: 'Email Address',
+    city: 'City',
+    linkedin: 'LinkedIn Profile (optional)',
+    resume: 'Upload Resume',
+    coverLetter: 'Cover Letter (optional)',
+    coverLetterUpload: 'Upload Cover Letter (optional)',
+    coverLetterHint: 'In up to 250 words, tell us why you’re applying and how your skills align with Nomadica. We want to hear *you* — not a ChatGPT version of you.',
+    submit: 'Submit Application',
+    sending: 'Sending...',
+    errorRequired: 'Please fill out all required fields.',
+    errorGeneric: 'Something went wrong. Please try again.',
+    thankYouNote: 'Thank you for applying. We look forward to learning more about you.',
+    confirmTitle: "Application Received",
+    confirmMessage: "Thanks for applying! We’ll be in touch within 14 days."
+  },
+
+  
   featuredTestimonials: {
     title: "Success Stories",
     subtitle: "See how Bulgarian property owners are achieving exceptional results with Nomadica.",
