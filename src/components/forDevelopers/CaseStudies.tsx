@@ -20,9 +20,9 @@ const studies = [
   {
     id: 1,
     title: 'Gerbera Development',
-    sub: 'Plovdiv · 4 apartments',
+    sub: 'Plovdiv · 4 units (2 x 2BR, 2 x 1BR)',
     image:
-      'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=1200&q=60',
+      'https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Gerbera.jpeg',
 
     /* NEW FIELDS */
     problem:
@@ -42,9 +42,9 @@ const studies = [
   {
     id: 2,
     title: 'Platinum Homes',
-    sub: 'Plovdiv · 2 lofts',
+    sub: 'Plovdiv · 2 x 1BR units',
     image:
-      'https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=60',
+      'https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Platinum-Homes-1-min.jpg',
     problem: 'A-class shell-and-core lofts sat vacant for 7 months.',
     solution:
       'Rapid fit-out, Nomadica booking engine and mid-term corporate lets filled 93 % of nights.',
@@ -59,10 +59,10 @@ const studies = [
   },
   {
     id: 3,
-    title: 'Knyaz Boris II',
-    sub: 'Sofia · 2 penthouses',
+    title: 'Knyaz Boris II 209',
+    sub: 'Sofia · 2 x 1BR units',
     image:
-      'https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&w=1200&q=60',
+      'https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//_2.jpeg',
     problem: 'High-end units struggled against oversupply in LT rental market.',
     solution:
       'Switched to hybrid STR + MTR model; dynamic pricing engine boosted net rent 30 %.',

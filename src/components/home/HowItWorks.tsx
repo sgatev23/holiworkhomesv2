@@ -81,7 +81,7 @@ const HowItWorks: React.FC = () => {
           {/* ── Right column : illustrative image + overlays ─ */}
           <div className="relative order-first md:order-none">
             <img
-              src="https://images.pexels.com/photos/3340476/pexels-photo-3340476.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Impact-of-Technology-on-Property-Management-870x452.jpg"
               alt="Team coordinating operations"
               className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
             />
