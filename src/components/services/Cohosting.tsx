@@ -22,12 +22,12 @@ const CohostingHero: React.FC = () => (
           transition={{ duration: 0.6 }}
           className="hidden md:block absolute left-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
         >
-          <h4 className="font-semibold mb-3">You keep</h4>
+          <h4 className="font-semibold mb-3">Вие запазвате</h4>
           <ul className="text-sm text-gray-700 leading-6">
-            <li>Local cleaning team</li>
-            <li>On-site check-ins (optional)</li>
-            <li>Personal calendar blocks</li>
-            <li>Full owner portal access</li>
+            <li>Местен екип за почистване</li>
+            <li>Посрещане на място (по избор)</li>
+            <li>Лични блокове в календара</li>
+            <li>Пълен достъп до портала</li>
           </ul>
         </motion.div>
 
@@ -40,11 +40,11 @@ const CohostingHero: React.FC = () => (
           className="hidden md:block absolute right-6 bottom-6
                      bg-gradient-to-br from-primary to-primary-dark text-white rounded-xl shadow-xl w-64 p-6"
         >
-          <h4 className="font-bold text-sm uppercase mb-4">Cohosting results</h4>
-          <p className="text-lg font-extrabold">15 % fee</p>
-          <p className="text-sm opacity-80 mb-4">pay-as-you-earn</p>
-          <p className="text-lg font-extrabold">+42 % income</p>
-          <p className="text-xs opacity-80">average uplift vs DIY</p>
+          <h4 className="font-bold text-sm uppercase mb-4">Резултати от ко-хостинг</h4>
+          <p className="text-lg font-extrabold">Такса 15 %</p>
+          <p className="text-sm opacity-80 mb-4">плащате при печалба</p>
+          <p className="text-lg font-extrabold">+42 % доход</p>
+          <p className="text-xs opacity-80">средно повишение спрямо самостоятелно управление</p>
         </motion.div>
       </div>
 
@@ -57,22 +57,22 @@ const CohostingHero: React.FC = () => (
         className="order-0 md:order-2"
       >
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
-          Digital Co-Hosting — keep control, earn more
+          Дигитален ко-хостинг – запазвате контрол, печелите повече
         </h2>
 
         <p className="text-gray-800 mb-4 leading-relaxed">
-          Love meeting guests but hate pricing, messaging and calendar chaos?
-          Plug into Nomadica’s tech stack: AI-powered pricing, 24 / 7 guest support
-          in six languages, and instant sync across 20+ booking channels.
+          Обичате да посрещате гости, но не и да се занимавате с цени, съобщения
+          и календари? Включете се в технологиите на Nomadica – AI ценообразуване,
+          24/7 комуникация на два езика и мигновена синхронизация в над 10 канала.
         </p>
 
         <p className="text-gray-800 mb-8 leading-relaxed">
-          You keep your preferred cleaners and still block dates for friends or family.
-          We take just <strong>12 % of net revenue</strong> — no fixed costs, no lock-in.
+          Запазвате любимия си екип за почистване и спокойно блокирате дати за близки.
+          Ние взимаме само <strong>12 % от нетния приход</strong> – без фиксирани разходи и ангажиращи договори.
         </p>
 
         <Link to="/list-your-property" className="btn btn-primary text-lg">
-          Plug Me In
+          Включете ме
         </Link>
       </motion.div>
     </div>
