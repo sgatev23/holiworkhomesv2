@@ -189,6 +189,8 @@ const CaseStudies: React.FC = () => {
   </section>
 );
 
+};
+
 /* helper metric pill */
 const Metric = ({
   icon: Icon,
