@@ -43,7 +43,7 @@ const SLIDES = [
 
 /* ------------------- COMPONENT ------------------ */
 const MarketOverview: React.FC = () => (
-  <section id="market-overview" className="relative h-[600px] md:h-[680px] overflow-hidden">
+  <section id="market-overview" className="relative h-[520px] md:h-[680px] overflow-hidden">
     {/* Background video */}
     <video
       className="absolute inset-0 w-full h-full object-cover"

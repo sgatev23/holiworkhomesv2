@@ -17,9 +17,9 @@ import 'swiper/css/effect-fade';
  */
 const SLIDE_IMAGES = [
   'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  'https://images.pexels.com/photos/7048088/pexels-photo-7048088.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  'https://images.pexels.com/photos/6186814/pexels-photo-6186814.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
 ];
 
 /* ─── Types ──────────────────────────────────────────── */

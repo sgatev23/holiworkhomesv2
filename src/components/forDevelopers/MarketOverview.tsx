@@ -109,8 +109,8 @@ const MarketOverview: React.FC = () => (
         </div>
 
         {/* ---------- donut ---------- */}
-        <div className="relative mx-auto">
-          <svg width="460" height="460" className="block">
+        <div className="relative mx-auto max-w-[460px] w-full">
+        <svg viewBox="0 0 460 460" className="block w-full h-auto">
             {SEGMENTS.map(s => (
               <path
                 key={s.id}
