@@ -133,8 +133,6 @@ if (city === "Plovdiv") {
   rateShortTerm = getSofiaShortTermRate(neighborhood, bedrooms);
 } else if (city === "Varna") {
   rateShortTerm = getVarnaShortTermRate(neighborhood, bedrooms);
-} else if (city === "Varna") {
-  rateShortTerm = getVarnaShortTermRate(neighborhood, bedrooms);
 } else {
   rateShortTerm = [36, 48, 60][parseInt(bedrooms)] * 0.75;
 }
