@@ -7,57 +7,35 @@ import {
   Repeat,
   Smartphone,
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 /* ------------------------------------------------------------------ */
 /*  DATA                                                              */
 /* ------------------------------------------------------------------ */
 const FEATURES = [
-  {
-    id: 1,
-    title: 'Proprietary Pricing AI',
-    body: 'Dynamic rates use 40+ demand signals to boost RevPAR.',
-    icon: Cpu,
-  },
-  {
-    id: 2,
-    title: 'Portfolio Demand Model',
-    body: '7-day forward forecast at asset level, vacancy heat-map & alerts.',
-    icon: BarChart2,
-  },
-  {
-    id: 3,
-    title: 'Real-time Channel Sync',
-    body: 'Sub-120 sec propagation to OTA, GDS & direct website APIs.',
-    icon: Repeat,
-  },
-  {
-    id: 4,
-    title: 'Owner Reporting',
-    body: 'Keep an eye on your investments through our bespoke finance dashboards.',
-    icon: Activity,
-  },
-  {
-    id: 5,
-    title: 'Mobile Asset Control',
-    body: 'iOS / Android app for real-time updates.',
-    icon: Smartphone,
-  },
+  { id: 1, icon: Cpu },
+  { id: 2, icon: BarChart2 },
+  { id: 3, icon: Repeat },
+  { id: 4, icon: Activity },
+  { id: 5, icon: Smartphone },
 ];
 
 /* ------------------------------------------------------------------ */
 /*  COMPONENT                                                         */
 /* ------------------------------------------------------------------ */
-const TechnologySuite: React.FC = () => (
-  <section id="technology" className="relative py-28 bg-background overflow-hidden">
-    <div className="container max-w-7xl mx-auto px-4">
+const TechnologySuite: React.FC = () => {
+  const { t } = useTranslation();
+  return (
+    <section id="technology" className="relative py-28 bg-background overflow-hidden">
+      <div className="container max-w-7xl mx-auto px-4">
 
       {/* ------------ Heading ------------- */}
       <header className="text-center mb-24">
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-3">
-          Technology & Intelligence
+          {t('developersPage.technology.heading')}
         </h2>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-          Systems-driven occupancy, margin and insight – built for developers.
+          {t('developersPage.technology.subheading')}
         </p>
       </header>
 
@@ -115,6 +93,7 @@ const TechnologySuite: React.FC = () => (
 
             {FEATURES.map((f, i) => {
               const Icon = f.icon;
+              const text = t(`developersPage.technology.features.${i}`, { returnObjects: true }) as any;
               return (
                 <motion.div
                   key={f.id}
@@ -132,10 +111,10 @@ const TechnologySuite: React.FC = () => (
                                   shadow-sm p-6">
                     <h3 className="font-semibold text-primary mb-2 flex items-center">
                       <Icon className="w-5 h-5 mr-2 text-secondary" />
-                      {f.title}
+                      {text.title}
                     </h3>
                     <p className="text-sm text-gray-700 leading-relaxed">
-                      {f.body}
+                      {text.body}
                     </p>
                   </div>
                 </motion.div>
@@ -147,10 +126,11 @@ const TechnologySuite: React.FC = () => (
 
       {/* footnote */}
       <p className="text-xs text-gray-500 text-center mt-24">
-        Data sources: Nomadica PMS, OTA API streams, Eurostat, AirDNA 2024.
+        {t('developersPage.technology.footnote')}
       </p>
     </div>
   </section>
-);
+  );
+};
 
 export default TechnologySuite;

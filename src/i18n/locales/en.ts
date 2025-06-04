@@ -657,6 +657,142 @@ export default {
     }
   },
 
+  developersPage: {
+    hero: {
+      slides: [
+        {
+          metric: 'Partnering with Nomadica',
+          headline: 'Earn 40–60 % higher rental income',
+          text: 'Convert inventory into high-yield serviced apartments without sacrificing exit flexibility.',
+          isTitle: true,
+        },
+        {
+          metric: '8–11 %',
+          headline: 'Gross yield on Plovdiv serviced apartments',
+          text: 'versus 4–6 % on conventional 12-month lets (AirDNA & local comps, 2024).',
+        },
+        {
+          metric: '38 % YoY',
+          headline: 'Rise in furnished-stay search volume',
+          text: 'driven by events & nomad blocks of 28+ nights (AirDNA Q1-24).',
+        },
+        {
+          metric: '1.6 %',
+          headline: 'STR penetration of total housing stock',
+          text: 'half the saturation seen in comparable CEE hubs, leaving headroom for new units.',
+        },
+        {
+          metric: '+6.1 % CAGR',
+          headline: 'Average Daily Rate growth 2019-23',
+          text: 'outpacing inflation-adjusted pressure on long-term rents.',
+        },
+        {
+          metric: '42 % YoY',
+          headline: 'Peripheral-district demand jump',
+          text: 'searches for Trakia & H. Smirnenski outpaced CBD by mid-2024.',
+        },
+      ],
+      sources: 'Sources: Eurostat 2024 • AirDNA Plovdiv (2024-05) • Bulgarian NSI • Knight Frank BG H1-24',
+    },
+    partnerBenefits: {
+      heading: 'The Nomadica Developer Advantage',
+      subheading: 'Choose a focus area to see exactly how we move the needle.',
+      tabs: {
+        yield: {
+          label: 'Yield Uplift',
+          headline: '40–60 % Higher Net Yield',
+          body: 'Dynamic, multi-channel revenue management out-performs conventional leases by three to five percentage points of NOI.',
+          alt: 'Chart comparing short-term vs long-term rental net yields',
+        },
+        capex: {
+          label: 'CapEx Preservation',
+          headline: 'Finishes Stay Sale-Ready',
+          body: 'Weekly inspections, hotel-grade housekeeping, and on-call maintenance extend refurbishment cycles and protect asset value.',
+          alt: 'Maintenance worker tightening fixtures – representing CapEx preservation',
+        },
+        liquidity: {
+          label: 'Full Liquidity',
+          headline: 'Exit on Your Timeline',
+          body: 'Block dates for viewings or withdraw entire units with 30 days’ notice — no 12-month tenancy lock-ins.',
+          alt: 'Handshake over property keys – symbolising liquidity and flexible exits',
+        },
+        data: {
+          label: 'Market Timing',
+          headline: 'Real-Time Performance Dashboards',
+          body: 'ADR, RevPAR, and occupancy data inform the exact month to divest for maximum IRR.',
+          alt: 'Dashboard displaying real-time rental KPIs',
+        },
+      },
+    },
+    caseStudies: {
+      title: 'Success Stories',
+      subtitle: 'Real-world results from developers who partnered with Nomadica',
+      challenge: 'Challenge',
+      solution: 'Solution',
+      cta: 'Read Case Study',
+      metrics: {
+        boughtFor: 'Bought for',
+        sqm: 'Total sqm',
+        longRent: 'LT rent',
+        shortRent: 'ST rent',
+        credit: 'Credit Payable',
+        yield: 'Yield',
+        holdTime: 'Hold time',
+        appreciation: 'Appreciation',
+      },
+    },
+    marketOverview: {
+      heading: 'Bulgarian Rental Market — Key Signals',
+      subheading: 'Four hard metrics every developer should track.',
+      footnote: 'Sources: Eurostat 2024 • AirDNA Plovdiv 05/24 • BG NSI • Knight Frank BG Review H1 2024',
+      segments: [
+        {
+          title: 'Higher Returns',
+          body: 'Short-term rentals earn 8–11% net yield vs 4–6% on long-term leases (AirDNA 2024).',
+        },
+        {
+          title: 'Rising Suburb Demand',
+          body: 'Searches for rentals in outer districts are up 42% year-over-year.',
+        },
+        {
+          title: 'Limited Supply',
+          body: 'Short-term rentals make up just 1.6% of homes—less than half of peer cities (3.4%).',
+        },
+        {
+          title: 'Strong Price Growth',
+          body: 'Average daily rates have grown 6.1% per year since 2019.',
+        },
+      ],
+    },
+    technology: {
+      heading: 'Technology & Intelligence',
+      subheading: 'Systems-driven occupancy, margin and insight – built for developers.',
+      footnote: 'Data sources: Nomadica PMS, OTA API streams, Eurostat, AirDNA 2024.',
+      features: [
+        {
+          title: 'Proprietary Pricing AI',
+          body: 'Dynamic rates use 40+ demand signals to boost RevPAR.',
+        },
+        {
+          title: 'Portfolio Demand Model',
+          body: '7-day forward forecast at asset level, vacancy heat-map & alerts.',
+        },
+        {
+          title: 'Real-time Channel Sync',
+          body: 'Sub-120 sec propagation to OTA, GDS & direct website APIs.',
+        },
+        {
+          title: 'Owner Reporting',
+          body: 'Keep an eye on your investments through our bespoke finance dashboards.',
+        },
+        {
+          title: 'Mobile Asset Control',
+          body: 'iOS / Android app for real-time updates.',
+        },
+      ],
+    },
+  },
+
   listProperty: {
     title: "List Your Property",
     subtitle: "Partner with us to maximize your property's potential",

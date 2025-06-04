@@ -12,6 +12,7 @@ import {
   Calendar,
   Banknote,
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 /* ------------------------------------------------------------------ */
 /*  Demo data – replace with CMS / API later                          */
@@ -80,7 +81,9 @@ const studies = [
 /* ------------------------------------------------------------------ */
 /*  Component                                                         */
 /* ------------------------------------------------------------------ */
-const CaseStudies: React.FC = () => (
+const CaseStudies: React.FC = () => {
+  const { t } = useTranslation();
+  return (
   <section
     id="case-studies"
     className="bg-[#815159] py-28 overflow-hidden text-white"
@@ -89,10 +92,10 @@ const CaseStudies: React.FC = () => (
       {/* title */}
       <header className="mb-14">
         <h2 className="text-4xl md:text-5xl font-extrabold tracking-wide">
-          Success Stories
+          {t('developersPage.caseStudies.title')}
         </h2>
         <p className="opacity-80 mt-3 max-w-2xl">
-          Real-world results from developers who partnered with Nomadica
+          {t('developersPage.caseStudies.subtitle')}
         </p>
       </header>
 
@@ -137,35 +140,35 @@ const CaseStudies: React.FC = () => (
                 {/* Problem & Solution */}
                 <div className="space-y-4 text-sm leading-snug">
                   <p>
-                    <span className="font-semibold">Challenge&nbsp;·&nbsp;</span>
+                    <span className="font-semibold">{t('developersPage.caseStudies.challenge')}&nbsp;·&nbsp;</span>
                     {s.problem}
                   </p>
                   <p>
-                    <span className="font-semibold">Solution&nbsp;·&nbsp;</span>
+                    <span className="font-semibold">{t('developersPage.caseStudies.solution')}&nbsp;·&nbsp;</span>
                     {s.solution}
                   </p>
                 </div>
 
                 {/* metrics */}
                 <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm mt-6">
-                  <Metric icon={DollarSign} label="Bought for" value={s.boughtFor} />
-                  <Metric icon={Ruler} label="Total sqm" value={s.sqm.toLocaleString()} />
-                  <Metric icon={Home} label="LT rent" value={s.longRent} />
+                  <Metric icon={DollarSign} label={t('developersPage.caseStudies.metrics.boughtFor')} value={s.boughtFor} />
+                  <Metric icon={Ruler} label={t('developersPage.caseStudies.metrics.sqm')} value={s.sqm.toLocaleString()} />
+                  <Metric icon={Home} label={t('developersPage.caseStudies.metrics.longRent')} value={s.longRent} />
                   <Metric
                     icon={TrendingUp}
-                    label="ST rent"
+                    label={t('developersPage.caseStudies.metrics.shortRent')}
                     value={`${s.shortRent}  (+30 %)`}
                   />
                   <Metric
                     icon={Banknote}
-                    label="Credit Payable"
+                    label={t('developersPage.caseStudies.metrics.credit')}
                     value={s.credit}
                   />
-                  <Metric icon={Percent} label="Yield" value={s.yield} />
-                  <Metric icon={Calendar} label="Hold time" value={s.holdTime} />
+                  <Metric icon={Percent} label={t('developersPage.caseStudies.metrics.yield')} value={s.yield} />
+                  <Metric icon={Calendar} label={t('developersPage.caseStudies.metrics.holdTime')} value={s.holdTime} />
                   <Metric
                     icon={TrendingUp}
-                    label="Appreciation"
+                    label={t('developersPage.caseStudies.metrics.appreciation')}
                     value={s.appreciation}
                   />
                 </div>
@@ -175,7 +178,7 @@ const CaseStudies: React.FC = () => (
                   className="mt-8 w-full border border-white/60 py-3 rounded-lg text-sm font-semibold
                              hover:bg-white hover:text-[#815159] transition-colors duration-300"
                 >
-                  Read Case Study
+                  {t('developersPage.caseStudies.cta')}
                 </button>
               </div>
             </div>
