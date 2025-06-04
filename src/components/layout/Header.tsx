@@ -43,11 +43,12 @@ const Header: React.FC = () => {
   const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${forceSolid ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`;
 
   const navLinks = [
-    { name: t('navigation.home'), path: '/' },
+    // { name: t('navigation.home'), path: '/' },
     { name: t('navigation.services'), path: '/services' },
-    { name: t('navigation.guarantees'), path: '/guarantees' },
-    { name: t('navigation.blog'), path: '/blog' },
+    { name: t('navigation.forDevelopers'), path: '/real-estate-developers' }, 
+    // { name: t('navigation.guarantees'), path: '/guarantees' },
     { name: t('navigation.careers'), path: '/careers' },
+    { name: t('navigation.blog'), path: '/blog' },
   ];
 
   const servicesDropdown = [
@@ -73,42 +74,15 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <div key={link.path} className="relative group">
-              <div
-                className="flex items-center cursor-pointer"
-                onMouseEnter={() => link.hasDropdown && setIsServicesOpen(true)}
-                onMouseLeave={() => link.hasDropdown && setIsServicesOpen(false)}
-              >
-                <Link
-                  to={link.path}
-                  className={`font-medium hover:text-[#815159] transition-colors ${forceSolid ? 'text-[#815159]' : 'text-white'} ${location.pathname === link.path ? 'text-[#815159]' : ''}`}
-                  >
-                  {link.name}
-                </Link>
-                {link.hasDropdown && (
-                  <ChevronDown className={`w-4 h-4 ml-1 ${forceSolid ? 'text-[#815159]' : 'text-white'}`} />
-                )}
-              </div>
-              {link.hasDropdown && isServicesOpen && (
-                <div
-                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg py-2 z-50"
-                  onMouseEnter={() => setIsServicesOpen(true)}
-                  onMouseLeave={() => setIsServicesOpen(false)}
-                >
-                  {servicesDropdown.map((service) => (
-                    <Link
-                      key={service.path}
-                      to={service.path}
-                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100 transition-colors"
-                    >
-                      {service.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+        {navLinks.map((link) => (
+  <Link
+    key={link.path}
+    to={link.path}
+    className={`font-medium hover:text-[#815159] transition-colors ${forceSolid ? 'text-[#815159]' : 'text-white'} ${location.pathname === link.path ? 'text-[#815159]' : ''}`}
+  >
+    {link.name}
+  </Link>
+))}
           <div className="flex items-center space-x-4">
             <Link
               to="/list-your-property"
@@ -154,29 +128,17 @@ const Header: React.FC = () => {
         >
           <div className="container py-4 space-y-6">
             <nav className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <div key={link.path}>
-                  <Link
-                    to={link.path}
-                    className={`font-medium p-2 hover:bg-gray-100 rounded-md block ${location.pathname === link.path ? 'text-[#815159]' : 'text-gray-800'}`}
-                  >
-                    {link.name}
-                  </Link>
-                  {link.hasDropdown && (
-                    <div className="pl-4 mt-2 space-y-2">
-                      {servicesDropdown.map((service) => (
-                        <Link
-                          key={service.path}
-                          to={service.path}
-                          className="block p-2 text-gray-600 hover:bg-gray-100 rounded-md"
-                        >
-                          {service.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+            {navLinks.map((link) => (
+  <Link
+    key={link.path}
+    to={link.path}
+    className={`font-medium p-2 hover:bg-gray-100 rounded-md block ${location.pathname === link.path ? 'text-[#815159]' : 'text-gray-800'}`}
+    onClick={() => setIsOpen(false)} // optional: close mobile menu on click
+  >
+    {link.name}
+  </Link>
+))}
+
               <div className="pt-4 space-y-3">
                 <Link
                   to="/list-your-property"

@@ -4,19 +4,14 @@ export default {
   navigation: {
     home: 'Начало',
     about: 'За Нас',
-    services: 'Услуги',
+    services: 'За Собственици',
     successStories: 'Успешни Истории',  
     guarantees: 'Гаранции',
     blog: 'Блог',
     listProperty: 'Добави Имот',
     ownerPortal: 'Портал',
     careers: 'Кариери',
-    servicesDropdown: {
-      cohosting: 'Ко-хостинг',
-      shortTerm: 'Краткосрочен Наем',
-      longTerm: 'Дългосрочен Наем',
-      propertySetup: 'Подготовка на Имот'
-    }
+    forDevelopers: "За Строители",
   },
 
   hero: {

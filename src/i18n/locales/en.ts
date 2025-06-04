@@ -2,13 +2,14 @@ export default {
   navigation: {
     home: 'Home',
     about: 'About Us',
-    services: 'Services',
+    services: 'For Homewners',
     successStories: 'Success Stories',
     guarantees: 'Guarantees',
     blog: 'Blog',
     listProperty: 'List Property',
     ownerPortal: 'Owner Portal',
     careers: 'Careers',
+    forDevelopers: "For Developers",
     servicesDropdown: {
       cohosting: 'Co-hosting',
       shortTerm: 'Short-term Rental Management',

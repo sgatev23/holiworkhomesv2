@@ -1,96 +1,91 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaPlus, FaHome, FaKey, FaHandsHelping, FaCouch } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
+import {
+  Home,
+  KeyRound,
+  UsersRound,
+  Sofa,
+  Plus,
+  Minus,
+} from 'lucide-react';
 
 const AboutUs: React.FC = () => {
-  // State for which service card (accordion) is open
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  // Translation hook
   const { t } = useTranslation();
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
-  // Toggle function to open/close cards
-  const toggleCard = (index: number) => setOpenIndex(openIndex === index ? null : index);
-
-  // 🔤 Feature cards: Services + translations (features from `about.features`)
+  /* Service cards */
   const features = [
     {
-      title: t('about.features.shortTermTitle'),         // "Short-Term Rental Management"
-      description: t('about.features.shortTermDesc'),    // "We handle listings, pricing..."
-      icon: <FaHome className="text-[#815159] mr-2" />
+      title: t('about.features.shortTermTitle'),
+      desc:  t('about.features.shortTermDesc'),
+      icon:  Home,
     },
     {
-      title: t('about.features.longTermTitle'),          // "Long-Term Rental Management"
-      description: t('about.features.longTermDesc'),
-      icon: <FaKey className="text-[#815159] mr-2" />
+      title: t('about.features.longTermTitle'),
+      desc:  t('about.features.longTermDesc'),
+      icon:  KeyRound,
     },
     {
-      title: t('about.features.coHostTitle'),            // "Co-Hosting Strategy"
-      description: t('about.features.coHostDesc'),
-      icon: <FaHandsHelping className="text-[#815159] mr-2" />
+      title: t('about.features.coHostTitle'),
+      desc:  t('about.features.coHostDesc'),
+      icon:  UsersRound,
     },
     {
-      title: t('about.features.setupTitle'),             // "Property Setup"
-      description: t('about.features.setupDesc'),
-      icon: <FaCouch className="text-[#815159] mr-2" />
+      title: t('about.features.setupTitle'),
+      desc:  t('about.features.setupDesc'),
+      icon:  Sofa,
     },
   ];
 
   return (
-    <section id="about-us" className="py-24" style={{ backgroundColor: '#f3f5f8' }}>
-      <div className="container mx-auto px-4 pt-4 pb-12">
+    <section id="about-us" className="py-24 bg-background">
+      <div className="container px-4 mx-auto max-w-6xl">
 
-        {/* 🏡 Mission Statement */}
+        {/* ── Heading & sub ───────────────────────────── */}
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-center mb-6 leading-snug"
-          style={{ color: '#815159' }}
+          className="text-4xl md:text-5xl font-bold text-center text-primary mb-2"
           initial={{ opacity: 0, y: -10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          {t('about.heading')} {/* "We turn properties into performance." */}
+          {t('about.heading')}
         </motion.h2>
+
+        {/* accent bar */}
+        <div className="mx-auto h-1 w-28 bg-gradient-to-r from-secondary to-secondary-dark rounded mb-6" />
+
         <p className="text-center max-w-2xl mx-auto text-lg text-gray-800 mb-10">
-          {t('about.subheading')} {/* "At Holiwork Homes, we blend..." */}
+          {t('about.subheading')}
         </p>
 
-        {/* 📊 Key Stats section */}
-        <div className="grid md:grid-cols-3 gap-6 text-center mb-12">
-          <div>
-            <p className="text-3xl font-bold text-[#815159]">{t('about.stats.heading1')}</p> {/* "50+" */}
-            <p className="text-gray-700">{t('about.stats.optimized')}</p>                    {/* "Properties Optimized" */}
-          </div>
-          <div>
-            <p className="text-3xl font-bold text-[#815159]">{t('about.stats.heading2')}</p> {/* "10+ Reservation Platforms" */}
-            <p className="text-gray-700">{t('about.stats.platforms')}</p>                    {/* "Incl. Airbnb and Booking.com" */}
-          </div>
-          <div>
-            <p className="text-3xl font-bold text-[#815159]">{t('about.stats.heading3')}</p> {/* "4 Services" */}
-            <p className="text-gray-700">{t('about.stats.tailored')}</p>                     {/* "Tailored for Homeowners" */}
-          </div>
+        {/* ── Key stats ───────────────────────────────── */}
+        <div className="grid md:grid-cols-3 gap-6 text-center mb-14">
+          <Stat n={t('about.stats.heading1')} label={t('about.stats.optimized')} />
+          <Stat n={t('about.stats.heading2')} label={t('about.stats.platforms')} />
+          <Stat n={t('about.stats.heading3')} label={t('about.stats.tailored')} />
         </div>
 
-        {/* 📝 Company Story and Services Split Layout */}
+        {/* ── Story & Services grid ───────────────────── */}
         <div className="grid md:grid-cols-2 gap-10 items-start">
-
-          {/* 📖 Left Column – Company Story (from `about.story`) */}
+          {/* Story */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="text-gray-800 mb-6 text-base leading-relaxed">
-              {t('about.story.paragraph1')} {/* "We don’t just manage properties..." */}
+            <p className="text-gray-800 mb-6 leading-relaxed">
+              {t('about.story.paragraph1')}
             </p>
-            <p className="text-gray-800 text-base leading-relaxed">
-              {t('about.story.paragraph2')} {/* "Our Bulgaria-based team..." */}
+            <p className="text-gray-800 leading-relaxed">
+              {t('about.story.paragraph2')}
             </p>
           </motion.div>
 
-          {/* 🔽 Right Column – Interactive Dropdown Service Cards */}
+          {/* Accordion */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -98,46 +93,56 @@ const AboutUs: React.FC = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            {features.map((item, index) => (
-              <motion.div
-                key={index}
-                style={{ backgroundColor: '#ffffff' }}
-                className="bg-white rounded-md shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-              >
-                <button
-                  onClick={() => toggleCard(index)}
-                  className="w-full flex justify-between items-center px-6 py-4 text-left"
-                >
-                  <div className="flex items-center">
-                    {item.icon}
-                    <h4 className="font-semibold text-[#815159]">{item.title}</h4> {/* Service title */}
-                  </div>
-                  <motion.div
-                    animate={{ rotate: openIndex === index ? 45 : 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <FaPlus className="text-[#815159]" />
-                  </motion.div>
-                </button>
+            {features.map((f, i) => {
+              const Icon = f.icon;
+              const open = openIndex === i;
+              return (
                 <motion.div
-                  initial={false}
-                  animate={{
-                    height: openIndex === index ? 'auto' : 0,
-                    opacity: openIndex === index ? 1 : 0
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden px-6 text-sm text-gray-700"
+                  key={i}
+                  className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow"
                 >
-                  {/* Service description (only visible if open) */}
-                  {openIndex === index && <div className="pb-4">{item.description}</div>}
+                  {/* button */}
+                  <button
+                    onClick={() => toggle(i)}
+                    className="w-full flex justify-between items-center px-6 py-4 text-left"
+                    aria-expanded={open}
+                  >
+                    <div className="flex items-center">
+                      <Icon className="w-5 h-5 text-primary mr-2" />
+                      <h4 className="font-semibold text-primary">{f.title}</h4>
+                    </div>
+                    {open ? (
+                      <Minus className="w-5 h-5 text-primary" />
+                    ) : (
+                      <Plus className="w-5 h-5 text-primary" />
+                    )}
+                  </button>
+
+                  {/* panel */}
+                  <motion.div
+                    initial={false}
+                    animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden px-6"
+                  >
+                    {open && <p className="pb-4 text-sm text-gray-700">{f.desc}</p>}
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            ))}
+              );
+            })}
           </motion.div>
         </div>
       </div>
     </section>
   );
 };
+
+/* ── Small stat helper ─────────────────────────────── */
+const Stat: React.FC<{ n: string; label: string }> = ({ n, label }) => (
+  <div>
+    <p className="text-3xl font-bold text-primary">{n}</p>
+    <p className="text-gray-700">{label}</p>
+  </div>
+);
 
 export default AboutUs;

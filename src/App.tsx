@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import SuccessStoriesPage from './pages/SuccessStoriesPage';
@@ -13,10 +13,12 @@ import NomadicaOperators from './pages/NomadicaOperators';
 import CareersPage from './pages/CareersPage';
 import JobDetailPage from './pages/JobDetailPage';
 import JobApplicationPage from './pages/JobApplicationPage';
+import ForDevelopers from './pages/ForDevelopers';
 
 function App() {
   return (
     <Routes>
+      {/* Existing routes */}
       <Route path="/" element={<HomePage />} />
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/success-stories" element={<SuccessStoriesPage />} />
@@ -25,12 +27,13 @@ function App() {
       <Route path="/blog/:slug" element={<BlogPostPage />} />
       <Route path="/list-your-property" element={<ListPropertyPage />} />
       <Route path="/owner-portal" element={<OwnerPortalPage />} />
-      <Route path="*" element={<NotFoundPage />} />
       <Route path="/nomadica-property-operators" element={<NomadicaOperators />} />
       <Route path="/careers" element={<CareersPage />} />
       <Route path="/careers/:slug" element={<JobDetailPage />} />
       <Route path="/careers/:slug/apply" element={<JobApplicationPage />} />
-      </Routes>
+      <Route path="/real-estate-developers" element={<ForDevelopers />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
 
