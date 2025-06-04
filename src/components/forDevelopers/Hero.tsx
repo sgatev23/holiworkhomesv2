@@ -4,88 +4,61 @@ import { Autoplay, EffectFade } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
-/* ------------------- INSIGHTS ------------------- */
-const SLIDES = [
-    {
-        metric: 'Partnering with Nomadica',
-        headline: 'Earn 40–60 % higher rental income',
-        text: 'Convert inventory into high-yield serviced apartments without sacrificing exit flexibility.',
-        isTitle: true,        
-      },
-  
-{
-    metric: '8–11 %',
-    headline: 'Gross yield on Plovdiv serviced apartments',
-    text: 'versus 4–6 % on conventional 12-month lets (AirDNA & local comps, 2024).',
-  },
-  {
-    metric: '38 % YoY',
-    headline: 'Rise in furnished-stay search volume',
-    text: 'driven by events & nomad blocks of 28+ nights (AirDNA Q1-24).',
-  },
-  {
-    metric: '1.6 %',
-    headline: 'STR penetration of total housing stock',
-    text: 'half the saturation seen in comparable CEE hubs, leaving headroom for new units.',
-  },
-  {
-    metric: '+6.1 % CAGR',
-    headline: 'Average Daily Rate growth 2019-23',
-    text: 'outpacing inflation-adjusted pressure on long-term rents.',
-  },
-  {
-    metric: '42 % YoY',
-    headline: 'Peripheral-district demand jump',
-    text: 'searches for Trakia & H. Smirnenski outpaced CBD by mid-2024.',
-  },
-];
-
-/* ------------------- COMPONENT ------------------ */
-const MarketOverview: React.FC = () => (
-  <section id="market-overview" className="relative h-[520px] md:h-[680px] overflow-hidden">
-    {/* Background video */}
-    <video
-      className="absolute inset-0 w-full h-full object-cover"
-      src="/videos/market-bg.mp4"
-      autoPlay
-      playsInline
-      muted
-      loop
-    />
-
-    {/* Dark glass overlay */}
-    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-
-    {/* Slider */}
-    <Swiper
-      modules={[Autoplay, EffectFade]}
-      effect="fade"
-      fadeEffect={{ crossFade: true }}
-      autoplay={{ delay: 4000, disableOnInteraction: false }}
-      loop
-      className="relative h-full"
-    >
-      {SLIDES.map((s) => (
-        <SwiperSlide key={s.metric}>
-          <SlideContent {...s} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
-
-    {/* Sources */}
-    <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-gray-300">
-      Sources: Eurostat 2024 • AirDNA Plovdiv (2024-05) • Bulgarian NSI • Knight Frank BG H1-24
-    </p>
-  </section>
-);
-
-/* ----------------- Slide Content ---------------- */
 interface Slide {
   metric: string;
   headline: string;
   text: string;
+  isTitle?: boolean;
 }
+
+/* ------------------- COMPONENT ------------------ */
+const Hero: React.FC = () => {
+  const { t } = useTranslation();
+  const slides = t('developersPage.hero.slides', { returnObjects: true }) as Slide[];
+  const sources = t('developersPage.hero.sources');
+
+  return (
+    <section id="market-overview" className="relative h-[520px] md:h-[680px] overflow-hidden">
+      {/* Background video */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/videos/market-bg.mp4"
+        autoPlay
+        playsInline
+        muted
+        loop
+      />
+
+    {/* Dark glass overlay */}
+    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+
+      {/* Slider */}
+      <Swiper
+        modules={[Autoplay, EffectFade]}
+        effect="fade"
+        fadeEffect={{ crossFade: true }}
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
+        loop
+        className="relative h-full"
+      >
+        {slides.map((s, i) => (
+          <SwiperSlide key={i}>
+            <SlideContent {...s} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      {/* Sources */}
+      <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs text-gray-300">
+        {sources}
+      </p>
+    </section>
+  );
+};
+
+/* ----------------- Slide Content ---------------- */
 
 const SlideContent: React.FC<Slide> = ({ metric, headline, text }) => (
   <motion.div
@@ -124,4 +97,4 @@ const SlideContent: React.FC<Slide> = ({ metric, headline, text }) => (
   </motion.div>
 );
 
-export default MarketOverview;
+export default Hero;

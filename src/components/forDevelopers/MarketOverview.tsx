@@ -6,51 +6,16 @@ import {
   Home,
   Activity,
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 /* -------------------------------------------------- */
 /*   DATA                                             */
 /* -------------------------------------------------- */
 const SEGMENTS = [
-  {
-    id: 0,
-    title: 'Higher Returns',
-    body: 'Short-term rentals earn 8–11% net yield vs 4–6% on long-term leases (AirDNA 2024).',
-    icon: TrendingUp,
-    color: 'fill-primary',
-    start: 0,
-    end: 90,
-    align: 'right',
-  },
-  {
-    id: 1,
-    title: 'Rising Suburb Demand',
-    body: 'Searches for rentals in outer districts are up 42% year-over-year.',
-    icon: MapPin,
-    color: 'fill-secondary',
-    start: 90,
-    end: 180,
-    align: 'right',
-  },
-  {
-    id: 2,
-    title: 'Limited Supply',
-    body: 'Short-term rentals make up just 1.6% of homes—less than half of peer cities (3.4%).',
-    icon: Home,
-    color: 'fill-secondary-dark',
-    start: 180,
-    end: 270,
-    align: 'left',
-  },
-  {
-    id: 3,
-    title: 'Strong Price Growth',
-    body: 'Average daily rates have grown 6.1% per year since 2019.',
-    icon: Activity,
-    color: 'fill-primary-dark',
-    start: 270,
-    end: 360,
-    align: 'left',
-  },
+  { id: 0, icon: TrendingUp, color: 'fill-primary', start: 0, end: 90, align: 'right' },
+  { id: 1, icon: MapPin, color: 'fill-secondary', start: 90, end: 180, align: 'right' },
+  { id: 2, icon: Home, color: 'fill-secondary-dark', start: 180, end: 270, align: 'left' },
+  { id: 3, icon: Activity, color: 'fill-primary-dark', start: 270, end: 360, align: 'left' },
 ];
 
 /* -------------------------------------------------- */
@@ -76,24 +41,28 @@ const arcPath = (r1: number, r2: number, a0: number, a1: number) => {
 /* -------------------------------------------------- */
 /*   Component                                        */
 /* -------------------------------------------------- */
-const MarketOverview: React.FC = () => (
-  <section id="market-overview" className="py-28 bg-background">
-    <div className="container max-w-6xl mx-auto px-4">
+const MarketOverview: React.FC = () => {
+  const { t } = useTranslation();
+  return (
+    <section id="market-overview" className="py-28 bg-background">
+      <div className="container max-w-6xl mx-auto px-4">
 
       {/* heading */}
-      <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-2">
-        Bulgarian Rental Market — Key Signals
-      </h2>
-      <p className="text-lg text-gray-700 text-center max-w-2xl mx-auto mb-24">
-        Four hard metrics every developer should track.
-      </p>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-primary text-center mb-2">
+          {t('developersPage.marketOverview.heading')}
+        </h2>
+        <p className="text-lg text-gray-700 text-center max-w-2xl mx-auto mb-24">
+          {t('developersPage.marketOverview.subheading')}
+        </p>
 
       {/* layout grid */}
       <div className="grid md:grid-cols-[1fr_auto_1fr] gap-10 items-center">
 
         {/* ---------- left call-outs ---------- */}
         <div className="space-y-16 md:text-right">
-          {SEGMENTS.filter(s => s.align === 'left').map((s, i) => (
+          {SEGMENTS.filter(s => s.align === 'left').map((s, i) => {
+            const text = t(`developersPage.marketOverview.segments.${s.id}`, { returnObjects: true }) as any;
+            return (
             <motion.div
               key={s.id}
               initial={{ opacity: 0, x: -30 }}
@@ -101,11 +70,11 @@ const MarketOverview: React.FC = () => (
               viewport={{ once: true }}
               transition={{ duration: .45, delay: i * .1 }}
             >
-              <h3 className="font-semibold text-primary">{s.title}</h3>
+              <h3 className="font-semibold text-primary">{text.title}</h3>
               <div className="w-14 h-[2px] bg-primary/40 mx-auto md:ml-auto md:mr-0 mb-2" />
-              <p className="text-sm text-gray-800 leading-relaxed">{s.body}</p>
+              <p className="text-sm text-gray-800 leading-relaxed">{text.body}</p>
             </motion.div>
-          ))}
+          );})}
         </div>
 
         {/* ---------- donut ---------- */}
@@ -141,7 +110,9 @@ const MarketOverview: React.FC = () => (
 
         {/* ---------- right call-outs ---------- */}
         <div className="space-y-16">
-          {SEGMENTS.filter(s => s.align === 'right').map((s, i) => (
+          {SEGMENTS.filter(s => s.align === 'right').map((s, i) => {
+            const text = t(`developersPage.marketOverview.segments.${s.id}`, { returnObjects: true }) as any;
+            return (
             <motion.div
               key={s.id}
               initial={{ opacity: 0, x: 30 }}
@@ -149,20 +120,21 @@ const MarketOverview: React.FC = () => (
               viewport={{ once: true }}
               transition={{ duration: .45, delay: i * .1 }}
             >
-              <h3 className="font-semibold text-primary">{s.title}</h3>
+              <h3 className="font-semibold text-primary">{text.title}</h3>
               <div className="w-14 h-[2px] bg-primary/40 mb-2" />
-              <p className="text-sm text-gray-800 leading-relaxed">{s.body}</p>
+              <p className="text-sm text-gray-800 leading-relaxed">{text.body}</p>
             </motion.div>
-          ))}
+          );})}
         </div>
       </div>
 
-      <p className="text-xs text-gray-500 text-center mt-24">
-        Sources: Eurostat 2024 • AirDNA Plovdiv 05/24 • BG NSI • Knight Frank BG Review H1 2024
-      </p>
-    </div>
-  </section>
-);
+        <p className="text-xs text-gray-500 text-center mt-24">
+          {t('developersPage.marketOverview.footnote')}
+        </p>
+      </div>
+    </section>
+  );
+};
 
 /* tiny centre chart icon */
 const Bar = () => (
