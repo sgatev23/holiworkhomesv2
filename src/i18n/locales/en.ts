@@ -38,7 +38,7 @@ export default {
         badge1: 'Design • Furnish • Maintain',
         badge2: 'Sale-ready',
         headline: 'Not ready to sell yet?',
-        sub1: 'Earn from yoy appreciation as well as from monthly dividends.',
+        sub1: 'Earn from appreciation as well as from monthly dividends.',
         sub2: 'Increased visibility, close deals faster.',
       },
       {
