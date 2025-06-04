@@ -68,7 +68,7 @@ const CohostingHero: React.FC = () => (
 
         <p className="text-gray-800 mb-8 leading-relaxed">
           You keep your preferred cleaners and still block dates for friends or family.
-          We take just <strong>15 % of realised revenue</strong> — no fixed costs, no lock-in.
+          We take just <strong>12 % of net revenue</strong> — no fixed costs, no lock-in.
         </p>
 
         <Link to="/list-your-property" className="btn btn-primary text-lg">

@@ -26,7 +26,7 @@ export const plovdivZones = {
     "Peshtersko shose": "suburbs"
   };
   
-export const sofiaZones = {
+  export const sofiaZones = {
     // Center
     "Oborishte": "center",
     "Sredets": "center",
@@ -35,7 +35,7 @@ export const sofiaZones = {
     "Lower Lozenets": "center",
     "Zona B-5": "center",
     "Yavorov": "center",
-
+  
     // Wider Center
     "Upper Lozenets": "wider",
     "Krasno Selo": "wider",

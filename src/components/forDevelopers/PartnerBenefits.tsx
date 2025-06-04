@@ -3,7 +3,7 @@ import { TrendingUp, Shield, Users, BarChart3 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 /* ------------------------------------------------------------------ */
-/*  Data                                                              */
+/*  Data – each tab now includes an image URL + alt text              */
 /* ------------------------------------------------------------------ */
 const TABS = [
   {
@@ -11,14 +11,26 @@ const TABS = [
     label: 'Yield Uplift',
     icon: TrendingUp,
     headline: '40–60 % Higher Net Yield',
-    body: 'Dynamic, multi-channel revenue management consistently out-performs conventional leases by three to five percentage points of NOI.',
+    body: 'Dynamic, multi-channel revenue management out-performs conventional leases by three to five percentage points of NOI.',
+    image: 'https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//real-estate-business-growth-graph-arrow-graph-with-house-graph-3d-illustration.webp',
+    alt: 'Chart comparing short-term vs long-term rental net yields',
+    color: 'fill-primary',
+    start: 0,
+    end: 90,
+    align: 'right',
   },
   {
     key: 'capex',
     label: 'CapEx Preservation',
     icon: Shield,
     headline: 'Finishes Stay Sale-Ready',
-    body: 'Weekly inspections, hotel-grade housekeeping and on-call maintenance extend refurbishment cycles and protect asset value.',
+    body: 'Weekly inspections, hotel-grade housekeeping, and on-call maintenance extend refurbishment cycles and protect asset value.',
+    image: 'https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Asset-Allocation-Featured.jpg',
+    alt: 'Maintenance worker tightening fixtures – representing CapEx preservation',
+    color: 'fill-secondary',
+    start: 90,
+    end: 180,
+    align: 'right',
   },
   {
     key: 'liquidity',
@@ -26,13 +38,25 @@ const TABS = [
     icon: Users,
     headline: 'Exit on Your Timeline',
     body: 'Block dates for viewings or withdraw entire units with 30 days’ notice — no 12-month tenancy lock-ins.',
+    image: 'https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//AP18.jpg',
+    alt: 'Handshake over property keys – symbolising liquidity and flexible exits',
+    color: 'fill-secondary-dark',
+    start: 180,
+    end: 270,
+    align: 'left',
   },
   {
     key: 'data',
     label: 'Market Timing',
     icon: BarChart3,
     headline: 'Real-Time Performance Dashboards',
-    body: 'ADR, RevPAR and occupancy data inform the exact month to divest for maximum IRR.',
+    body: 'ADR, RevPAR, and occupancy data inform the exact month to divest for maximum IRR.',
+    image: 'https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    alt: 'Dashboard displaying real-time rental KPIs',
+    color: 'fill-primary-dark',
+    start: 270,
+    end: 360,
+    align: 'left',
   },
 ];
 
@@ -92,11 +116,13 @@ const PartnerBenefits: React.FC = () => {
             <p className="text-gray-800 leading-relaxed">{current.body}</p>
           </div>
 
-          {/* right: placeholder for chart / image */}
+          {/* right: chart / image */}
           <div className="flex-1 flex items-center justify-center">
-            <div className="w-full h-72 lg:h-80 bg-gray-200/60 border border-dashed border-gray-300 rounded-2xl flex items-center justify-center text-gray-500">
-              Add chart / image here
-            </div>
+            <img
+              src={current.image}
+              alt={current.alt}
+              className="w-full h-72 lg:h-80 object-cover rounded-2xl shadow-lg"
+            />
           </div>
         </motion.div>
       </div>

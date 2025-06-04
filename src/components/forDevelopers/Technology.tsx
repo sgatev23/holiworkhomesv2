@@ -15,7 +15,7 @@ const FEATURES = [
   {
     id: 1,
     title: 'Proprietary Pricing AI',
-    body: 'Dynamic rates use 40+ demand signals to boost RevPAR ≈ 11 %.',
+    body: 'Dynamic rates use 40+ demand signals to boost RevPAR.',
     icon: Cpu,
   },
   {
@@ -32,14 +32,14 @@ const FEATURES = [
   },
   {
     id: 4,
-    title: 'Owner Reporting API',
-    body: 'JSON & webhook endpoints for bespoke finance dashboards.',
+    title: 'Owner Reporting',
+    body: 'Keep an eye on your investments through our bespoke finance dashboards.',
     icon: Activity,
   },
   {
     id: 5,
     title: 'Mobile Asset Control',
-    body: 'iOS / Android app for live pricing tweaks & task dispatch.',
+    body: 'iOS / Android app for real-time updates.',
     icon: Smartphone,
   },
 ];
@@ -85,9 +85,9 @@ const TechnologySuite: React.FC = () => (
 
           {/* ---------- floating KPI cards ---------- */}
           {[
-            { top: '-26px', left: '6%',  kpi: '91 %', label: 'Avg occupancy' },
-            { top: '18%',  right: '-40px', kpi: '4.7 ★', label: 'G. review score' },
-            { bottom: '22%', left: '-36px', kpi: '₱ 364', label: 'ADR uplift' },
+            { top: '-26px', left: '6%',  kpi: '91%', label: 'Avg occupancy' },
+            { top: '18%',  right: '-40px', kpi: '4.85 ★', label: 'Airbnb score' },
+            { bottom: '22%', left: '-36px', kpi: '30%+ ', label: 'revenue increase' },
           ].map((c, i) => (
             <motion.div
               key={i}

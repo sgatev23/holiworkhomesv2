@@ -11,7 +11,7 @@ const SLIDES = [
         metric: 'Partnering with Nomadica',
         headline: 'Earn 40–60 % higher rental income',
         text: 'Convert inventory into high-yield serviced apartments without sacrificing exit flexibility.',
-        isTitle: true,           // 👈 new flag
+        isTitle: true,        
       },
   
 {
