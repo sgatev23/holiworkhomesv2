@@ -14,23 +14,23 @@ const LongManagementHero: React.FC = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
-          Fixed monthly income — zero vacancy risk
+          Гарантиран месечен наем – без риск от празни периоди
         </h2>
 
         <p className="text-gray-800 mb-4 leading-relaxed">
-          Prefer predictability? Sign a 12- or 24-month agreement with Nomadica and
-          receive the same rent on the same day each month, whether your place is
-          booked or not. We handle tenant screening, contracts and maintenance.
+          Търсите предвидимост? Сключете 12- или 24-месечен договор с Nomadica и
+          получавайте един и същ наем на една и съща дата, независимо дали имотът
+          е зает. Ние се грижим за подбора на наематели, договорите и поддръжката.
         </p>
 
         <p className="text-gray-800 mb-8 leading-relaxed">
-          Quarterly inspections keep your property in top shape, and when the term
-          ends you decide: renew with us or switch back to personal use —
-          <strong> no penalties, no fuss.</strong>
+          Тримесечните инспекции поддържат имота ви в отлично състояние, а след
+          края на срока решавате сами: продължавате с нас или се връщате към лично
+          ползване – <strong>без глоби и усложнения.</strong>
         </p>
 
         <Link to="/list-your-property" className="btn btn-primary text-lg">
-          Secure My Rent
+          Гарантирай наема
         </Link>
       </motion.div>
 
@@ -50,13 +50,13 @@ const LongManagementHero: React.FC = () => (
           transition={{ duration: 0.6 }}
           className="hidden md:block absolute right-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
         >
-          <h4 className="font-semibold mb-3">Included Services</h4>
+          <h4 className="font-semibold mb-3">Включени услуги</h4>
           <ul className="text-sm text-gray-700 leading-6">
-            <li>Tenant vetting & contract</li>
-            <li>Rent collection</li>
-            <li>24 / 7 support line</li>
-            <li>Maintenance & repairs</li>
-            <li>Quarterly inspection</li>
+            <li>Проверка на наемателите и договор</li>
+            <li>Събиране на наеми</li>
+            <li>24/7 линия за поддръжка</li>
+            <li>Поддръжка и ремонти</li>
+            <li>Тримесечен оглед</li>
           </ul>
         </motion.div>
 
@@ -69,11 +69,11 @@ const LongManagementHero: React.FC = () => (
           className="hidden md:block absolute left-6 bottom-6
                      bg-gradient-to-br from-primary to-primary-dark text-white rounded-xl shadow-xl w-64 p-6"
         >
-          <h4 className="font-bold text-sm uppercase mb-4">Key Numbers</h4>
-          <p className="text-lg font-extrabold">€0 vacancy loss</p>
-          <p className="text-sm opacity-80 mb-4">Guaranteed rent</p>
-          <p className="text-lg font-extrabold">98 % renewal rate</p>
-          <p className="text-xs opacity-80">over the past 3 yrs</p>
+          <h4 className="font-bold text-sm uppercase mb-4">Ключови показатели</h4>
+          <p className="text-lg font-extrabold">0 € загуби от празни периоди</p>
+          <p className="text-sm opacity-80 mb-4">гарантиран наем</p>
+          <p className="text-lg font-extrabold">98 % подновявания</p>
+          <p className="text-xs opacity-80">през последните 3 г.</p>
         </motion.div>
       </div>
     </div>

@@ -14,23 +14,23 @@ const PropertySetupHero: React.FC = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
-          From empty shell to guest-ready in two weeks
+          От празен апартамент до готов за гости за две седмици
         </h2>
 
         <p className="text-gray-800 mb-4 leading-relaxed">
-          No time for Ikea runs or contractor headaches? Our design team furnishes,
-          styles and photographs your property end-to-end. You approve the mood
-          board, we handle the rest.
+          Нямате време за обиколки по магазини и майстори? Нашият екип обзавежда,
+          декорира и снима имота ви от край до край. Вие одобрявате концепцията,
+          ние вършим останалото.
         </p>
 
         <p className="text-gray-800 mb-8 leading-relaxed">
-          Typical budget is <strong>€260 / m² all-in</strong>. Better yet, owners see
-          a <strong>22 % higher ADR</strong> when listings launch with professional
-          styling and photography.
+          Обичайният бюджет е около <strong>€260/м²</strong>. Собствениците постигат
+          средно <strong>22 % по-висока цена на нощ</strong>, когато имотът стартира с
+          професионална визия и снимки.
         </p>
 
         <Link to="/list-your-property" className="btn btn-primary text-lg">
-          Launch My Listing
+          Пуснете обявата
         </Link>
       </motion.div>
 
@@ -50,13 +50,13 @@ const PropertySetupHero: React.FC = () => (
           transition={{ duration: 0.6 }}
           className="hidden md:block absolute left-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
         >
-          <h4 className="font-semibold mb-3">How it works</h4>
+          <h4 className="font-semibold mb-3">Как работи</h4>
           <ol className="list-decimal list-inside text-sm text-gray-700 leading-6">
-            <li>Design brief</li>
-            <li>Budget & sign-off</li>
-            <li>Procurement</li>
-            <li>Install & style</li>
-            <li>Pro photos + listing</li>
+            <li>Концепция</li>
+            <li>Бюджет и одобрение</li>
+            <li>Закупуване</li>
+            <li>Монтаж и декорация</li>
+            <li>Професионални снимки и обява</li>
           </ol>
         </motion.div>
 
@@ -69,11 +69,11 @@ const PropertySetupHero: React.FC = () => (
           className="hidden md:block absolute left-6 bottom-6
                      bg-gradient-to-br from-primary to-primary-dark text-white rounded-xl shadow-xl w-64 p-6"
         >
-          <h4 className="font-bold text-sm uppercase mb-4">Typical results</h4>
-          <p className="text-lg font-extrabold">€260 / m² capex</p>
-          <p className="text-sm opacity-80 mb-4">furnish & install</p>
-          <p className="text-lg font-extrabold">+22 % ADR</p>
-          <p className="text-xs opacity-80">vs. self-furnished units</p>
+          <h4 className="font-bold text-sm uppercase mb-4">Типични резултати</h4>
+          <p className="text-lg font-extrabold">€260 / м² инвестиция</p>
+          <p className="text-sm opacity-80 mb-4">обзавеждане и монтаж</p>
+          <p className="text-lg font-extrabold">+22 % ADR</p>
+          <p className="text-xs opacity-80">спрямо самообзаведени имоти</p>
         </motion.div>
       </div>
     </div>
