@@ -258,6 +258,18 @@ export default {
   },
 
   servicesPage: {
+    hero: {
+      slides: [
+        {
+          line: 'Professional Management for Homeowners',
+          sub: 'Choose the revenue model that fits your strategy — we take care of everything else.',
+        },
+        { line: 'Cohosting', sub: 'Keep the upside — we run the ops' },
+        { line: 'Short-Term Lets', sub: 'Max ADR & occupancy via 24/7 revenue-ops' },
+        { line: 'Mid- / Long-Term', sub: 'Corporate blocks, 30+ nights, zero vacancy' },
+        { line: 'Property Setup', sub: 'Design, furnish & list in ≤14 days' },
+      ],
+    },
     title: "Our Services",
     subtitle: "Choose the right management plan for your property.",
     chooseTitle: "Services Tailored to Your Needs",

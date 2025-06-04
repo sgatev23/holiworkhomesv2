@@ -3,18 +3,18 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import { useTranslation } from 'react-i18next';
 
 /* Lines that rotate under the subtitle */
-const HERO_SLIDES = [
-    { line: 'Professional Management for Homeowners',         sub: 'Choose the revenue model that fits your strategy — we take care of everything else.' },
-  { line: 'Cohosting',         sub: 'Keep the upside — we run the ops' },
-  { line: 'Short-Term Lets',   sub: 'Max ADR & occupancy via 24/7 revenue-ops' },
-  { line: 'Mid- / Long-Term',  sub: 'Corporate blocks, 30 + nights, zero vacancy' },
-  { line: 'Property Setup',    sub: 'Design, furnish & list in ≤14 days' },
-];
 
-const ServicesHero: React.FC = () => (
-  <section className="relative h-[520px] md:h-[640px] overflow-hidden">
+const ServicesHero: React.FC = () => {
+  const { t } = useTranslation();
+  const slides = t('servicesPage.hero.slides', {
+    returnObjects: true,
+  }) as { line: string; sub: string }[];
+
+  return (
+    <section className="relative h-[520px] md:h-[640px] overflow-hidden">
 
     {/* 🔹 background video (replace src) */}
     <video
@@ -39,7 +39,7 @@ const ServicesHero: React.FC = () => (
       loop
       className="relative h-full"
     >
-      {HERO_SLIDES.map(({ line, sub }) => (
+      {slides.map(({ line, sub }) => (
         <SwiperSlide key={line}>
           <Slide line={line} sub={sub} />
         </SwiperSlide>
@@ -49,7 +49,8 @@ const ServicesHero: React.FC = () => (
     {/* keyframes for progress bar */}
     <style>{`@keyframes grow { from{transform:scaleX(0)} to{transform:scaleX(1)} }`}</style>
   </section>
-);
+  );
+};
 
 const Slide: React.FC<{ line: string; sub: string }> = ({ line, sub }) => (
   <div className="flex items-center justify-center h-full">
