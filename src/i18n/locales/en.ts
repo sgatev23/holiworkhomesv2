@@ -673,8 +673,8 @@ export default {
     hero: {
       slides: [
         {
-          metric: 'Partnering with Nomadica',
-          headline: 'Earn 40–60 % higher rental income',
+          metric: 'Partner with Nomadica',
+          headline: 'And earn 40–60 % higher rental income',
           text: 'Convert inventory into high-yield serviced apartments without sacrificing exit flexibility.',
           isTitle: true,
         },
@@ -707,32 +707,35 @@ export default {
       sources: 'Sources: Eurostat 2024 • AirDNA Plovdiv (2024-05) • Bulgarian NSI • Knight Frank BG H1-24',
     },
     partnerBenefits: {
-      heading: 'The Nomadica Developer Advantage',
-      subheading: 'Choose a focus area to see exactly how we move the needle.',
+      heading: 'Are you a real estate developer or property investor?',
+      subheading: 'Unlock higher returns by partnering with Nomadica. Turn vacant units into turnkey hospitality assets.',
       tabs: {
         yield: {
-          label: 'Yield Uplift',
-          headline: '40–60 % Higher Net Yield',
-          body: 'Dynamic, multi-channel revenue management out-performs conventional leases by three to five percentage points of NOI.',
-          alt: 'Chart comparing short-term vs long-term rental net yields',
+          label: 'Leverage Unsold/Vacant Units',
+          headline: 'Unsold or Vacant Units → Immediate Cash-Flow with 80%+ Occupancy',
+          body: 'Nomadica converts non-performing apartments into active revenue-generating units from day one. Instead of leaving inventory idle or discounting prices to sell, you can earn monthly income at 80%+ average occupancy through our dynamic pricing system across Airbnb, Booking.com, and five exclusive channels. This model consistently lifts net operating income by 40–60% over traditional long-term leases. Your balance sheet strengthens, and you maintain full ownership flexibility.',
+          alt: 'Chart showing rental yield differences between short- and long-term models',
         },
+        
         capex: {
-          label: 'CapEx Preservation',
-          headline: 'Finishes Stay Sale-Ready',
-          body: 'Weekly inspections, hotel-grade housekeeping, and on-call maintenance extend refurbishment cycles and protect asset value.',
-          alt: 'Maintenance worker tightening fixtures – representing CapEx preservation',
+          label: 'Property Portfolio Protection',
+          headline: 'Asset Preservation → Weekly Cleaning & Maintenance After Every Stay',
+          body: 'Each stay is followed by meticulous housekeeping, property inspections, and on-call maintenance. Our short-stay guests use the property far less intensively than long-term tenants, while our hotel-grade systems ensure furnishings and finishes remain in excellent resale condition. This proactive approach extends renovation cycles and protects your capital investment — keeping your unit sale-ready and reducing long-term wear significantly.',
+          alt: 'Maintenance worker inspecting kitchen fixtures to preserve CapEx value',
         },
+        
         liquidity: {
-          label: 'Full Liquidity',
-          headline: 'Exit on Your Timeline',
-          body: 'Block dates for viewings or withdraw entire units with 30 days’ notice — no 12-month tenancy lock-ins.',
-          alt: 'Handshake over property keys – symbolising liquidity and flexible exits',
+          label: 'Sell or Exit Anytime',
+          headline: 'Need Liquidity? → Withdraw or Block Units Anytime with 30 Days’ Notice',
+          body: 'With Nomadica, you’re never locked into rigid 12- or 24-month leases. We offer full calendar control: pause listings for viewings, reclaim units to sell, or remove inventory with just 30 days’ notice. This unmatched liquidity means you can monetize your units today without compromising your ability to exit, pivot strategy, or prepare for future bulk sales. You stay agile in any market.',
+          alt: 'Handshake over apartment keys symbolizing flexible exit terms',
         },
+        
         data: {
-          label: 'Market Timing',
-          headline: 'Real-Time Performance Dashboards',
-          body: 'ADR, RevPAR, and occupancy data inform the exact month to divest for maximum IRR.',
-          alt: 'Dashboard displaying real-time rental KPIs',
+          label: 'Monitor Performance in Real-Time',
+          headline: 'Need Transparency? → Live Dashboard + Monthly P&L per Unit',
+          body: 'Our digital dashboard offers a full performance view of every unit in real time. Track daily bookings, occupancy rates, revenue per unit, and export detailed P&Ls on demand. Whether you manage 3 or 30 units, you always know what’s happening. These insights also help time your resale for optimal returns, based on real-world data—not guesswork. Total transparency, always.',
+          alt: 'Laptop screen with live performance metrics for short-term rentals',
         },
       },
     },
@@ -767,8 +770,8 @@ export default {
           body: 'Searches for rentals in outer districts are up 42% year-over-year.',
         },
         {
-          title: 'Limited Supply',
-          body: 'Short-term rentals make up just 1.6% of homes—less than half of peer cities (3.4%).',
+          title: 'STR market growing ',
+          body: '10.7 % CAGR globally; Bulgaria user penetration already 29.5 % and rising.',
         },
         {
           title: 'Strong Price Growth',
@@ -776,6 +779,7 @@ export default {
         },
       ],
     },
+    
     technology: {
       heading: 'Technology & Intelligence',
       subheading: 'Systems-driven occupancy, margin and insight – built for developers.',
