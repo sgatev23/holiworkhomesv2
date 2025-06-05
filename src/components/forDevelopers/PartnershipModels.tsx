@@ -16,53 +16,63 @@ const PartnershipModels: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="bg-white border border-[#f9cf94] p-10 rounded-3xl shadow-xl hover:shadow-2xl transition duration-300">
-            <h3 className="text-2xl font-bold mb-2 text-[#815159]">1. % от Приходите (Revenue Share)</h3>
-            <p className="italic text-gray-600 mb-4">Без авансови такси. Печелим само ако печелите и вие.</p>
-            <p className="mb-4">
-              Подходящ за инвеститори, които искат минимален риск и дългосрочен партньор. Управляваме всичко – от интериор до гости, срещу процент от месечния приход.
-            </p>
-            <p className="font-semibold mb-3 text-[#815159]">Как работи:</p>
-            <ul className="list-disc list-inside space-y-2 mb-4 text-sm text-gray-700">
-              <li>Минимална заетост след 3 месеца или намаляваме таксата</li>
-              <li>Резултатно ценообразуване, базирано на ефективност</li>
-              <li>Ние поемаме разходите по старт, маркетинг и обяви</li>
-            </ul>
-            <p className="mb-2 text-sm"><strong>Препоръчително за:</strong> 3+ имота или нови комплекси</p>
-            <p className="mb-2 text-sm"><strong>Процент:</strong> 20–30% от нетния приход</p>
-            <p className="mb-2 text-sm"><strong>Мин. период:</strong> 12 месеца</p>
-            <p className="text-sm"><strong>Включва:</strong> Интериор, заснемане, обяви, поддръжка, месечни отчети</p>
-            <button className="mt-6 w-full bg-[#815159] text-white font-semibold py-3 rounded-full hover:opacity-90 transition">
-             Свържете се за % Модел
-            </button>
+          {/* Box 1 */}
+          <div className="bg-white p-10 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-200">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-[#815159]">1. % от Приходите (Revenue Share)</h3>
+              <p className="italic text-gray-500">Без авансови такси. Печелим само ако печелите и вие.</p>
+              <p>Подходящ за инвеститори, които искат минимален риск и дългосрочен партньор. Управляваме всичко – от интериор до гости, срещу процент от месечния приход.</p>
+              <div className="border-t pt-4">
+                <h4 className="font-medium text-[#815159]">Как работи:</h4>
+                <ul className="list-disc list-inside space-y-1 text-sm text-gray-700 mt-2">
+                  <li>Минимална заетост след 3 месеца или намаляваме таксата</li>
+                  <li>Резултатно ценообразуване, базирано на ефективност</li>
+                  <li>Ние поемаме разходите по старт, маркетинг и обяви</li>
+                </ul>
+              </div>
+              <div className="text-sm space-y-1 text-gray-700">
+                <p><strong>Препоръчително за:</strong> 3+ имота или нови комплекси</p>
+                <p><strong>Процент:</strong> По Договаряне </p>
+                <p><strong>Мин. период:</strong> 12 месеца</p>
+                <p><strong>Включва:</strong> Интериор, заснемане, обяви, поддръжка, месечни отчети</p>
+              </div>
+              <button className="mt-6 w-full bg-[#815159] text-white font-medium py-2.5 px-4 rounded-md hover:opacity-90 transition">
+                Свържете се за % Модел
+              </button>
+            </div>
           </div>
 
-          <div className="bg-white border border-[#f9cf94] p-10 rounded-3xl shadow-xl hover:shadow-2xl transition duration-300">
-            <h3 className="text-2xl font-bold mb-2 text-[#815159]">2. Фиксирана Такса (Fixed Fee)</h3>
-            <p className="italic text-gray-600 mb-4">Предвидимост. Прозрачност. Пълен контрол.</p>
-            <p className="mb-4">
-              Подходящ за инвеститори, които искат месечна услуга без промени според сезона. Получавате цялата услуга срещу фиксирана такса.
-            </p>
-            <p className="font-semibold mb-3 text-[#815159]">Как работи:</p>
-            <ul className="list-disc list-inside space-y-2 mb-4 text-sm text-gray-700">
-              <li>Без скрити такси и сезонни колебания</li>
-              <li>Всички основни услуги + дашборд за отчетност</li>
-              <li>Опции за допълнителен дизайн и мебелировка</li>
-            </ul>
-            <p className="mb-2 text-sm"><strong>Подходящ за:</strong> Стабилизирани сгради или препродажби</p>
-            <p className="mb-2 text-sm"><strong>Такса:</strong> 300–500 лв/месец на имот</p>
-            <p className="mb-2 text-sm"><strong>Мин. период:</strong> 6 месеца</p>
-            <p className="text-sm"><strong>Включва:</strong> Управление, гости, поддръжка, почистване, отчети</p>
-            <button className="mt-6 w-full bg-[#815159] text-white font-semibold py-3 rounded-full hover:opacity-90 transition">
-              Получете Индивидуална Оферта
-            </button>
+          {/* Box 2 */}
+          <div className="bg-white p-10 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 border border-gray-200">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-[#815159]">2. Фиксирана Такса (Fixed Fee)</h3>
+              <p className="italic text-gray-500">Предвидимост. Прозрачност. Пълен контрол.</p>
+              <p>Подходящ за инвеститори, които искат месечна услуга без промени според сезона. Получавате цялата услуга срещу фиксирана такса.</p>
+              <div className="border-t pt-4">
+                <h4 className="font-medium text-[#815159]">Как работи:</h4>
+                <ul className="list-disc list-inside space-y-1 text-sm text-gray-700 mt-2">
+                  <li>Без скрити такси и сезонни колебания</li>
+                  <li>Всички основни услуги + дашборд за отчетност</li>
+                  <li>Опции за допълнителен дизайн и мебелировка</li>
+                </ul>
+              </div>
+              <div className="text-sm space-y-1 text-gray-700">
+                <p><strong>Подходящ за:</strong> Стабилизирани сгради или препродажби</p>
+                <p><strong>Такса:</strong> 300–500 лв/месец на имот</p>
+                <p><strong>Мин. период:</strong> 6 месеца</p>
+                <p><strong>Включва:</strong> Управление, гости, поддръжка, почистване, отчети</p>
+              </div>
+              <button className="mt-6 w-full bg-[#815159] text-white font-medium py-2.5 px-4 rounded-md hover:opacity-90 transition">
+                Получете Индивидуална Оферта
+              </button>
+            </div>
           </div>
         </div>
 
-        <div className="bg-white border border-[#f9cf94] p-10 rounded-3xl shadow-xl">
-          <h3 className="text-2xl font-bold mb-6 text-center text-[#815159]">Какво Гарантираме</h3>
+        <div className="bg-white p-10 rounded-2xl shadow-xl border border-gray-200">
+          <h3 className="text-2xl font-semibold mb-6 text-center text-[#815159]">Какво Гарантираме</h3>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-700">
-            <li><strong>Гаранция:</strong> Минимален праг на приходи, под който не вземаме комисиона. </li>
+            <li><strong>Гаранция:</strong> Минимален праг на приходи, под който не вземаме комисиона.</li>
             <li><strong>Месечен дашборд:</strong> Пълен достъп до приходи, отзиви и заетост</li>
             <li><strong>Оперативна поддръжка:</strong> От спално бельо до спешни ситуации.</li>
             <li><strong>Онбординг:</strong> Старт до 7 дни</li>
@@ -70,10 +80,10 @@ const PartnershipModels: React.FC = () => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-4 justify-center mt-12">
-          <button className="bg-[#f9cf94] text-[#1c1c1c] font-semibold px-6 py-3 rounded-full hover:bg-[#f9c070] transition">
+          <button className="bg-gray-300 text-gray-800 font-medium px-6 py-2.5 rounded-md hover:bg-gray-400 transition">
             Изчисли Потенциала на Имота
           </button>
-          <button className="bg-[#815159] text-white font-semibold px-6 py-3 rounded-full hover:opacity-90 transition">
+          <button className="bg-[#815159] text-white font-medium px-6 py-2.5 rounded-md hover:opacity-90 transition">
             Резервирай Разговор с Екипа
           </button>
         </div>

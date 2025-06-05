@@ -12,8 +12,8 @@ const ForDevelopers: React.FC = () => {
     <Layout>
       <Hero />
       <PartnerBenefits />
-      <CaseStudies />
       <PartnershipModels />
+      <CaseStudies />
     </Layout>
   );
 };
