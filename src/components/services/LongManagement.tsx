@@ -14,13 +14,12 @@ const LongManagementHero: React.FC = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
-          Гарантиран месечен наем – без риск от празни периоди
+          Управление на дългосрочен наем – без риск от празни периоди
         </h2>
 
         <p className="text-gray-800 mb-4 leading-relaxed">
           Търсите сигурност? Сключете 12- или 24-месечен договор с Nomadica и
-          получавайте един и същ наем на една и съща дата, независимо дали имотът
-          е зает. Ние се грижим за подбора на наематели, договорите и поддръжката.
+          получавайте един и същ наем на една и съща дата. Ние се грижим за подбора на наематели, договорите и поддръжката.
         </p>
 
         <p className="text-gray-800 mb-8 leading-relaxed">
@@ -56,7 +55,7 @@ const LongManagementHero: React.FC = () => (
             <li>Събиране на наеми</li>
             <li>24/7 линия за поддръжка</li>
             <li>Поддръжка и ремонти</li>
-            <li>Тримесечен оглед</li>
+            <li>Ежемесечен оглед</li>
           </ul>
         </motion.div>
 
@@ -72,8 +71,6 @@ const LongManagementHero: React.FC = () => (
           <h4 className="font-bold text-sm uppercase mb-4">Ключови показатели</h4>
           <p className="text-lg font-extrabold">0 € загуби от празни периоди</p>
           <p className="text-sm opacity-80 mb-4">гарантиран наем</p>
-          <p className="text-lg font-extrabold">98 % подновявания</p>
-          <p className="text-xs opacity-80">през последните 3 г.</p>
         </motion.div>
       </div>
     </div>

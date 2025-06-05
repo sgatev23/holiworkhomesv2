@@ -353,7 +353,7 @@ export default {
       income: '+45 % income',
       incomeNote: 'vs long-term rent',
       rating: '4.8 ★ rating',
-      reviews: '678 guest reviews',
+      reviews: '157 guest reviews',
       paragraph1: 'Nomadica turns your apartment into a hotel-grade listing...',
       paragraph2: 'You keep full ownership and flexibility...',
       cta: 'Start Earning'

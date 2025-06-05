@@ -45,7 +45,7 @@ const ShortManagementHero: React.FC = () => (
           <p className="text-lg font-extrabold">+45 % доход</p>
           <p className="text-sm opacity-80 mb-4">спрямо дългосрочен наем</p>
           <p className="text-lg font-extrabold">Оценка 4.8 ★</p>
-          <p className="text-xs opacity-80">678 отзива от гости</p>
+          <p className="text-xs opacity-80">157 отзива от гости</p>
         </motion.div>
       </div>
 
@@ -57,18 +57,18 @@ const ShortManagementHero: React.FC = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
-          Печелите повече от всяка нощ – ние вършим работата
+          Печелите повече от всяка нощувка – ние вършим работата
         </h2>
 
         <p className="text-gray-800 mb-4 leading-relaxed">
-          Nomadica превръща апартамента ви в обява с хотелско качество в Airbnb, Booking.com
-          и още 10+ платформи. Цените се актуализират всеки ден, екипът ни отговаря за минути,
+          Nomadica превръща апартамента ви в обект за настаняване, чрез публикуване на обяви в Airbnb, Booking.com
+          и общо над 10+ платформи. Цените се актуализират всеки ден, екипът ни отговаря за всичко,
           а след всяка резервация жилището блести от чистота.
         </p>
 
         <p className="text-gray-800 mb-8 leading-relaxed">
           Запазвате пълен контрол и гъвкавост. Блокирайте дати за лични нужди,
-          следете приходите в реално време и получавайте един отчет всеки месец —
+          следете приходите в реално време и получавайте отчет всеки месец —
           <strong>обикновено с 40–60 % повече</strong> от традиционен наем.
         </p>
 

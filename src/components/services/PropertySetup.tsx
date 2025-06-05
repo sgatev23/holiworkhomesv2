@@ -54,8 +54,8 @@ const PropertySetupHero: React.FC = () => (
           <ol className="list-decimal list-inside text-sm text-gray-700 leading-6">
             <li>Концепция</li>
             <li>Бюджет и одобрение</li>
-            <li>Закупуване</li>
-            <li>Монтаж и декорация</li>
+            <li>Подготовка</li>
+            <li>Ремонт и Обзавеждане</li>
             <li>Професионални снимки и обява</li>
           </ol>
         </motion.div>
