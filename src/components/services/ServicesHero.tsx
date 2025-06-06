@@ -19,7 +19,7 @@ const ServicesHero: React.FC = () => {
     {/* 🔹 background video (replace src) */}
     <video
       className="absolute inset-0 w-full h-full object-cover"
-      src="https://cdn.example.com/videos/services-bg.mp4"
+      src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Videocentric%20Minimalist%20Real%20Estate%20Virtual%20%20Property%20Tour%20Facebook%20Video.mp4"
       autoPlay
       muted
       playsInline

@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
       {/* Background video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        src="/videos/market-bg.mp4"
+        src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Propertyvideo.mp4"
         autoPlay
         playsInline
         muted

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
@@ -39,6 +38,7 @@ const Footer: React.FC = () => {
               <li><Link to="/services" className="hover:text-[#815159] transition">{t('footer.services.cohosting')}</Link></li>
               <li><Link to="/services" className="hover:text-[#815159] transition">{t('footer.services.setup')}</Link></li>
               <li><Link to="/list-your-property" className="hover:text-[#815159] transition">{t('footer.services.list')}</Link></li>
+              <li><a href="https://app.hostify.com/user/login" target="_blank" rel="noopener noreferrer" className="hover:text-[#815159] transition">{t('navigation.ownerPortal')}</a></li>
             </ul>
           </div>
 

@@ -9,7 +9,7 @@ const CohostingHero: React.FC = () => (
       {/* ── LEFT : Image + overlay cards ─────────────────── */}
       <div className="relative order-1 md:order-none">
         <img
-          src="https://images.pexels.com/photos/6457567/pexels-photo-6457567.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Supporthelpdesk.webp"
           alt="Laptop with revenue dashboard"
           className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
         />

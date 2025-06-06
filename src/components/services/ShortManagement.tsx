@@ -9,7 +9,7 @@ const ShortManagementHero: React.FC = () => (
       {/* ── LEFT : Image + overlay cards ─────────────────── */}
       <div className="relative">
         <img
-          src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//6745768e376a661af52c80f0_62a733ddb49dd232d241cad1_longterm_vs_short_term_header.webp"
+          src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Screenshot%202025-06-06%20at%2012.34.27.png"
           alt="Host reviewing bookings"
           className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
         />

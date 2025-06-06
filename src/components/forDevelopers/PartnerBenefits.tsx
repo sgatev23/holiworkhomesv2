@@ -1,140 +1,231 @@
-import React, { useState } from 'react';
-import { TrendingUp, Shield, Users, BarChart3 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from 'usehooks-ts'; // install if not already
+import { Link } from 'react-router-dom';
 
-const TABS = [
-  {
-    key: 'yield',
-    icon: TrendingUp,
-    image: 'https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//real-estate-business-growth-graph-arrow-graph-with-house-graph-3d-illustration.webp',
-  },
-  {
-    key: 'capex',
-    icon: Shield,
-    image: 'https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Asset-Allocation-Featured.jpg',
-  },
-  {
-    key: 'liquidity',
-    icon: Users,
-    image: 'https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//AP18.jpg',
-  },
-  {
-    key: 'data',
-    icon: BarChart3,
-    image: 'https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  },
-];
-
-const PartnerBenefits: React.FC = () => {
+const DeveloperBenefits: React.FC = () => {
   const { t } = useTranslation();
-  const [active, setActive] = useState('yield');
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   return (
-    <section id="partner-benefits" className="bg-[#f3f5f8] py-24">
-      <div className="container max-w-6xl px-6 md:px-12">
-        <header className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#815159] mb-3">
-            {t('developersPage.partnerBenefits.heading')}
+   <>
+   <section id="developer-benefits" className="py-24 bg-background space-y-32">
+      <div className="container text-center max-w-4xl mx-auto mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          {t('developersPage.partnerBenefits.heading')}
+        </h2>
+        <p className="text-lg text-gray-700">
+          {t('developersPage.partnerBenefits.subheading')}
+        </p>
+      </div>
+
+      {/* ── Yield Section ───────────────────────────── */}
+      <div className="container grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative order-1 md:order-none">
+          <img
+            src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//EmptyBuildingPlovdiv.jpg"
+            alt={t('developersPage.partnerBenefits.tabs.yield.alt')}
+            className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="hidden md:block absolute left-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
+          >
+            <h4 className="font-semibold mb-3">
+              {t('developersPage.partnerBenefits.tabs.yield.label')}
+            </h4>
+            <p className="text-sm text-gray-700 leading-6">
+            </p>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="order-0 md:order-2"
+        >
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
+            {t('developersPage.partnerBenefits.tabs.yield.headline')}
           </h2>
-          <p className="text-lg text-gray-700">
-            {t('developersPage.partnerBenefits.subheading')}
+
+          <p className="text-gray-800 mb-4 leading-relaxed">
+            {t('developersPage.partnerBenefits.tabs.yield.body')}
           </p>
-        </header>
 
-        {isDesktop ? (
-          <>
-            {/* Desktop Tabs */}
-            <div className="flex border-b border-gray-300 overflow-x-auto">
-              {TABS.map((tab) => (
-                <button
-                  key={tab.key}
-                  onClick={() => setActive(tab.key)}
-                  className={`px-6 py-3 whitespace-nowrap transition font-medium ${
-                    active === tab.key
-                      ? 'bg-[#f9cf94] text-[#815159]'
-                      : 'bg-white text-[#815159]/70 hover:bg-[#f9cf94]/60'
-                  }`}
-                >
-                  {t(`developersPage.partnerBenefits.tabs.${tab.key}.label`)}
-                </button>
-              ))}
-            </div>
+          <Link to="/contact" className="btn btn-primary text-lg">
+            {t('developersPage.partnerBenefits.cta')}
+          </Link>
+        </motion.div>
+      </div>
 
-            {/* Panel */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.4 }}
-                className="mt-12 flex flex-col lg:flex-row gap-10"
-              >
-                {/* Text */}
-                <div className="flex-1">
-                  {React.createElement(
-                    TABS.find((t) => t.key === active)!.icon,
-                    { className: 'w-10 h-10 text-[#815159] mb-4' }
-                  )}
-                  <h3 className="text-2xl font-semibold text-[#815159] mb-4">
-                    {t(`developersPage.partnerBenefits.tabs.${active}.headline`)}
-                  </h3>
-                  <p className="text-gray-800 leading-relaxed">
-                    {t(`developersPage.partnerBenefits.tabs.${active}.body`)}
-                  </p>
-                </div>
+      {/* ── CapEx Section ───────────────────────────── */}
+      <div className="container grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative order-1 md:order-none">
+          <img
+            src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//lounge.jpg"
+            alt={t('developersPage.partnerBenefits.tabs.capex.alt')}
+            className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
+          />
 
-                {/* Image */}
-                <div className="flex-1">
-                  <img
-                    src={TABS.find((t) => t.key === active)!.image}
-                    alt={t(`developersPage.partnerBenefits.tabs.${active}.alt`)}
-                    className="w-full h-72 object-cover rounded-xl shadow-lg"
-                  />
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </>
-        ) : (
-          <>
-            {/* Mobile Accordion */}
-            <div className="space-y-10">
-              {TABS.map((tab) => {
-                const text = t(`developersPage.partnerBenefits.tabs.${tab.key}`, {
-                  returnObjects: true,
-                }) as any;
-                const Icon = tab.icon;
-                return (
-                  <div
-                    key={tab.key}
-                    className="bg-white rounded-xl shadow-md overflow-hidden"
-                  >
-                    <img
-                      src={tab.image}
-                      alt={text.alt}
-                      className="w-full h-56 object-cover"
-                    />
-                    <div className="p-6">
-                      <Icon className="w-8 h-8 text-[#815159] mb-3" />
-                      <h3 className="text-xl font-semibold text-[#815159] mb-2">
-                        {text.headline}
-                      </h3>
-                      <p className="text-gray-800 text-sm leading-relaxed">
-                        {text.body}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </>
-        )}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="hidden md:block absolute left-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
+          >
+            <h4 className="font-semibold mb-3">
+              {t('developersPage.partnerBenefits.tabs.capex.label')}
+            </h4>
+            <p className="text-sm text-gray-700 leading-6">
+            </p>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="order-0 md:order-2"
+        >
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
+            {t('developersPage.partnerBenefits.tabs.capex.headline')}
+          </h2>
+
+          <p className="text-gray-800 mb-4 leading-relaxed">
+            {t('developersPage.partnerBenefits.tabs.capex.body')}
+          </p>
+
+          <Link to="/contact" className="btn btn-primary text-lg">
+            {t('developersPage.partnerBenefits.cta')}
+          </Link>
+        </motion.div>
+      </div>
+
+      {/* ── Liquidity Section ───────────────────────────── */}
+      <div className="container grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative order-1 md:order-none">
+          <img
+            src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//selling-property-dubai-body-a-080320230327-1024x640.jpg"
+            alt={t('developersPage.partnerBenefits.tabs.liquidity.alt')}
+            className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="hidden md:block absolute left-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
+          >
+            <h4 className="font-semibold mb-3">
+              {t('developersPage.partnerBenefits.tabs.liquidity.label')}
+            </h4>
+            <p className="text-sm text-gray-700 leading-6">
+            </p>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="order-0 md:order-2"
+        >
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
+            {t('developersPage.partnerBenefits.tabs.liquidity.headline')}
+          </h2>
+
+          <p className="text-gray-800 mb-4 leading-relaxed">
+            {t('developersPage.partnerBenefits.tabs.liquidity.body')}
+          </p>
+
+          <Link to="/contact" className="btn btn-primary text-lg">
+            {t('developersPage.partnerBenefits.cta')}
+          </Link>
+        </motion.div>
+      </div>
+
+      {/* ── Data Section ───────────────────────────── */}
+      <div className="container grid md:grid-cols-2 gap-12 items-center">
+        <div className="relative order-1 md:order-none">
+          <img
+            src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Screenshot%202025-06-06%20at%2012.34.27.png"
+            alt={t('developersPage.partnerBenefits.tabs.data.alt')}
+            className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="hidden md:block absolute left-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
+          >
+            <h4 className="font-semibold mb-3">
+              {t('developersPage.partnerBenefits.tabs.data.label')}
+            </h4>
+            <p className="text-sm text-gray-700 leading-6">
+            </p>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="order-0 md:order-2"
+        >
+          <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
+            {t('developersPage.partnerBenefits.tabs.data.headline')}
+          </h2>
+
+          <p className="text-gray-800 mb-4 leading-relaxed">
+            {t('developersPage.partnerBenefits.tabs.data.body')}
+          </p>
+
+          <Link to="/contact" className="btn btn-primary text-lg">
+            {t('developersPage.partnerBenefits.cta')}
+          </Link>
+        </motion.div>
       </div>
     </section>
+
+    {/* Developer CTA Strip */}
+    <div className="bg-primary text-white text-center py-16 px-6">
+      <div className="max-w-3xl mx-auto">
+        <h2 className="text-3xl font-extrabold mb-4">
+          {t('developersPage.cta.title')}
+        </h2>
+        <p className="text-lg mb-8">
+          {t('developersPage.cta.description')}
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            to="/contact"
+            className="bg-white text-primary px-6 py-3 rounded hover:bg-gray-100 transition font-medium"
+          >
+            {t('developersPage.cta.primary')}
+          </Link>
+          <Link
+            to="/list-your-property"
+            className="border border-white text-white px-6 py-3 rounded hover:bg-white hover:text-primary transition font-medium"
+          >
+            {t('developersPage.cta.secondary')}
+          </Link>
+        </div>
+      </div>
+    </div>
+  </>
   );
 };
 
-export default PartnerBenefits;
+export default DeveloperBenefits;

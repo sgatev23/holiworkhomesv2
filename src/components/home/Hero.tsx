@@ -6,9 +6,8 @@ import { useTranslation } from 'react-i18next';
 
 /* ─── Swiper imports ────────────────────────────────── */
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade } from 'swiper';
+import { Autoplay } from 'swiper';
 import 'swiper/css';
-import 'swiper/css/effect-fade';
 
 /**
  *  All locale-agnostic assets (e.g. images) live here.
@@ -17,9 +16,9 @@ import 'swiper/css/effect-fade';
  */
 const SLIDE_IMAGES = [
   'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
-  'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'https://images.pexels.com/photos/1743227/pexels-photo-1743227.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg?auto=compress&cs=tinysrgb&w=1600',
+  'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=1600',
 ];
 
 /* ─── Types ──────────────────────────────────────────── */
@@ -39,20 +38,28 @@ interface SlideProps extends SlideCopy {
 const Hero: React.FC = () => {
   const { t } = useTranslation();
 
-  /**
-   * `returnObjects: true` lets i18next deliver structured data (arrays/objects)
-   * instead of a plain string. We mirror the SlideCopy shape in our translation
-   * files so that `slides` is fully typed.
-   */
   const slides = t('hero.slides', { returnObjects: true }) as SlideCopy[];
 
   return (
     <section className="relative h-screen min-h-[600px] max-h-[800px] overflow-hidden">
+      <style>
+        {`
+          .swiper-slide {
+            transition: opacity 1.5s ease;
+            opacity: 0;
+          }
+          .swiper-slide-active {
+            opacity: 1;
+          }
+        `}
+      </style>
       <Swiper
-        modules={[Autoplay, EffectFade]}
-        effect="fade"
-        fadeEffect={{ crossFade: true }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        modules={[Autoplay]}
+        speed={1500}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
         loop
         className="h-full"
       >

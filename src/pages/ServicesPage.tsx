@@ -6,13 +6,12 @@ import Layout from '../components/layout/Layout';
 
 /* hero + homeowners intro */
 import ServicesHero from '../components/services/ServicesHero';
-import ServicesTabs from '../components/services/ServicesTabs';
+//import ServicesTabs from '../components/services/ServicesTabs';
 import ShortTermSection from '../components/services/ShortManagement';
 import LongTermSection from '../components/services/LongManagement';
 import CoHostingSection from '../components/services/Cohosting';
 import PropertySetupSection from '../components/services/PropertySetup';
-
-/* FAQ icons */
+import IntroSection from '../components/services/IntroSection';
 import { Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -26,9 +25,8 @@ const ServicesPage: React.FC = () => {
     <Layout>
       {/* 1 ▸ Hero */}
       <ServicesHero />
-
+      <IntroSection />
       {/* 2 ▸ For-Homeowners overview */}
-      <ServicesTabs />
       <ShortTermSection />
       <LongTermSection />
       <CoHostingSection />

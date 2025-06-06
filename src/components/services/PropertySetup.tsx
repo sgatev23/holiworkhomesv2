@@ -37,7 +37,7 @@ const PropertySetupHero: React.FC = () => (
       {/* ─── RIGHT : Image + overlay cards ─────────────────── */}
       <div className="relative">
         <img
-          src="https://images.pexels.com/photos/6186814/pexels-photo-6186814.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//renovation.jpg"
           alt="Stylish furnished living room"
           className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
         />

@@ -276,6 +276,8 @@ export default {
     chooseSubtitle: "Flexible plans to match every need — from co-hosting to full management.",
     
     services: {
+      
+      
       cohosting: {
         title: "Co-hosting",
         subtitle: "A digital solution for owners who want control and real results.",
@@ -338,7 +340,10 @@ export default {
         }
       }
     },
-
+    intro: {
+      title: 'Made for homeowners, not just landlords',
+      body: `Not every homeowner wants to deal with listings, guests, or daily management. That's where we come in. Whether you're struggling with an underperforming short-term rental, unsure if renting is even worth it, or simply want a better way to earn from your home — we help you decide, transform, and grow your property's potential with zero guesswork.`,
+    },
     shortManagement: {
       headline: 'Earn more from every night — we do the work',
       cardHeading: 'What we handle',
@@ -383,7 +388,12 @@ export default {
     },
     
     
-    cta: "Request Service",
+    cta: {
+      title: "Ready to Maximize Your Property's Potential?",
+      description: "Turn your vacant units into high-performing assets with our proven property management solutions.",
+      primary: "Schedule a Consultation",
+      secondary: "List Your Property"
+    },
     whyTitle: "Why Choose Nomadica?",
     whyP1: "We understand that your property isn’t just an investment—it’s your home. That’s why we manage every home with personalized care and attention to detail.",
     whyP2: "Our team blends local expertise with proven systems to deliver outstanding results. We prioritize transparency, regular communication, and maximizing your property’s performance.",
@@ -675,70 +685,54 @@ export default {
         {
           metric: 'Partner with Nomadica',
           headline: 'And earn 40–60 % higher rental income',
-          text: 'Convert inventory into high-yield serviced apartments without sacrificing exit flexibility.',
           isTitle: true,
         },
         {
-          metric: '8–11 %',
-          headline: 'Gross yield on Plovdiv serviced apartments',
-          text: 'versus 4–6 % on conventional 12-month lets (AirDNA & local comps, 2024).',
+          metric: 'Unsold or Vacant Units',
+          headline: 'Immediate Cash-Flow with 80%+ Occupancy',
         },
         {
-          metric: '38 % YoY',
-          headline: 'Rise in furnished-stay search volume',
-          text: 'driven by events & nomad blocks of 28+ nights (AirDNA Q1-24).',
+          metric: 'Property Protection, Always Sale-ready',
+          headline: 'Professional Management Team Ensures Asset Protection',
         },
         {
-          metric: '1.6 %',
-          headline: 'STR penetration of total housing stock',
-          text: 'half the saturation seen in comparable CEE hubs, leaving headroom for new units.',
-        },
-        {
-          metric: '+6.1 % CAGR',
-          headline: 'Average Daily Rate growth 2019-23',
-          text: 'outpacing inflation-adjusted pressure on long-term rents.',
-        },
-        {
-          metric: '42 % YoY',
-          headline: 'Peripheral-district demand jump',
-          text: 'searches for Trakia & H. Smirnenski outpaced CBD by mid-2024.',
+          metric: 'Sell or Exit Anytime',
+          headline: 'Withdraw or Block Units Anytime',
         },
       ],
-      sources: 'Sources: Eurostat 2024 • AirDNA Plovdiv (2024-05) • Bulgarian NSI • Knight Frank BG H1-24',
+      sources: 'Sources: Nomadica 23 Data • AirDNA 2024 • Eurostat 2024',
     },
     partnerBenefits: {
       heading: 'Are you a real estate developer or property investor?',
-      subheading: 'Unlock higher returns by partnering with Nomadica. Turn vacant units into turnkey hospitality assets.',
+      subheading: "We've done the research - vacant units across Europe are costing owners tens of thousands annually. With rising vacancy rates and unsold inventory piling up, appreciation alone no longer offsets financing, taxes, and lost yield. Each empty unit is a missed opportunity to recover capital, service debt, and grow long-term value. At Nomadica, we turn idle assets into high-performing rentals faster than anyone out. You get 80%+ occupancy, data-backed pricing, zero capex, and total exit flexibility. Extend your property's earning horizon while keeping it sale-ready at all times. Holding without revenue? That's not strategy. That's avoidable loss.",
       tabs: {
         yield: {
           label: 'Leverage Unsold/Vacant Units',
-          headline: 'Unsold or Vacant Units → Immediate Cash-Flow with 80%+ Occupancy',
+          headline: 'Immediate Cash-Flow with 80%+ Occupancy',
           body: 'Nomadica converts non-performing apartments into active revenue-generating units from day one. Instead of leaving inventory idle or discounting prices to sell, you can earn monthly income at 80%+ average occupancy through our dynamic pricing system across Airbnb, Booking.com, and five exclusive channels. This model consistently lifts net operating income by 40–60% over traditional long-term leases. Your balance sheet strengthens, and you maintain full ownership flexibility.',
-          alt: 'Chart showing rental yield differences between short- and long-term models',
+          alt: 'Chart showing rental yield differences between short- and long-term models'
         },
-        
         capex: {
           label: 'Property Portfolio Protection',
-          headline: 'Asset Preservation → Weekly Cleaning & Maintenance After Every Stay',
-          body: 'Each stay is followed by meticulous housekeeping, property inspections, and on-call maintenance. Our short-stay guests use the property far less intensively than long-term tenants, while our hotel-grade systems ensure furnishings and finishes remain in excellent resale condition. This proactive approach extends renovation cycles and protects your capital investment — keeping your unit sale-ready and reducing long-term wear significantly.',
-          alt: 'Maintenance worker inspecting kitchen fixtures to preserve CapEx value',
+          headline: 'Weekly Cleaning & Maintenance After Every Stay',
+          body: 'Each reservation is followed by thorough cleaning, technical inspection, and maintenance. Our short-term guests use properties more gently than long-term tenants, and our hotel-grade systems ensure interiors stay pristine. This approach extends furniture lifecycles and protects your investment—keeping the property in "ready-to-sell" condition with minimal wear and tear.',
+          alt: 'Technician inspecting kitchen to maintain property value'
         },
         
         liquidity: {
-          label: 'Sell or Exit Anytime',
-          headline: 'Need Liquidity? → Withdraw or Block Units Anytime with 30 Days’ Notice',
-          body: 'With Nomadica, you’re never locked into rigid 12- or 24-month leases. We offer full calendar control: pause listings for viewings, reclaim units to sell, or remove inventory with just 30 days’ notice. This unmatched liquidity means you can monetize your units today without compromising your ability to exit, pivot strategy, or prepare for future bulk sales. You stay agile in any market.',
-          alt: 'Handshake over apartment keys symbolizing flexible exit terms',
+          label: 'Withdraw Anytime',
+          headline: 'Need Liquidity? Block or Remove Units with 30-Day Notice',
+          body: 'With Nomadica, you are never locked into 12- or 24-month contracts. You maintain full calendar control: pause listings for viewings, free up units for sale, or terminate participation with 30 days notice. This flexibility lets you earn today without losing the freedom to sell, pivot strategy, or prepare your portfolio for future deals.',
         },
-        
+
         data: {
           label: 'Monitor Performance in Real-Time',
-          headline: 'Need Transparency? → Live Dashboard + Monthly P&L per Unit',
-          body: 'Our digital dashboard offers a full performance view of every unit in real time. Track daily bookings, occupancy rates, revenue per unit, and export detailed P&Ls on demand. Whether you manage 3 or 30 units, you always know what’s happening. These insights also help time your resale for optimal returns, based on real-world data—not guesswork. Total transparency, always.',
-          alt: 'Laptop screen with live performance metrics for short-term rentals',
-        },
+          headline: 'Need Transparency? Live Dashboard & Monthly P&L per Unit',
+          body: 'Our digital dashboard offers a full performance view of every unit in real time. Track daily bookings, occupancy rates, revenue per unit, and export detailed P&Ls on demand. Whether you manage 3 or 30 units, you always know what is happening. These insights also help time your resale for optimal returns, based on real-world data—not guesswork. Total transparency, always.',        },
       },
+      cta: "Learn More",
     },
+    
     caseStudies: {
       title: 'Success Stories',
       subtitle: 'Real-world results from developers who partnered with Nomadica',
@@ -807,6 +801,12 @@ export default {
         },
       ],
     },
+    cta: {
+      title: "Ready to Turn Vacant Units into Revenue?",
+      description: "Join property developers who trust Nomadica to deliver higher yields and professional management.",
+      primary: "Schedule a Consultation",
+      secondary: "List Your Property"
+    },
   },
 
   listProperty: {
@@ -858,6 +858,40 @@ export default {
   },
   bedroomOptions: {
     studio: "Studio"
-  }
+  },
+  contact: {
+    title: "Let's Start a Conversation",
+    subtitle: "Tell us what you're looking for — we'll take it from there.",
+    howItWorks: {
+      title: "See how Nomadica works",
+      description: "Request a personalized demo of how Nomadica helps maximize rental returns with less hassle — from setup to full service."
+    },
+    transform: {
+      title: "Transform your property",
+      description: "Learn how to go from empty unit to thriving short-term rental with our decor setup, marketing, and management support."
+    },
+    partner: {
+      title: "Partner with us",
+      description: "Whether you're a developer, investor, or homeowner, we'd love to explore partnership models tailored to your goals."
+    },
+    info: {
+      title: "Point of Contact",
+      services: "Services & Reservations:",
+      phone1: "BG",
+      phone2: "BG",
+      address: "Office: Zagreb 7, Kapana District, Plovdiv, Bulgaria"
+    },
+    form: {
+      required: "All fields required except Company.",
+      firstName: "First Name",
+      lastName: "Last Name",
+      company: "Company (optional)",
+      email: "Email",
+      city: "City",
+      selectCity: "Select a city",
+      message: "How can we help?",
+      submit: "Send Message"
+    }
+  },
 };
 

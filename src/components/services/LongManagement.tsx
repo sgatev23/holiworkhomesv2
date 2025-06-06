@@ -36,7 +36,7 @@ const LongManagementHero: React.FC = () => (
       {/* ── RIGHT : Image + overlay cards ────────────────── */}
       <div className="relative">
         <img
-          src="https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//C10-Blog-6-How-much-time-and-effort-goes-into-a-rental-property-inspection.webp"
           alt="Peace-of-mind long-term rental"
           className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
         />
