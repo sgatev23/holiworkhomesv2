@@ -2,17 +2,39 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import supabase from '../../supabaseclient';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
   const locations = t('footer.locations.list', { returnObjects: true }) as string[];
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'duplicate'>('idle');
+
+  const handleNewsletterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    const { error } = await supabase
+      .from('newsletter_subscribers')
+      .insert([{ email }]);
+
+    if (error) {
+      if (error.code === '23505') {
+        setStatus('duplicate');
+      } else {
+        console.error(error);
+        setStatus('error');
+      }
+    } else {
+      setStatus('success');
+      setEmail('');
+    }
+  };
 
   return (
     <footer className="bg-[#f9fafb] text-sm text-gray-700 pt-16 pb-10 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
-
           {/* Brand Description */}
           <div>
             <h3 className="text-xl font-bold text-[#815159] mb-4">{t('footer.brand.name')}</h3>
@@ -79,7 +101,7 @@ const Footer: React.FC = () => {
                 <a href="tel:+359897009919" className="hover:text-[#815159] transition">+359 89 700 9919</a>
               </li>
             </ul>
-            <form className="flex flex-col gap-2">
+            <form className="flex flex-col gap-2" onSubmit={handleNewsletterSubmit}>
               <label htmlFor="newsletter" className="text-md font-semibold text-[#815159]">{t('footer.newsletter.title')}</label>
               <input
                 type="email"
@@ -93,6 +115,15 @@ const Footer: React.FC = () => {
               <button type="submit" className="bg-[#815159] text-white py-2 rounded-md hover:opacity-90 transition">
                 {t('footer.newsletter.cta')}
               </button>
+              {status === 'success' && (
+                <p className="text-sm text-green-600">{t('footer.newsletter.success', 'Thanks for subscribing!')}</p>
+              )}
+              {status === 'error' && (
+                <p className="text-sm text-red-600">{t('footer.newsletter.error', 'Something went wrong. Please try again.')}</p>
+              )}
+              {status === 'duplicate' && (
+                <p className="text-sm text-yellow-600">{t('footer.newsletter.duplicate', 'You’re already subscribed.')}</p>
+              )}
             </form>
           </div>
         </div>
