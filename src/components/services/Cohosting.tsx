@@ -1,10 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-const CohostingHero: React.FC = () => (
-  <section id="cohosting" className="py-24 bg-background">
-    <div className="container grid md:grid-cols-2 gap-12 items-center">
+const CohostingHero: React.FC = () => {
+  const { t } = useTranslation();
+
+  const keepList =
+    (t('cohosting.keepList', { returnObjects: true }) as unknown as string[]) ||
+    [];
+
+  return (
+    <section id="cohosting" className="py-24 bg-background">
+      <div className="container grid md:grid-cols-2 gap-12 items-center">
 
       {/* ── LEFT : Image + overlay cards ─────────────────── */}
       <div className="relative order-1 md:order-none">
@@ -22,12 +30,11 @@ const CohostingHero: React.FC = () => (
           transition={{ duration: 0.6 }}
           className="hidden md:block absolute left-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
         >
-          <h4 className="font-semibold mb-3">Вие контролирате</h4>
+          <h4 className="font-semibold mb-3">{t('cohosting.keepHeading')}</h4>
           <ul className="text-sm text-gray-700 leading-6">
-            <li>Местен екип за почистване</li>
-            <li>Посрещане на място (по избор)</li>
-            <li>Лични блокове в календара</li>
-            <li>Пълен достъп до портала</li>
+            {keepList.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
           </ul>
         </motion.div>
 
@@ -40,11 +47,11 @@ const CohostingHero: React.FC = () => (
           className="hidden md:block absolute right-6 bottom-6
                      bg-gradient-to-br from-primary to-primary-dark text-white rounded-xl shadow-xl w-64 p-6"
         >
-          <h4 className="font-bold text-sm uppercase mb-4">Резултати от ко-хостинг</h4>
-          <p className="text-lg font-extrabold">Такса 12 %</p>
-          <p className="text-sm opacity-80 mb-4">плащате при печалба</p>
-          <p className="text-lg font-extrabold">+42 % доход</p>
-          <p className="text-xs opacity-80">средно повишение спрямо самостоятелно управление</p>
+          <h4 className="font-bold text-sm uppercase mb-4">{t('cohosting.resultsHeading')}</h4>
+          <p className="text-lg font-extrabold">{t('cohosting.feeLabel')}</p>
+          <p className="text-sm opacity-80 mb-4">{t('cohosting.feeSub')}</p>
+          <p className="text-lg font-extrabold">{t('cohosting.incomeLabel')}</p>
+          <p className="text-xs opacity-80">{t('cohosting.incomeSub')}</p>
         </motion.div>
       </div>
 
@@ -57,26 +64,24 @@ const CohostingHero: React.FC = () => (
         className="order-0 md:order-2"
       >
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
-          Дигитален ко-хостинг – запазвате контрол, печелите повече
+          {t('cohosting.headline')}
         </h2>
 
         <p className="text-gray-800 mb-4 leading-relaxed">
-          Обичате да посрещате гости, но не и да се занимавате с цени, съобщения
-          и календари? Включете се в технологиите на Nomadica – AI ценообразуване,
-          24/7 комуникация на два езика и мигновена синхронизация в над 10 канала.
+          {t('cohosting.paragraph1')}
         </p>
 
         <p className="text-gray-800 mb-8 leading-relaxed">
-          Запазвате любимия си екип за почистване и спокойно блокирате дати за близки.
-          Ние взимаме само <strong>12 % от нетния приход</strong> – без фиксирани разходи и ангажиращи договори.
+          {t('cohosting.paragraph2')}
         </p>
 
         <Link to="/list-your-property" className="btn btn-primary text-lg">
-          Включете ме
+          {t('cohosting.cta')}
         </Link>
       </motion.div>
     </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default CohostingHero;

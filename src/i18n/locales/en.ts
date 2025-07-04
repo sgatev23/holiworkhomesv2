@@ -381,10 +381,56 @@ export default {
       ],
 
       resultsHeading: "Cohosting results",
-      feeLabel: "15% fee",
+      feeLabel: "12% fee",
       feeSub: "pay-as-you-earn",
       incomeLabel: "+42% income",
       incomeSub: "average uplift vs DIY"
+    },
+
+    longManagement: {
+      headline: 'Long-term rental management — no vacancy risk',
+      paragraph1:
+        'Looking for stability? Sign a 12- or 24-month contract with Nomadica and receive the same rent on the same date each month. We handle tenant screening, leases and maintenance.',
+      paragraph2:
+        'Monthly inspections keep your property in top condition. When the term ends you decide whether to continue or return to personal use — <strong>no penalties or hassle.</strong>',
+      cta: 'Secure My Rent',
+
+      cardHeading: 'Included services',
+      cardList: [
+        'Tenant screening',
+        'Rent collection',
+        '24/7 support line',
+        'Maintenance & repairs',
+        'Monthly inspection'
+      ],
+
+      resultsHeading: 'Key metrics',
+      vacancyLabel: '0€ vacancy loss',
+      vacancySub: 'guaranteed rent'
+    },
+
+    propertySetup: {
+      headline: 'From empty flat to guest-ready in two weeks',
+      paragraph1:
+        'No time for shopping trips and contractors? Our team furnishes, decorates and photographs your property from start to finish. You approve the concept and we handle the rest.',
+      paragraph2:
+        'Typical budget is around <strong>€260/m²</strong>. Owners see on average a <strong>22% higher nightly rate</strong> when launching with professional design and photos.',
+      cta: 'List It Now',
+
+      howHeading: 'How it works',
+      howList: [
+        'Concept',
+        'Budget & approval',
+        'Prep',
+        'Renovation & furnishing',
+        'Pro photos & listing'
+      ],
+
+      resultsHeading: 'Typical results',
+      investmentLabel: '€260 / m² investment',
+      investmentSub: 'furnishing & setup',
+      rateLabel: '+22% ADR',
+      rateSub: 'vs self-furnished units'
     },
     
     

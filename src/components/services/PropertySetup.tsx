@@ -1,10 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-const PropertySetupHero: React.FC = () => (
-  <section id="property-setup" className="py-24 bg-background">
-    <div className="container grid md:grid-cols-2 gap-12 items-center">
+const PropertySetupHero: React.FC = () => {
+  const { t } = useTranslation();
+  const steps =
+    (t('propertySetup.howList', { returnObjects: true }) as unknown as string[])
+      || [];
+
+  return (
+    <section id="property-setup" className="py-24 bg-background">
+      <div className="container grid md:grid-cols-2 gap-12 items-center">
 
       {/* ─── LEFT : Copy + CTA ─────────────────────────────── */}
       <motion.div
@@ -14,23 +21,19 @@ const PropertySetupHero: React.FC = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
-          От празен апартамент до готов за гости за две седмици
+          {t('propertySetup.headline')}
         </h2>
 
         <p className="text-gray-800 mb-4 leading-relaxed">
-          Нямате време за обиколки по магазини и майстори? Нашият екип обзавежда,
-          декорира и снима имота ви от край до край. Вие одобрявате концепцията,
-          ние вършим останалото.
+          {t('propertySetup.paragraph1')}
         </p>
 
         <p className="text-gray-800 mb-8 leading-relaxed">
-          Обичайният бюджет е около <strong>€260/м²</strong>. Собствениците постигат
-          средно <strong>22 % по-висока цена на нощувка</strong>, когато имотът стартира с
-          професионална визия и снимки.
+          {t('propertySetup.paragraph2')}
         </p>
 
         <Link to="/list-your-property" className="btn btn-primary text-lg">
-          Пуснете обявата
+          {t('propertySetup.cta')}
         </Link>
       </motion.div>
 
@@ -50,13 +53,11 @@ const PropertySetupHero: React.FC = () => (
           transition={{ duration: 0.6 }}
           className="hidden md:block absolute left-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
         >
-          <h4 className="font-semibold mb-3">Как работи</h4>
+          <h4 className="font-semibold mb-3">{t('propertySetup.howHeading')}</h4>
           <ol className="list-decimal list-inside text-sm text-gray-700 leading-6">
-            <li>Концепция</li>
-            <li>Бюджет и одобрение</li>
-            <li>Подготовка</li>
-            <li>Ремонт и Обзавеждане</li>
-            <li>Професионални снимки и обява</li>
+            {steps.map((step, i) => (
+              <li key={i}>{step}</li>
+            ))}
           </ol>
         </motion.div>
 
@@ -69,15 +70,16 @@ const PropertySetupHero: React.FC = () => (
           className="hidden md:block absolute left-6 bottom-6
                      bg-gradient-to-br from-primary to-primary-dark text-white rounded-xl shadow-xl w-64 p-6"
         >
-          <h4 className="font-bold text-sm uppercase mb-4">Типични резултати</h4>
-          <p className="text-lg font-extrabold">€260 / м² инвестиция</p>
-          <p className="text-sm opacity-80 mb-4">обзавеждане и монтаж</p>
-          <p className="text-lg font-extrabold">+22 % ADR</p>
-          <p className="text-xs opacity-80">спрямо самообзаведени имоти</p>
+          <h4 className="font-bold text-sm uppercase mb-4">{t('propertySetup.resultsHeading')}</h4>
+          <p className="text-lg font-extrabold">{t('propertySetup.investmentLabel')}</p>
+          <p className="text-sm opacity-80 mb-4">{t('propertySetup.investmentSub')}</p>
+          <p className="text-lg font-extrabold">{t('propertySetup.rateLabel')}</p>
+          <p className="text-xs opacity-80">{t('propertySetup.rateSub')}</p>
         </motion.div>
       </div>
     </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default PropertySetupHero;
