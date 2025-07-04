@@ -1,10 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-const PropertySetupHero: React.FC = () => (
-  <section id="property-setup" className="py-24 bg-background">
-    <div className="container grid md:grid-cols-2 gap-12 items-center">
+const PropertySetupHero: React.FC = () => {
+  const { t } = useTranslation();
+  const steps = t('propertySetup.howList', { returnObjects: true }) as string[];
+
+  return (
+    <section id="property-setup" className="py-24 bg-background">
+      <div className="container grid md:grid-cols-2 gap-12 items-center">
 
       {/* ─── LEFT : Copy + CTA ─────────────────────────────── */}
       <motion.div
@@ -14,23 +19,19 @@ const PropertySetupHero: React.FC = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
-          From empty flat to guest-ready in two weeks
+          {t('propertySetup.headline')}
         </h2>
 
         <p className="text-gray-800 mb-4 leading-relaxed">
-          No time for shopping trips and contractors? Our team furnishes,
-          decorates and photographs your property from start to finish. You
-          approve the concept and we handle the rest.
+          {t('propertySetup.paragraph1')}
         </p>
 
         <p className="text-gray-800 mb-8 leading-relaxed">
-          Typical budget is around <strong>€260/m²</strong>. Owners see on
-          average a <strong>22% higher nightly rate</strong> when launching with
-          professional design and photos.
+          {t('propertySetup.paragraph2')}
         </p>
 
         <Link to="/list-your-property" className="btn btn-primary text-lg">
-          List It Now
+          {t('propertySetup.cta')}
         </Link>
       </motion.div>
 
@@ -50,13 +51,11 @@ const PropertySetupHero: React.FC = () => (
           transition={{ duration: 0.6 }}
           className="hidden md:block absolute left-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
         >
-          <h4 className="font-semibold mb-3">How it works</h4>
+          <h4 className="font-semibold mb-3">{t('propertySetup.howHeading')}</h4>
           <ol className="list-decimal list-inside text-sm text-gray-700 leading-6">
-            <li>Concept</li>
-            <li>Budget &amp; approval</li>
-            <li>Prep</li>
-            <li>Renovation &amp; furnishing</li>
-            <li>Pro photos &amp; listing</li>
+            {steps.map((step, i) => (
+              <li key={i}>{step}</li>
+            ))}
           </ol>
         </motion.div>
 
@@ -69,15 +68,16 @@ const PropertySetupHero: React.FC = () => (
           className="hidden md:block absolute left-6 bottom-6
                      bg-gradient-to-br from-primary to-primary-dark text-white rounded-xl shadow-xl w-64 p-6"
         >
-          <h4 className="font-bold text-sm uppercase mb-4">Typical results</h4>
-          <p className="text-lg font-extrabold">€260 / m² investment</p>
-          <p className="text-sm opacity-80 mb-4">furnishing &amp; setup</p>
-          <p className="text-lg font-extrabold">+22% ADR</p>
-          <p className="text-xs opacity-80">vs self-furnished units</p>
+          <h4 className="font-bold text-sm uppercase mb-4">{t('propertySetup.resultsHeading')}</h4>
+          <p className="text-lg font-extrabold">{t('propertySetup.investmentLabel')}</p>
+          <p className="text-sm opacity-80 mb-4">{t('propertySetup.investmentSub')}</p>
+          <p className="text-lg font-extrabold">{t('propertySetup.rateLabel')}</p>
+          <p className="text-xs opacity-80">{t('propertySetup.rateSub')}</p>
         </motion.div>
       </div>
     </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default PropertySetupHero;
