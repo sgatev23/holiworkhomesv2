@@ -33,6 +33,7 @@ const NomadicaOperators: React.FC = () => {
               src="https://images.pexels.com/photos/8867432/pexels-photo-8867432.jpeg?auto=compress&cs=tinysrgb&w=1600"
               alt="Nomadica operator support"
               className="rounded-xl shadow-md object-cover w-full h-auto max-h-[320px]"
+              loading="lazy"
             />
           </div>
         </div>
@@ -96,6 +97,7 @@ const NomadicaOperators: React.FC = () => {
                 src="https://images.pexels.com/photos/4386329/pexels-photo-4386329.jpeg?auto=compress&cs=tinysrgb&w=1600"
                 alt="Franchise team"
                 className="rounded-xl shadow-md object-cover w-full h-auto"
+                loading="lazy"
               />
             </div>
           </div>

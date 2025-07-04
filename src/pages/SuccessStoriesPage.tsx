@@ -113,6 +113,7 @@ const SuccessStoriesPage: React.FC = () => {
                     src={story.image}
                     alt={story.name}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.src = 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg';

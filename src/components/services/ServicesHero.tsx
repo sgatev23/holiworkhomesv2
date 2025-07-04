@@ -25,7 +25,9 @@ const ServicesHero: React.FC = () => {
       playsInline
       loop
       crossOrigin="anonymous"
-    />
+    >
+      <track kind="captions" src="/captions/services.vtt" />
+    </video>
 
     {/* tinted overlay */}
     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />

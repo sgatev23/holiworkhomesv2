@@ -40,6 +40,7 @@ const PropertySetupHero: React.FC = () => (
           src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//renovation.jpg"
           alt="Stylish furnished living room"
           className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
+          loading="lazy"
         />
 
         {/* 5-step process card (top-left inside) */}
