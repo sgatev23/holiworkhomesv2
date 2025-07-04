@@ -14,23 +14,23 @@ const PropertySetupHero: React.FC = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
-          От празен апартамент до готов за гости за две седмици
+          From empty flat to guest-ready in two weeks
         </h2>
 
         <p className="text-gray-800 mb-4 leading-relaxed">
-          Нямате време за обиколки по магазини и майстори? Нашият екип обзавежда,
-          декорира и снима имота ви от край до край. Вие одобрявате концепцията,
-          ние вършим останалото.
+          No time for shopping trips and contractors? Our team furnishes,
+          decorates and photographs your property from start to finish. You
+          approve the concept and we handle the rest.
         </p>
 
         <p className="text-gray-800 mb-8 leading-relaxed">
-          Обичайният бюджет е около <strong>€260/м²</strong>. Собствениците постигат
-          средно <strong>22 % по-висока цена на нощувка</strong>, когато имотът стартира с
-          професионална визия и снимки.
+          Typical budget is around <strong>€260/m²</strong>. Owners see on
+          average a <strong>22% higher nightly rate</strong> when launching with
+          professional design and photos.
         </p>
 
         <Link to="/list-your-property" className="btn btn-primary text-lg">
-          Пуснете обявата
+          List It Now
         </Link>
       </motion.div>
 
@@ -50,13 +50,13 @@ const PropertySetupHero: React.FC = () => (
           transition={{ duration: 0.6 }}
           className="hidden md:block absolute left-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
         >
-          <h4 className="font-semibold mb-3">Как работи</h4>
+          <h4 className="font-semibold mb-3">How it works</h4>
           <ol className="list-decimal list-inside text-sm text-gray-700 leading-6">
-            <li>Концепция</li>
-            <li>Бюджет и одобрение</li>
-            <li>Подготовка</li>
-            <li>Ремонт и Обзавеждане</li>
-            <li>Професионални снимки и обява</li>
+            <li>Concept</li>
+            <li>Budget &amp; approval</li>
+            <li>Prep</li>
+            <li>Renovation &amp; furnishing</li>
+            <li>Pro photos &amp; listing</li>
           </ol>
         </motion.div>
 
@@ -69,11 +69,11 @@ const PropertySetupHero: React.FC = () => (
           className="hidden md:block absolute left-6 bottom-6
                      bg-gradient-to-br from-primary to-primary-dark text-white rounded-xl shadow-xl w-64 p-6"
         >
-          <h4 className="font-bold text-sm uppercase mb-4">Типични резултати</h4>
-          <p className="text-lg font-extrabold">€260 / м² инвестиция</p>
-          <p className="text-sm opacity-80 mb-4">обзавеждане и монтаж</p>
-          <p className="text-lg font-extrabold">+22 % ADR</p>
-          <p className="text-xs opacity-80">спрямо самообзаведени имоти</p>
+          <h4 className="font-bold text-sm uppercase mb-4">Typical results</h4>
+          <p className="text-lg font-extrabold">€260 / m² investment</p>
+          <p className="text-sm opacity-80 mb-4">furnishing &amp; setup</p>
+          <p className="text-lg font-extrabold">+22% ADR</p>
+          <p className="text-xs opacity-80">vs self-furnished units</p>
         </motion.div>
       </div>
     </div>

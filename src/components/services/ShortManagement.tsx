@@ -22,13 +22,13 @@ const ShortManagementHero: React.FC = () => (
           transition={{ duration: 0.6 }}
           className="hidden md:block absolute right-6 top-10 bg-white rounded-xl shadow-lg w-60 p-4"
         >
-          <h4 className="font-semibold mb-3">Какво поемаме</h4>
+          <h4 className="font-semibold mb-3">What we handle</h4>
           <ul className="text-sm text-gray-700 leading-6">
-            <li>Ценообразуване и календар</li>
-            <li>24/7 поддръжка на гости</li>
-            <li>Почистване и пране</li>
-            <li>Поддръжка</li>
-            <li>Месечни отчети</li>
+            <li>Pricing &amp; calendar</li>
+            <li>24/7 guest support</li>
+            <li>Cleaning &amp; laundry</li>
+            <li>Maintenance</li>
+            <li>Monthly reports</li>
           </ul>
         </motion.div>
 
@@ -41,11 +41,11 @@ const ShortManagementHero: React.FC = () => (
           className="hidden md:block absolute left-6 bottom-6
                      bg-gradient-to-br from-primary to-primary-dark text-white rounded-xl shadow-xl w-64 p-6"
         >
-          <h4 className="font-bold text-sm uppercase mb-4">Последни 12 месеца*</h4>
-          <p className="text-lg font-extrabold">+45 % доход</p>
-          <p className="text-sm opacity-80 mb-4">спрямо дългосрочен наем</p>
-          <p className="text-lg font-extrabold">Оценка 4.8 ★</p>
-          <p className="text-xs opacity-80">157 отзива от гости</p>
+          <h4 className="font-bold text-sm uppercase mb-4">Last 12 months*</h4>
+          <p className="text-lg font-extrabold">+45% income</p>
+          <p className="text-sm opacity-80 mb-4">vs long-term rent</p>
+          <p className="text-lg font-extrabold">4.8 ★ rating</p>
+          <p className="text-xs opacity-80">157 guest reviews</p>
         </motion.div>
       </div>
 
@@ -57,23 +57,23 @@ const ShortManagementHero: React.FC = () => (
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-4xl font-extrabold text-primary mb-4">
-          Печелите повече от всяка нощувка – ние вършим работата
+          Earn more from every night — we handle the work
         </h2>
 
         <p className="text-gray-800 mb-4 leading-relaxed">
-          Nomadica превръща апартамента ви в обект за настаняване, чрез публикуване на обяви в Airbnb, Booking.com
-          и общо над 10+ платформи. Цените се актуализират всеки ден, екипът ни отговаря за всичко,
-          а след всяка резервация жилището блести от чистота.
+          Nomadica turns your apartment into a hospitality-grade listing on Airbnb,
+          Booking.com and 10+ other platforms. Prices update daily, our team handles
+          everything and your place sparkles after every stay.
         </p>
 
         <p className="text-gray-800 mb-8 leading-relaxed">
-          Запазвате пълен контрол и гъвкавост. Блокирайте дати за лични нужди,
-          следете приходите в реално време и получавайте отчет всеки месец —
-          <strong>обикновено с 40–60 % повече</strong> от традиционен наем.
+          Keep full control and flexibility. Block personal dates, track revenue
+          in real time and get a monthly statement — typically
+          <strong>40–60% higher</strong> than a traditional lease.
         </p>
 
         <Link to="/list-your-property" className="btn btn-primary text-lg">
-          Започнете да печелите
+          Start Earning
         </Link>
       </motion.div>
     </div>
