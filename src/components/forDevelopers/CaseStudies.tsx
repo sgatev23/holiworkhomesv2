@@ -110,6 +110,7 @@ const CaseStudies: React.FC = () => {
                   src={s.image}
                   alt={s.title}
                   className="h-full w-full object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>

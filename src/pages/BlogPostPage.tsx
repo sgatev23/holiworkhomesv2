@@ -140,6 +140,7 @@ const BlogPostPage: React.FC = () => {
       src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//viber-logo-png_seeklogo-309904.png"
       alt="Share on Viber"
       style={{ width: 40, height: 40, borderRadius: '50%' }}
+      loading="lazy"
     />
   </a>
 

@@ -12,6 +12,7 @@ const ShortManagementHero: React.FC = () => (
           src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Screenshot%202025-06-06%20at%2012.34.27.png"
           alt="Host reviewing bookings"
           className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
+          loading="lazy"
         />
 
         {/* Menu card : top-right inside */}

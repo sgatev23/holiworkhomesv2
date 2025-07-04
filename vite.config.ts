@@ -8,5 +8,8 @@ export default defineConfig({
   },
   server: {
     historyApiFallback: true // 👈 This is critical for React Router to work with slugs
+  },
+  build: {
+    sourcemap: true
   }
 });

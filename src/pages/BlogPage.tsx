@@ -54,6 +54,7 @@ const BlogPage: React.FC = () => {
                   src={post.cover_image}
                   alt={lang === 'bg' ? post.title_bg : post.title}
                   className="w-full h-48 object-cover"
+                  loading="lazy"
                 />
                 <div className="p-6">
                   <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">

@@ -25,6 +25,7 @@ const DeveloperBenefits: React.FC = () => {
             src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//EmptyBuildingPlovdiv.jpg"
             alt={t('developersPage.partnerBenefits.tabs.yield.alt')}
             className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
+            loading="lazy"
           />
 
           <motion.div
@@ -70,6 +71,7 @@ const DeveloperBenefits: React.FC = () => {
             src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//lounge.jpg"
             alt={t('developersPage.partnerBenefits.tabs.capex.alt')}
             className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
+            loading="lazy"
           />
 
           <motion.div
@@ -115,6 +117,7 @@ const DeveloperBenefits: React.FC = () => {
             src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//selling-property-dubai-body-a-080320230327-1024x640.jpg"
             alt={t('developersPage.partnerBenefits.tabs.liquidity.alt')}
             className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
+            loading="lazy"
           />
 
           <motion.div
@@ -160,6 +163,7 @@ const DeveloperBenefits: React.FC = () => {
             src="https://wphhabpebydwwvgqtwmw.supabase.co/storage/v1/object/public/blog-images//Screenshot%202025-06-06%20at%2012.34.27.png"
             alt={t('developersPage.partnerBenefits.tabs.data.alt')}
             className="w-full h-96 md:h-[520px] object-cover rounded-2xl shadow-lg"
+            loading="lazy"
           />
 
           <motion.div

@@ -45,6 +45,7 @@ const Header: React.FC = () => {
             src={forceSolid ? LogoMaroon : LogoWhite}
             alt="Nomadica logo"
             className="h-15 w-auto sm:h-15"
+            loading="lazy"
           />
           <span className={`text-xl sm:text-2xl font-bold font-[Montserrat] tracking-tight ${forceSolid ? 'text-[#815159]' : 'text-white'}`}>
             Nomadica
@@ -87,6 +88,7 @@ const Header: React.FC = () => {
         <button
           onClick={toggleMenu}
           className="md:hidden text-2xl p-2 focus:outline-none"
+          aria-label="Toggle menu"
         >
           {isOpen ? (
             <X className={forceSolid ? 'text-[#815159]' : 'text-white'} />

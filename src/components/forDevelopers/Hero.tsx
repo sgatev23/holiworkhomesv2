@@ -29,7 +29,9 @@ const Hero: React.FC = () => {
         playsInline
         muted
         loop
-      />
+      >
+        <track kind="captions" src="/captions/developers.vtt" />
+      </video>
 
     {/* Dark glass overlay */}
     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />

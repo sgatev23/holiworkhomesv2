@@ -1,23 +1,25 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import ServicesPage from './pages/ServicesPage';
-import SuccessStoriesPage from './pages/SuccessStoriesPage';
-import GuaranteesPage from './pages/GuaranteesPage';
-import BlogPage from './pages/BlogPage';
-import BlogPostPage from './pages/BlogPostPage.tsx'; 
-import ListPropertyPage from './pages/ListPropertyPage';
-import OwnerPortalPage from './pages/OwnerPortalPage';
-import NotFoundPage from './pages/NotFoundPage';
-import NomadicaOperators from './pages/NomadicaOperators';
-import CareersPage from './pages/CareersPage';
-import JobDetailPage from './pages/JobDetailPage';
-import JobApplicationPage from './pages/JobApplicationPage';
-import ForDevelopers from './pages/ForDevelopers';
-import ContactUs from './pages/ContactUs';
+import React, { lazy, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const SuccessStoriesPage = lazy(() => import('./pages/SuccessStoriesPage'));
+const GuaranteesPage = lazy(() => import('./pages/GuaranteesPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
+const ListPropertyPage = lazy(() => import('./pages/ListPropertyPage'));
+const OwnerPortalPage = lazy(() => import('./pages/OwnerPortalPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const NomadicaOperators = lazy(() => import('./pages/NomadicaOperators'));
+const CareersPage = lazy(() => import('./pages/CareersPage'));
+const JobDetailPage = lazy(() => import('./pages/JobDetailPage'));
+const JobApplicationPage = lazy(() => import('./pages/JobApplicationPage'));
+const ForDevelopers = lazy(() => import('./pages/ForDevelopers'));
+const ContactUs = lazy(() => import('./pages/ContactUs'));
 
 function App() {
   return (
+    <Suspense fallback={<div className="p-4">Loading...</div>}>
     <Routes>
       {/* Existing routes */}
       <Route path="/" element={<HomePage />} />
@@ -36,6 +38,7 @@ function App() {
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/contact" element={<ContactUs />} />
     </Routes>
+    </Suspense>
   );
 }
 
