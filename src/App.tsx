@@ -20,24 +20,24 @@ const ContactUs = lazy(() => import('./pages/ContactUs'));
 function App() {
   return (
     <Suspense fallback={<div className="p-4">Loading...</div>}>
-    <Routes>
-      {/* Existing routes */}
-      <Route path="/" element={<HomePage />} />
-      <Route path="/services" element={<ServicesPage />} />
-      <Route path="/success-stories" element={<SuccessStoriesPage />} />
-      <Route path="/guarantees" element={<GuaranteesPage />} />
-      <Route path="/blog" element={<BlogPage />} />
-      <Route path="/blog/:slug" element={<BlogPostPage />} />
-      <Route path="/list-your-property" element={<ListPropertyPage />} />
-      <Route path="/owner-portal" element={<OwnerPortalPage />} />
-      <Route path="/nomadica-property-operators" element={<NomadicaOperators />} />
-      <Route path="/careers" element={<CareersPage />} />
-      <Route path="/careers/:slug" element={<JobDetailPage />} />
-      <Route path="/careers/:slug/apply" element={<JobApplicationPage />} />
-      <Route path="/real-estate-developers" element={<ForDevelopers />} />
-      <Route path="*" element={<NotFoundPage />} />
-      <Route path="/contact" element={<ContactUs />} />
-    </Routes>
+      <Routes>
+        {/* Existing routes */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/success-stories" element={<SuccessStoriesPage />} />
+        <Route path="/guarantees" element={<GuaranteesPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
+        <Route path="/list-your-property" element={<ListPropertyPage />} />
+        <Route path="/owner-portal" element={<OwnerPortalPage />} />
+        <Route path="/nomadica-property-operators" element={<NomadicaOperators />} />
+        <Route path="/careers" element={<CareersPage />} />
+        <Route path="/careers/:slug" element={<JobDetailPage />} />
+        <Route path="/careers/:slug/apply" element={<JobApplicationPage />} />
+        <Route path="/real-estate-developers" element={<ForDevelopers />} />
+        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/contact" element={<ContactUs />} />
+      </Routes>
     </Suspense>
   );
 }
