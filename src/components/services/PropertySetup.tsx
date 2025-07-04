@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 
 const PropertySetupHero: React.FC = () => {
   const { t } = useTranslation();
-  const steps = t('propertySetup.howList', { returnObjects: true }) as string[];
+  const steps =
+    (t('propertySetup.howList', { returnObjects: true }) as unknown as string[])
+      || [];
 
   return (
     <section id="property-setup" className="py-24 bg-background">

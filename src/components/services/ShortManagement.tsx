@@ -5,7 +5,10 @@ import { useTranslation } from 'react-i18next';
 
 const ShortManagementHero: React.FC = () => {
   const { t } = useTranslation();
-  const handleList = t('shortManagement.whatWeHandle', { returnObjects: true }) as string[];
+  const handleList =
+    (t('shortManagement.whatWeHandle', {
+      returnObjects: true,
+    }) as unknown as string[]) || [];
 
   return (
     <section id="short-management" className="py-24 bg-background">

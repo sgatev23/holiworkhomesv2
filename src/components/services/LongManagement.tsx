@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 
 const LongManagementHero: React.FC = () => {
   const { t } = useTranslation();
-  const serviceList = t('longManagement.cardList', { returnObjects: true }) as string[];
+  const serviceList =
+    (t('longManagement.cardList', { returnObjects: true }) as unknown as string[])
+      || [];
 
   return (
     <section id="long-management" className="py-24 bg-background">

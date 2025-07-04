@@ -6,7 +6,9 @@ import { useTranslation } from 'react-i18next';
 const CohostingHero: React.FC = () => {
   const { t } = useTranslation();
 
-  const keepList = t('cohosting.keepList', { returnObjects: true }) as string[];
+  const keepList =
+    (t('cohosting.keepList', { returnObjects: true }) as unknown as string[]) ||
+    [];
 
   return (
     <section id="cohosting" className="py-24 bg-background">
