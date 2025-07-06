@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import SuccessStoriesPage from './pages/SuccessStoriesPage';
@@ -16,7 +16,6 @@ import JobApplicationPage from './pages/JobApplicationPage';
 import ForDevelopers from './pages/ForDevelopers';
 import ContactUs from './pages/ContactUs';
 import AdminDashboard from './pages/AdminDashboard';
-import AdminLogin from './pages/AdminLogin';
 
 function App() {
   return (
@@ -35,7 +34,6 @@ function App() {
       <Route path="/careers/:slug" element={<JobDetailPage />} />
       <Route path="/careers/:slug/apply" element={<JobApplicationPage />} />
       <Route path="/real-estate-developers" element={<ForDevelopers />} />
-      <Route path="/adminlogin" element={<AdminLogin />} />
       <Route path="/admindashboard/*" element={<AdminDashboard />} />
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/contact" element={<ContactUs />} />

@@ -9,11 +9,8 @@ This project includes a basic admin dashboard powered by Supabase.
 ```dotenv
 VITE_SUPABASE_URL=your-supabase-url
 VITE_SUPABASE_ANON_KEY=your-anon-key
-VITE_ADMIN_EMAIL=simeon@nomadica.homes
-VITE_ADMIN_PASSWORD=Simeon123
 ```
 
-If an account with these credentials doesn't exist, the login flow will automatically create it on first sign-in.
 
 2. Install dependencies and run the dev server:
 
@@ -22,7 +19,7 @@ npm install
 npm run dev
 ```
 
-The admin login page is available at `/adminlogin`. By default the login form is prefilled with the credentials from `VITE_ADMIN_EMAIL` and `VITE_ADMIN_PASSWORD`.
+The admin dashboard is available at `/admindashboard` and currently does not require authentication.
 
 ## Linting
 
