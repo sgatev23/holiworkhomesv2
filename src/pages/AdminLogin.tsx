@@ -5,8 +5,8 @@ import { useAdminAuth } from '../admin/AdminAuthContext';
 const AdminLogin = () => {
   const { signIn } = useAdminAuth();
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState(import.meta.env.VITE_ADMIN_EMAIL || '');
+  const [password, setPassword] = useState(import.meta.env.VITE_ADMIN_PASSWORD || '');
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -15,7 +15,7 @@ const AdminLogin = () => {
       await signIn(email, password);
       navigate('/admindashboard');
     } catch (err: any) {
-      setError('Invalid credentials');
+      setError(err.message || 'Invalid credentials');
     }
   };
 
