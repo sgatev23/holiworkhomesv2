@@ -8,6 +8,7 @@ export default {
     blog: 'Blog',
     listProperty: 'List Property',
     ownerPortal: 'Owner Portal',
+    adminPortal: 'Admin Portal',
     careers: 'Careers',
     forDevelopers: "For Developers",
     servicesDropdown: {

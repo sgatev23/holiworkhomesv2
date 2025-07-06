@@ -61,6 +61,7 @@ const Footer: React.FC = () => {
               <li><Link to="/services" className="hover:text-[#815159] transition">{t('footer.services.setup')}</Link></li>
               <li><Link to="/list-your-property" className="hover:text-[#815159] transition">{t('footer.services.list')}</Link></li>
               <li><a href="https://app.hostify.com/user/login" target="_blank" rel="noopener noreferrer" className="hover:text-[#815159] transition">{t('navigation.ownerPortal')}</a></li>
+              <li><Link to="/admindashboard" className="hover:text-[#815159] transition">{t('navigation.adminPortal')}</Link></li>
             </ul>
           </div>
 
