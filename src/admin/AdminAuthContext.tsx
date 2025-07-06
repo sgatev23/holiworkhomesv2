@@ -24,7 +24,23 @@ export const AdminAuthProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       email,
       password,
     });
-    if (error) throw error;
+    if (error) {
+      if (error.status === 400) {
+        const signUpRes = await supabase.auth.signUp({
+          email,
+          password,
+        });
+        if (signUpRes.error) throw signUpRes.error;
+        const signInAgain = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+        if (signInAgain.error) throw signInAgain.error;
+        setSession(signInAgain.data.session);
+        return;
+      }
+      throw error;
+    }
     setSession(data.session);
   };
 
