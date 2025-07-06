@@ -24,18 +24,7 @@ export const AdminAuthProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       email,
       password,
     });
-    if (error) {
-      if (error.message?.toLowerCase().includes('invalid login credentials')) {
-        const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-          email,
-          password,
-        });
-        if (signUpError) throw signUpError;
-        setSession(signUpData.session);
-        return;
-      }
-      throw error;
-    }
+    if (error) throw error;
     setSession(data.session);
   };
 

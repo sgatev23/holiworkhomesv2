@@ -13,6 +13,8 @@ VITE_ADMIN_EMAIL=simeon@nomadica.homes
 VITE_ADMIN_PASSWORD=Simeon123
 ```
 
+Make sure an account with these credentials already exists in your Supabase project; otherwise signing in will fail.
+
 2. Install dependencies and run the dev server:
 
 ```bash
