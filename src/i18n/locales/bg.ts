@@ -9,6 +9,7 @@ export default {
     blog: 'Блог',
     listProperty: 'Добави Имот',
     ownerPortal: 'Портал',
+    adminPortal: 'Админ Портал',
     careers: 'Кариери',
     forDevelopers: "За Строители",
     servicesDropdown: {

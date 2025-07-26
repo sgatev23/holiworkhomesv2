@@ -5,13 +5,16 @@ import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import './i18n';
 import './index.css';
+import { AdminAuthProvider } from './admin/AdminAuthContext';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>
-      <Router>
-        <App />
-      </Router>
+      <AdminAuthProvider>
+        <Router>
+          <App />
+        </Router>
+      </AdminAuthProvider>
     </HelmetProvider>
   </StrictMode>
 );
